@@ -1,0 +1,125 @@
+syntax = "proto3";
+import "common.proto";
+
+//竞技场敌人信息
+message arena_enemy_info {
+    int32 id = 1;      
+    string name = 2;
+    string attack = 3; 
+    proto_common.actor_appear info = 4;  
+    int32 score = 5;
+}
+
+//竞技场排名数据
+message arena_rank_info {
+    proto_common.actor_basic info = 1;
+    proto_common.actor_appear appear = 2;
+    int32 rank = 3;
+    int32 score = 4;
+}
+
+//竞技场战报
+message arena_report {
+    proto_common.actor_basic info = 1;
+    int32 flag = 2;    //1胜利 2失败
+    int32 score = 3;   //获得的积分 
+    string attack = 4;   //攻击力
+    int32 time = 5;     //时间
+}
+
+//请求竞技场数据
+message c_arena_info_1 {
+	enum Proto {A = 0; MSG = 101; ID = 10001;}
+}
+
+//获取挑战列表
+message c_arena_pk_list_2 {
+	enum Proto {A = 0; MSG = 101; ID = 10002;}
+}
+
+//刷新挑战列表
+message c_arena_refresh_3 {
+	enum Proto {A = 0; MSG = 101; ID = 10003;}
+}
+
+//挑战
+message c_arena_fight_4 {
+	enum Proto {A = 0; MSG = 101; ID = 10004;}
+    int32 idx = 1;   //挑战第几个对手
+}
+
+//获取挑战记录
+message c_arena_logs_5 {
+	enum Proto {A = 0; MSG = 101; ID = 10005;}
+}
+
+//领取挑战次数奖励
+message c_arena_award_6 {
+	enum Proto {A = 0; MSG = 101; ID = 10006;}
+}
+
+//获取排名信息
+message c_arena_rank_7 {
+	enum Proto {A = 0; MSG = 101; ID = 10007;}
+}
+
+//购买挑战次数
+message c_arena_buy_count_8 {
+	enum Proto {A = 0; MSG = 101; ID = 10008;}
+}
+
+//放弃战斗
+message c_arena_give_up_9 {
+	enum Proto {A = 0; MSG = 101; ID = 10009;}
+}
+
+//离开副本
+message c_arena_leave_10 {
+	enum Proto {A = 0; MSG = 101; ID = 10010;}
+}
+
+//竞技场初始化数据下发
+message s_arena_init_1 {
+	enum Proto {A = 0; MSG = 101; ID = 10001;}
+    int32 rank = 1;     //我的排名
+    int32 score = 2;     //我的积分 
+}
+
+//竞技场挑战列表
+message s_arena_select_list_2 {
+	enum Proto {A = 0; MSG = 101; ID = 10002;}
+    repeated arena_enemy_info item = 1;
+}
+
+//竞技场日志
+message s_arena_logs_3 {
+	enum Proto {A = 0; MSG = 101; ID = 10003;}
+    int32 isInit = 1;       //是否初始化，后续只下发增加的数据
+    repeated arena_report list = 2;
+}
+
+//竞技场排名
+message s_arena_rank_4 {
+	enum Proto {A = 0; MSG = 101; ID = 10004;}
+    repeated arena_rank_info list = 1;
+    int32 rank = 2;
+    int32 score = 3;
+}
+
+//竞技场挑战结果
+message s_arena_battle_result_5 {
+	enum Proto {A = 0; MSG = 101; ID = 10005;}
+    int32 win = 1;      //胜利与否 1 胜利 2 失败
+    int32 score = 2;    //当前积分
+    int32 rank = 3;     //当前排名
+    int32 scoreAdd = 4; //增加积分
+    int32 rankAdd = 5;  //增加排名
+    repeated proto_common.AwardInfo items = 6;  
+}
+
+//竞技场进入副本
+message s_arena_enter_fuben_6 {
+	enum Proto {A = 0; MSG = 101; ID = 10006;}
+    string attack = 1;          //对手攻击力
+    int32 lastTime = 2;         //副本剩余时间
+}

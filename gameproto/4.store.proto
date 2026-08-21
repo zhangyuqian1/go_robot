@@ -1,0 +1,210 @@
+syntax = "proto3";
+import "common.proto";
+
+//人民币礼包类型
+enum RmbGiftTypeDef {
+    Rmb_Normal = 0;
+    Rmb_MonthCard = 1;      //月卡
+    Rmb_First = 2;          //首充
+    Rmb_SevenDayLogin = 3;  //七天登录
+    Rmb_AbyssFund = 4;      //深渊基金
+    Rmb_RedPacket = 5;      //红包道具充值
+    Rmb_LoopActivity = 6;   //冲刺礼包
+    Rmb_OpenDayGift = 7;    //超值直购礼包
+    Rmb_GrowUpFund = 8;     //成长基金
+    Rmb_Seckill = 9;        //秒杀礼包
+    Rmb_Free = 100;         //免费礼包
+}
+
+//拍卖状态
+enum AuctionState {
+	Acution_Holding = 0;		//拍卖中
+	// Acution_PassIn = 1;		//流拍（已废弃，未使用）
+	// Acution_Success = 2;		//拍卖成功（过渡状态，不保留）
+	Acution_Fail = 3;			//拍卖失败,等待重新上架
+	// Acution_WaitReceive = 4;	//等待领取（已废弃）
+}
+
+//交易记录类型
+enum AuctionRecordType {
+	Acution_BidReturn  = 0;	// 出价被超越，退款待领取
+	Acution_SellDone   = 1;	// 出售成功，货款待领取（nPrice = 扣税后实际到手金额）
+	Acution_BuyDone    = 2;	// 购买成功 —— 物品存于 actor_items(sys=enBag_AuctionPending)，用 nItemSeries 查找
+	Acution_Return     = 3;	// 物品归还,目前用于领取的时候跨服返回后背包满了无法添加的情况,缓存到这里等玩家领取
+};
+
+//价格计算类型
+enum AuctionPriceType {
+    Auction_Level = 0;
+    Auction_Quality = 1;
+    Auction_Blessing = 2;
+    Auction_Suit = 3;
+}
+
+//商城购买
+message c_buy_store_item_1 {
+	enum Proto {A = 0; MSG = 4; ID = 10001;}
+    int32 store = 1;
+    int32 idx = 2;
+    int32 count = 3;
+    bool is_ad = 4;
+}
+
+//神秘商店购买
+message c_buy_mystic_item_2 {
+	enum Proto {A = 0; MSG = 4; ID = 10002;}
+    int32 idx = 1;
+}
+//神秘商店刷新
+message c_refresh_mystic_stop_3 {
+	enum Proto {A = 0; MSG = 4; ID = 10003;}
+    bool is_ad = 1;
+}
+
+//领取免费的rmb礼包
+message c_get_free_rmb_gift_4 {
+	enum Proto {A = 0; MSG = 4; ID = 10004;}
+    int32 id = 1;
+}
+
+//领取秒杀礼包奖励
+message c_get_seckill_gift_5 {
+	enum Proto {A = 0; MSG = 4; ID = 10005;}
+    int32 idx = 1;
+}
+
+
+////////////////////拍卖行///////////////////
+// 拍卖行基础信息
+message auction_base {
+    proto_common.Series series = 1;
+    int32 type = 2;
+    int32 status = 3;
+    int32 guild_id = 4;
+    int32 money_type = 5;
+    int32 cur_price = 6;
+    int32 final_price = 7;
+    int32 limit_time = 8;
+}
+
+// 拍卖行物品单条数据（推送给客户端）
+message auction_item_data {
+    auction_base base = 1;
+    proto_common.UserItem item = 2;
+    bool is_owner = 3;           // 是否属于自己
+    bool has_bid = 4;            // 自己是否出价过
+    bool is_highest_bidder = 5;  // 是否是出价最高者
+    bool has_any_bid = 6;        // 是否有人出价过
+    repeated int32 bid_list = 7; // 出价记录列表
+}
+
+// 交易记录单条数据
+message auction_record_data {
+    int32 record_id = 1;
+    int32 record_type = 2;       // enBidReturn/enSellDone/enBuyDone/enSellCancel
+    int32 item_id = 3;
+    int32 item_quality = 4;
+    int32 money_type = 5;
+    int32 price = 6;
+    int32 happen_time = 7;
+    bool received = 8;
+    proto_common.UserItem item_data = 9;  // 待领取物品完整数据（enBuyDone/enSellCancel 时有效）
+    bool is_buyout = 10;    // 是否为一口价成交（仅供展示/记录）
+    int32 item_strong = 11; // 物品强化等级（仅供展示）
+}
+
+// 请求拍卖数据
+message c_get_auction_data_20 {
+	enum Proto {A = 0; MSG = 4; ID = 10020;}
+}
+
+// 参与竞拍
+message c_on_auction_21 {
+	enum Proto {A = 0; MSG = 4; ID = 10021;}
+    proto_common.Series series = 1;
+    int32 price = 2;        // 出价，-1 表示一口价
+}
+
+// 上架拍卖品
+message c_add_auction_22 {
+	enum Proto {A = 0; MSG = 4; ID = 10022;}
+    proto_common.Series series = 1;       // 背包中物品的序列号
+    int32 money_type_idx = 2;// 货币类型, 配置表的money_type索引
+    int32 initial_price = 3;// 起拍价
+    int32 final_price = 4;  // 一口价
+    int32 bag_type = 5;     // 物品所在背包类型(enBag_*)
+}
+
+// 取消上架
+message c_cancel_auction_23 {
+	enum Proto {A = 0; MSG = 4; ID = 10023;}
+    proto_common.Series series = 1;
+}
+
+// 重新上架
+message c_re_auction_24 {
+	enum Proto {A = 0; MSG = 4; ID = 10024;}
+    proto_common.Series series = 1;
+    int32 auction_type = 2;
+    int32 money_type_idx = 3;
+    int32 initial_price = 4;
+    int32 final_price = 5;
+}
+
+// 请求拍卖行交易记录
+message c_get_auction_record_25 {
+	enum Proto {A = 0; MSG = 4; ID = 10025;}
+}
+
+// 领取交易记录货款/物品
+message c_receive_auction_return_26 {
+	enum Proto {A = 0; MSG = 4; ID = 10026;}
+    int32 record_id = 1;
+}
+
+// 取回下架/流拍物品
+message c_takeback_auction_27 {
+	enum Proto {A = 0; MSG = 4; ID = 10027;}
+    proto_common.Series series = 1;
+}
+
+/////////////////////////////////////////////
+message s_send_mystic_shop_1 {
+	enum Proto {A = 0; MSG = 4; ID = 10001;}
+    message info {
+        int32 idx = 1;
+        bool is_buy = 2;
+    }
+
+    //库id
+    int32 lib = 1;
+    //今天刷新的次数
+    int32 times = 2;
+    repeated info list = 3;
+}
+
+// 推送拍卖行物品列表/更新
+message s_send_auction_item_20 {
+	enum Proto {A = 0; MSG = 4; ID = 10020;}
+    repeated auction_item_data items = 1;
+    int32 page = 2;                     // 当前页（从 1 开始）
+    int32 total_pages = 3;              // 总页数
+}
+
+// 通知物品下架
+message s_send_auction_cancel_21 {
+	enum Proto {A = 0; MSG = 4; ID = 10021;}
+    proto_common.Series series = 1;
+}
+
+// 下发拍卖行交易记录
+message s_send_auction_record_22 {
+	enum Proto {A = 0; MSG = 4; ID = 10022;}
+    repeated auction_record_data records = 1;
+}
+
+//通知删除一个拍卖品
+message s_send_auction_delete_23 {
+	enum Proto {A = 0; MSG = 4; ID = 10023;}
+    proto_common.Series series = 1;
+}

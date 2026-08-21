@@ -1,0 +1,13 @@
+[tools]
+go = "1.21"
+
+[env]
+# 设置当前项目的 GOPATH。
+# {{ config_root }} 是 mise 的内置变量，指向当前配置文件所在的目录
+GOPATH = "{{ config_root }}/.gopath"
+
+# 私有仓库配置 GOPRIVATE
+GOPRIVATE = "gitlab.qa.dobest.com"
+
+# 自动将该项目的 GOPATH/bin 加入 PATH，方便直接运行该项目编译出的工具
+"PATH:prepend" = "{{ config_root }}/.gopath/bin"

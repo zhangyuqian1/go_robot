@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+//请求登录角色
+message c_actor_login_1 {
+	enum Proto {MSG = 0; ID = 10001;}
+    int32 account_id = 1;
+    int32 aid = 2;
+}
+
+//心跳包
+message c_heartbeat_2 {
+	enum Proto {MSG = 0; ID = 10002;}
+    int32 tick = 1;
+}
+
+//请求下线
+message c_apply_loginout_3 {
+	enum Proto {MSG = 0; ID = 10003;}
+}
+
+//请求更新头像
+message c_update_ico_url_4 {
+	enum Proto {MSG = 0; ID = 10004;}
+    string url = 1;
+}
+
+//前端主动断开
+message c_client_kick_self_5 {
+	enum Proto {MSG = 0; ID = 10005;}
+}
+
+//前端上报透传参数
+message c_client_upload_sdk_data_6 {
+	enum Proto {MSG = 0; ID = 10006;}
+    string device_id = 1;
+    string os_type = 2;
+    string channel = 3;
+    string cpsid = 4;
+    string user_id = 5;
+    string yoka_id = 6;
+    string language = 7;
+    string s_oneid = 8;
+    string c_oneid = 9;
+    string app_package_name = 10;
+    string device_model = 11;
+    string os_version = 12;
+    string app_version = 13;
+    string app_version_code = 14;
+    string union_id = 15;
+    string open_id = 16;
+    string login_from = 17;
+}
+
+//前端准备好登录了
+message c_client_ready_login_7 {
+	enum Proto {MSG = 0; ID = 10007;}
+    int32 actor_id = 1;
+}
+
+////////////////////////////////
+
+//登录结果
+message s_actor_login_result_1 {
+	enum Proto {MSG = 0; ID = 10001;}
+    int32 result = 1;
+}
+
+//开始传送
+message s_start_transmit_5 {
+	enum Proto {MSG = 0; ID = 10005;}
+    string addr = 1;
+    int32 port = 2;
+}
+
+//下发心跳包
+message s_heartbeat_10 {
+	enum Proto {MSG = 0; ID = 10010;}
+    int32 tick = 1;
+}
+
+//角色进入副本
+message s_actor_enter_scene_13 {
+	enum Proto {MSG = 0; ID = 10013;}
+    int32 sid = 1;
+    int32 fid = 2;
+    int32 type = 3;
+    float px = 4;
+    float py = 5;
+}
+
+//游戏到网关的心跳包
+message s_logic_to_gate_keeplive_20 {
+	enum Proto {MSG = 0; ID = 10020;}
+    
+}
+
+//公共操作结果
+message s_operator_result_24 {
+	enum Proto {MSG = 0; ID = 10024;}
+    int32 idx = 1;
+    bool flag = 2;
+    bool break_action = 3;
+}
+
+
+
+
+//测试消息
+message c_test_msg_250 {
+	enum Proto {MSG = 0; ID = 10250;}
+    string str = 1;
+}
+//测试消息
+message s_test_msg_250 {
+	enum Proto {MSG = 0; ID = 10250;}
+    string str = 1;
+}

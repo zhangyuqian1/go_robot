@@ -1,0 +1,91 @@
+kind: pipeline
+type: docker
+name: xhyx-server-perf
+
+trigger:
+  ref:
+    - refs/heads/dev
+    - refs/tags/*
+
+steps:
+  - name: dev-deploy
+    image: harbor.qa.dobest.com/common/golang:1.21.1_with_private_git_insecure_gcc
+    commands:
+      - /usr/local/go/bin/go env -w GOPRIVATE='gitlab.qa.dobest.com'
+      - /usr/local/go/bin/go mod tidy
+      - CGO_ENABLED=1 GOPROXY=http://10.225.137.190:8081/repository/go-proxy/ /usr/local/go/bin/go build -o stressTest
+      - cp stressTest entrypoint.sh docker/ && cd docker
+      - docker build -t $PLUGIN_REPO:TEST-LATEST .
+      - docker login harbor.qa.dobest.com -u $PLUGIN_USERNAME -p $PLUGIN_PASSWORD
+      - docker push $PLUGIN_REPO:TEST-LATEST
+    when:
+      branch: dev
+      event:
+        - push
+    settings:
+      registry: https://harbor.qa.dobest.com
+      repo: harbor.qa.dobest.com/game-stress/xhyx-server-perf
+      username:
+        from_secret: harbor_username
+      password:
+        from_secret: harbor_passwd
+      tags:
+        - TEST-LATEST
+    volumes:
+      - name: gomod
+        path: /home/clannad/go/pkg/mod
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: docker
+        path: /usr/bin/docker
+  - name: test-img-notify
+    image: harbor.qa.dobest.com/common/img-complete-notify:250819_fix
+    settings:
+      notifyUsers: tonglizhou
+      when:
+        branch: dev
+        event:
+          - push
+
+ 
+  # 生产环境
+  - name: tag-deploy
+    image: harbor.qa.dobest.com/common/golang:1.21.1_with_private_git_insecure_gcc
+    commands:
+      - /usr/local/go/bin/go env -w GOPRIVATE='gitlab.qa.dobest.com'
+      - /usr/local/go/bin/go mod tidy
+      - CGO_ENABLED=1 GOPROXY=http://10.225.137.190:8081/repository/go-proxy/ /usr/local/go/bin/go build -o stressTest
+      - cp stressTest entrypoint.sh docker/ && cd docker
+      - docker build -t $PLUGIN_REPO:$DRONE_TAG .
+      - docker login harbor.qa.dobest.com -u $PLUGIN_USERNAME -p $PLUGIN_PASSWORD
+      - docker push $PLUGIN_REPO:$DRONE_TAG
+    when:
+      event:
+        - tag
+    settings:
+      registry: https://harbor.qa.dobest.com
+      repo: harbor.qa.dobest.com/game-stress/xhyx-server-perf
+      username:
+        from_secret: harbor_username
+      password:
+        from_secret: harbor_passwd
+    volumes:
+      - name: gomod
+        path: /home/clannad/go/pkg/mod
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: docker
+        path: /usr/bin/docker
+
+
+
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
+  - name: docker
+    host:
+      path: /usr/bin/docker
+  - name: gomod
+    host:
+      path: /home-ssd/clannad/data/pkg/mod

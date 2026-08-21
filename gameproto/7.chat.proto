@@ -1,0 +1,83 @@
+syntax = "proto3";
+import "common.proto";
+
+//单条聊天信息
+message single_chat_msg {
+    int32 channel = 1;
+    string text = 2;
+
+    proto_common.actor_basic basic = 3;
+    int32 srv = 4;         //玩家所属服务器,用于跨服聊天
+    int32 tick = 5;        //时间戳
+}
+
+//单条播报信息
+message single_tips_id {
+    int32 tip_id = 1;
+    repeated string params = 2;
+    int32 tick = 3;        //时间戳
+}
+
+//发送聊天消息
+message c_send_chat_msg_1 {
+	enum Proto {A = 0; MSG = 7; ID = 10001;}
+    int32 channel = 1;
+    string text = 2;
+    int32 aid = 3;  //私聊对方id
+}
+
+//下发配置格式的播报
+message s_tipmsg_with_id_1 {
+	enum Proto {A = 0; MSG = 7; ID = 10001;}
+    single_tips_id single = 1;
+}
+
+//下发字符串播报
+message s_tipmsg_with_str_2 {
+	enum Proto {A = 0; MSG = 7; ID = 10002;}
+    int32 type = 1;
+    string str = 2;
+}
+
+//获取道具横幅
+message s_loot_item_banner_4 {
+	enum Proto {A = 0; MSG = 7; ID = 10004;}
+    int32 item_id = 1;
+    string actor_name = 2;
+    int32 actor_ico = 3;
+    int32 actor_ico_frame = 4;
+    string actor_ico_url = 5;
+
+    //道具品质和套装id
+    int32 quality = 6;
+    int32 suit_id = 7;
+}
+//聊天下发
+message s_send_chat_msg_5 {
+	enum Proto {A = 0; MSG = 7; ID = 10005;}
+    single_chat_msg single = 1;
+}
+
+//boss刷新预告和死亡横幅通知
+message s_boss_banner_6 {
+	enum Proto {A = 0; MSG = 7; ID = 10006;}
+    int32 boss_id = 1;
+    bool is_die = 2;
+
+    //刷新预告无以下数据
+    string actor_name = 3;
+    int32 actor_ico = 4;
+    int32 actor_ico_frame = 5;
+    string actor_ico_url = 6;
+}
+
+//登陆下发聊天列表
+message s_login_chat_list_7 {
+	enum Proto {A = 0; MSG = 7; ID = 10007;}
+    repeated single_chat_msg list = 1;
+}
+//登陆下发系统播报
+message s_login_system_tips_8 {
+	enum Proto {A = 0; MSG = 7; ID = 10008;}
+    repeated single_tips_id list = 1;
+}

@@ -1,0 +1,149 @@
+syntax = "proto3";
+import "common.proto";
+
+//循环活动玩家排名
+message loop_act_user_info {
+    proto_common.actor_basic info = 1;  
+    int32 rank = 2;   
+    int32 score = 3;
+}
+
+//礼包信息
+message loop_act_gift_info {
+    int32 id = 1;
+    int32 buyCount = 2;
+}
+
+//请求排名活动数据
+message c_loop_act_rank_1 {
+	enum Proto {A = 0; MSG = 102; ID = 10001;}
+}
+
+//领取排行进度奖励
+message c_loop_act_rank_award_2 {
+	enum Proto {A = 0; MSG = 102; ID = 10002;}
+    int32 index = 1;
+}
+
+
+//请求祈福活动数据
+message c_loop_act_pray_3 {
+	enum Proto {A = 0; MSG = 102; ID = 10003;}
+}
+
+//请求祈福抽卡
+message c_loop_act_pray_search_4 {
+	enum Proto {A = 0; MSG = 102; ID = 10004;}
+    int32 count = 1;
+}
+
+//请求祈福领取奖励
+message c_loop_act_pray_award_5 {
+	enum Proto {A = 0; MSG = 102; ID = 10005;}
+    int32 type = 1;         //type 为1 则是普通进度奖励 type 2为表示领取幸运值奖励
+}
+
+//请求礼包购买
+message c_loop_act_gift_6 {
+	enum Proto {A = 0; MSG = 102; ID = 10006;}
+    int32 id = 1;
+}
+
+//消费奖励领取
+message c_loop_act_consume_7 {
+	enum Proto {A = 0; MSG = 102; ID = 10007;}
+    int32 id = 1;
+}
+
+//充值奖励领取
+message c_loop_act_recharge_8 {
+	enum Proto {A = 0; MSG = 102; ID = 10008;}
+    int32 id = 1;
+}
+
+
+//下发今日活动id 为0 表示今日不进行活动
+message s_loop_act_id_1 {
+	enum Proto {A = 0; MSG = 102; ID = 10001;}
+    int32 act_id = 1;
+}
+
+//排行初始化数据下发
+message s_loop_act_rank_2 {
+	enum Proto {A = 0; MSG = 102; ID = 10002;}
+    repeated loop_act_user_info list = 1;
+    int32 rank = 2;     //我的排名
+    int32 score = 3;     //我的积分 
+    repeated int32 reach = 4 [packed = true]; 
+}
+
+//排行进度奖励数据下发
+message s_loop_act_reach_3 {
+	enum Proto {A = 0; MSG = 102; ID = 10003;}
+    int32 index = 1;
+    int32 state = 2;
+}
+
+//祈福活动数据下发
+message s_loop_act_pray_4 {
+	enum Proto {A = 0; MSG = 102; ID = 10004;}
+    int32 luck = 1;
+    int32 luck_award = 2;   //领取的幸运奖励个数
+    repeated loop_act_user_info list = 3;
+    int32 rank = 4;     //我的排名
+    int32 score = 5;     //我的积分 
+    repeated int32 reach = 6 [packed = true]; 
+}
+
+//祈福活动领奖下发
+message s_loop_act_pray_award_5 {
+	enum Proto {A = 0; MSG = 102; ID = 10005;}
+    int32 luck_award = 1;   //领取的幸运奖励个数
+    repeated int32 reach = 2 [packed = true]; 
+}
+
+//礼包数据下发
+message s_loop_act_gift_6 {
+	enum Proto {A = 0; MSG = 102; ID = 10006;}
+    repeated loop_act_gift_info list = 1;
+}
+
+//礼包数据更新
+message s_loop_act_gfit_update_7 {
+	enum Proto {A = 0; MSG = 102; ID = 10007;}
+    loop_act_gift_info data = 1;
+}
+
+//累消数据
+message s_loop_act_consume_8 {
+	enum Proto {A = 0; MSG = 102; ID = 10008;}
+    int32 count= 1;
+    repeated int32 list = 2 [packed = true]; 
+}
+
+//累消更新
+message s_loop_act_consume_update_9 {
+	enum Proto {A = 0; MSG = 102; ID = 10009;}
+    int32 id = 1;
+    int32 state = 2;
+}
+
+//累充数据
+message s_loop_act_recharge_10 {
+	enum Proto {A = 0; MSG = 102; ID = 10010;}
+    int32 money = 1;
+    repeated int32 list = 2 [packed = true]; 
+}
+
+//累充更新
+message s_loop_act_charge_update_11 {
+	enum Proto {A = 0; MSG = 102; ID = 10011;}
+    int32 id = 1;
+    int32 state = 2;
+}
+
+
+
+
+
+

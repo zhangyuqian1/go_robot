@@ -1,0 +1,321 @@
+syntax = "proto3";
+import "100.abyss.proto";
+import "common.proto";
+
+//普攻,现在测试用
+message c_normal_attack_1 {
+	enum Proto {A = 0; MSG = 5; ID = 10001;}
+    int64 handle = 1;
+    int32 skill_id = 2;
+}
+
+//前端开始使用技能,后端记录,消耗,返回开始使用s_start_use_skill_2
+message c_start_use_skill_2 {
+	enum Proto {A = 0; MSG = 5; ID = 10002;}
+    int64 handle = 1;
+    int32 skill_id = 2;
+    int32 dir =3;
+    int32 charge_time = 4;    //蓄力时间
+}
+
+//前端对实体造成伤害,瞬发和有延迟的都走这里
+message c_damage_entity_3 {
+	enum Proto {A = 0; MSG = 5; ID = 10003;}
+    int64 handle = 1;
+    int32 skill_id = 2;
+    int32 range_idx = 3;
+    int32 grid = 4;  //深渊秘境扩展武技能槽位索引
+    int32 pos_x = 5; //目标位置
+    int32 pos_y = 6; //目标位置
+}
+
+//前端激活怪物
+message c_activate_monster_4 {
+	enum Proto {A = 0; MSG = 5; ID = 10004;}
+    int32 handle = 1;       //handle里的index
+}
+
+//帧转发公共子类型
+message skill_frame_vec3 {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+}
+
+message skill_frame_random_target {
+    string handler = 1;
+    int32 distance = 2;
+}
+
+//帧转发,限制10fps
+message c_skill_frame_proxy_5 {
+	enum Proto {A = 0; MSG = 5; ID = 10005;}
+    int32 skill_id = 1;
+    int32 skill_level = 2;
+    int32 charge_time = 3;
+    bool is_charge_skill = 4;
+    skill_frame_vec3 direction = 5;
+    string caster_handler = 6;
+    string target_handler = 7;
+    skill_frame_vec3 target_pos = 8;
+    repeated skill_frame_vec3 landing_points = 9;
+    float attack_weapon_angle = 10;
+    bool attack_weapon_is_face_left = 11;
+    int32 weapon_slot_index = 12;
+    int32 effect_trigger_rate = 13;
+    repeated skill_frame_random_target random_targets = 14;
+}
+
+//使用深渊秘境技能
+message c_use_mj_skill_6 {
+	enum Proto {A = 0; MSG = 5; ID = 10006;}
+    int64 handle = 1;
+    int32 skill_id = 2;
+    int32 grid = 3;
+}
+
+//伤害飘字
+message s_damage_other_val_1 {
+	enum Proto {A = 0; MSG = 5; ID = 10001;}
+    int64 handle = 1;
+    int64 val = 2;
+    int32 type = 3;
+    int32 crit_val = 4;
+    int32 skillEff_Id = 5;  //技能效果ID
+}
+
+//玩家释放技能广播
+message s_start_use_skill_2 {
+	enum Proto {A = 0; MSG = 5; ID = 10002;}
+    int32 skill_id = 2;
+    int32 result =3;  //0成功 非0失败
+    int32 rand_val=4; //随机值，用作效果概率判断
+}
+
+//广播怪物释放技能
+message s_monster_use_skill_3 {
+	enum Proto {A = 0; MSG = 5; ID = 10003;}
+    message position{
+        int32 pos_x = 1;
+        int32 pos_y = 2;
+    }
+    int64 handle = 1;
+    int64 target = 2;
+    //0为普攻
+    int32 skill_id = 3;
+    int32 dir = 4;
+    int32 pixel_x = 5;
+    int32 pixel_y = 6;
+    repeated position poslist =7;   //随机坐标点列表
+    int32 safe_x = 8;
+    int32 safe_y = 9;
+    repeated int64 tar_list =10;  //随机目标列表
+}
+//帧转发
+message s_skill_frame_proxy_4 {
+	enum Proto {A = 0; MSG = 5; ID = 10004;}
+    int32 skill_id = 1;
+    int32 skill_level = 2;
+    int32 charge_time = 3;
+    bool is_charge_skill = 4;
+    skill_frame_vec3 direction = 5;
+    string caster_handler = 6;
+    string target_handler = 7;
+    skill_frame_vec3 target_pos = 8;
+    repeated skill_frame_vec3 landing_points = 9;
+    float attack_weapon_angle = 10;
+    bool attack_weapon_is_face_left = 11;
+    int32 weapon_slot_index = 12;
+    int32 effect_trigger_rate = 13;
+    repeated skill_frame_random_target random_targets = 14;
+}
+
+//实体受击
+message s_entity_beattack_5 {
+	enum Proto {A = 0; MSG = 5; ID = 10005;}
+    int64 handle = 1;       //被攻击者handle
+    int32 skillEff_Id = 2;  //技能效果ID
+}
+
+//同步技能cd
+message s_actor_skillcd_6{
+	enum Proto {A = 0; MSG = 5; ID = 10006;}
+    int32 skillid =1;
+    int32 leftcd =2;  //技能剩余cd(ms)
+}
+
+//通知特殊技能触发属性变化飘字
+message s_notify_attr_change_7{
+	enum Proto {A = 0; MSG = 5; ID = 10007;}
+    int64 handle = 1;       //飘字实体
+    uint32 attr_type = 2;  //属性type
+    int32 attr_val = 3;    //属性值
+}
+
+//通知玩家被聚拢效果吸附数据
+message s_send_absorb_data_8{
+	enum Proto {A = 0; MSG = 5; ID = 10008;}
+    int64 handle = 1;  //聚拢施法者handle
+    int32 speed = 2;  //吸附速度(ms)
+}
+
+//深渊秘境下发附加武器槽位武器数据
+message s_send_mj_weapons_9{
+	enum Proto {A = 0; MSG = 5; ID = 10009;}
+    int64 handle = 1;  
+    int32  grid = 2;        //槽位索引
+    AbyssItem item_info = 3;    //武器数据
+}
+
+//下发深渊秘境技能cd
+message s_send_mj_skill_cd_10{
+	enum Proto {A = 0; MSG = 5; ID = 10010;}
+    int32 grid = 1;     //武器槽位索引
+    int32 skillid = 2;  //技能id
+    int32 left_cd = 3;  //剩余cd(ms)
+}
+
+//深渊秘境枪械类武器子弹变化
+message s_mj_weapon_bullets_11{
+	enum Proto {A = 0; MSG = 5; ID = 10011;}
+    proto_common.Series series = 1;    //武器序列号	
+	uint32 bullets = 2;  //子弹数量
+}
+
+//通知前端释放被动触发技能
+message s_notify_trigger_skill_12{
+	enum Proto {A = 0; MSG = 5; ID = 10012;}
+    int32 skill_id = 1;
+    int64 handle = 2;  //目标句柄
+    int32 angle = 3;  //技能角度
+}
+
+//通知变身技能变化
+message s_notify_transfer_skill_13{
+	enum Proto {A = 0; MSG = 5; ID = 10013;}
+    int32 skill_id =1;
+    int32 active =2; //1激活 0:删除
+}
+
+//通知技能在副本内使用次数变化
+message s_notify_skilluse_fbtms_14{
+	enum Proto {A = 0; MSG = 5; ID = 10014;}
+    int32 skill_id = 1;     //技能id
+    int32 tms = 2;          //副本内已使用次数
+    int32 ex_tms = 3;       //进阶技能副本内已使用次数
+}
+
+//通知玩家被聚拢效果吸附数据
+message s_send_attach_data_15{
+	enum Proto {A = 0; MSG = 5; ID = 10015;}
+    int64 handle = 1;  //附身目标handle
+}
+
+
+//技能玩法消息, 100开始
+//技能上阵
+message c_set_skill_fight_100 {
+	enum Proto {A = 0; MSG = 5; ID = 10100;}
+    int32 skill_id = 1;
+    int32 grid = 2;
+}
+
+//技能升级(图鉴)
+message c_skill_lv_up_101 {
+	enum Proto {A = 0; MSG = 5; ID = 10101;}
+    message info {
+        int32 skill_id = 1;
+        int32 times = 2;
+    }
+    repeated info list = 1;
+}
+
+//技能升星
+message c_skill_star_up_102 {
+	enum Proto {A = 0; MSG = 5; ID = 10102;}
+    int32 skill_id = 1;
+}
+
+//技能下阵
+message c_unset_skill_fight_103 {
+	enum Proto {A = 0; MSG = 5; ID = 10103;}
+    int32 skill_id = 1;
+}
+
+//技能品质提升
+message c_skill_quality_up_104 {
+	enum Proto {A = 0; MSG = 5; ID = 10104;}
+    message info {
+        int32 skill_id = 1;
+    }
+    repeated info list = 1;
+}
+
+//技能抽奖
+message c_skill_draw_105 {
+	enum Proto {A = 0; MSG = 5; ID = 10105;}
+    int32 idx = 1;
+    bool is_ad = 2;
+}
+
+//库升级
+message c_skill_draw_lib_up_106 {
+	enum Proto {A = 0; MSG = 5; ID = 10106;}
+}
+
+//领取激活奖励
+message c_skill_act_award_107 {
+	enum Proto {A = 0; MSG = 5; ID = 10107;}
+    repeated int32 skill_id = 1 [packed = true];
+}
+
+
+
+
+//下发技能信息
+message s_skill_data_100 {
+	enum Proto {A = 0; MSG = 5; ID = 10100;}
+    message skill_info {
+        int32 id = 1;
+        int32 lv = 2;
+        int32 star = 3;
+        int32 cd_over = 4;
+        int32 grid = 5;
+        int32 quality = 6;      //当前品质
+        int32 max_quality = 7;  //可升级到的品质
+        int32 flag = 8;         //技能标记,对应 SkillDataFlag
+        int32 use_tms = 9;      //副本内已使用次数
+        int32 ex_tms = 10;      //进阶技能副本内已使用次数
+    }
+
+    repeated skill_info skills = 1;
+}
+
+//通知技能上阵
+message s_skill_on_fight_101 {
+	enum Proto {A = 0; MSG = 5; ID = 10101;}
+    int32 grid = 1;
+    int32 skill_id = 2;
+}
+
+//升级(图鉴)结果
+message s_skill_lv_up_ret_102 {
+	enum Proto {A = 0; MSG = 5; ID = 10102;}
+    message info {
+        int32 skill_id = 1;
+        int32 new_lv = 2;
+    }
+    repeated info list = 1;
+}
+
+//升品结果
+message s_skill_quality_up_ret_103 {
+	enum Proto {A = 0; MSG = 5; ID = 10103;}
+    repeated int32 list = 1 [packed = true];
+}
+
+//删除技能
+message s_skill_delete_104 {
+	enum Proto {A = 0; MSG = 5; ID = 10104;}
+    int32 skill_id = 1;
+}

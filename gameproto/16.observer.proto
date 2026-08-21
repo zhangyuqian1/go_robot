@@ -1,0 +1,124 @@
+syntax = "proto3";
+import "common.proto";
+
+//出现其他玩家
+message s_actor_appear_2 {
+	enum Proto {A = 0; MSG = 16; ID = 10002;}
+    proto_common.EntityCommon common = 1;
+    string name = 2;
+
+    //玩家变量表需要广播的
+    map<int32, int64> vals = 3;
+}
+
+//出现怪物
+message s_monster_appear_3 {
+	enum Proto {A = 0; MSG = 16; ID = 10003;}
+    proto_common.EntityCommon common = 1;
+    int64 cur_hp = 2;
+    int64 max_hp = 3;
+    repeated int32 skills = 4;
+    int64 state = 5;
+    string target_name = 6;  //归属者名字
+    uint32 target_id = 7;    //归属者id
+    int32 midx = 8;          //怪物索引,一般在副本/活动里使用
+    int32 heroId = 9;           //怪物英雄id
+    int32 weaponId = 10;        //怪物武器id
+    int32 icon = 11;            //怪物icon
+    int32 icon_frame = 12;      //怪物iconframe
+    string url = 13;            //怪物iconurl
+    int32 title = 14;           //怪物称号
+    int32 weapon_appear = 15;   //怪物武器外观
+    int32 hero_appear = 16;     //怪物英雄外观
+    int32 head_appear = 17;     //怪物头饰
+    string name = 18;           //怪物名称
+    int32 lv = 19;              //怪物等级
+    int32 camp = 20;            //怪物阵营
+}
+
+//出现了掉落物
+message s_drop_item_appear_4 {
+	enum Proto {A = 0; MSG = 16; ID = 10004;}
+    proto_common.EntityCommon common = 1;
+    int32 count = 2;
+    //归属者id
+    int32 owner_id = 3;
+    //属于归属者的过期时间,超过此时间后其他人才可以拾取
+    int32 owner_expire = 4;
+    //掉落类型
+    int32 type = 5;
+    //品质
+    int32 quality = 6;
+    //过期时间,超过时间后消失
+    int32 expire_time = 7;
+    int64 handle = 8;
+    //如果有队伍归属，则归属队伍可以拾取，如果没有则归属玩家可以拾取，超时后其他人才能拾取
+    int32 team_id = 9;
+}
+
+//其他实体属性变化
+message s_entity_prop_change_5 {
+	enum Proto {A = 0; MSG = 16; ID = 10005;}
+    int64 handle = 1;
+    map<int32, int64> vals = 2;
+}
+
+//实体消失, 离开视线
+message s_entity_disappear_6 {
+	enum Proto {A = 0; MSG = 16; ID = 10006;}
+    int64 handle = 1;
+}
+
+//实体归属改变
+message s_entity_vest_change_7 {
+	enum Proto {A = 0; MSG = 16; ID = 10007;}
+    int64 handle = 1;
+    int32 actor_id = 2;
+    string name = 3;
+}
+
+//实体死亡
+message s_entity_death_8 {
+	enum Proto {A = 0; MSG = 16; ID = 10008;}
+    int64 handle = 1;
+    int64 killer = 2;
+}
+
+//出现了火墙
+message s_fire_appear_9 {
+	enum Proto {A = 0; MSG = 16; ID = 10009;}
+    proto_common.EntityCommon common = 1;
+    //过期时间
+    int32 expire_time = 2; 
+}
+
+//出现了宠物
+message s_pet_appear_10 {
+	enum Proto {A = 0; MSG = 16; ID = 10010;}
+    proto_common.EntityCommon common = 1;
+    int64 cur_hp = 2;
+    int64 max_hp = 3;
+    string name = 4;
+    int64 handle = 5; //主人
+    int32 weapon = 6;
+    int32 type = 7; //类型
+    int32 model_large = 8;  //召唤物模型增大万分比
+    repeated int32 skills = 9;
+    int32 monster_id = 10;       //关联的怪物id
+    int32 source = 11;      //来源(0:宠物 1：召唤物)
+}
+
+//实体展示名字改变
+message s_change_show_name_11 {
+	enum Proto {A = 0; MSG = 16; ID = 10011;}
+    int64 handle = 1;
+    string name = 2;
+}
+
+//出现了地面光环
+message s_ground_aura_12 {
+	enum Proto {A = 0; MSG = 16; ID = 10012;}
+    proto_common.EntityCommon common = 1;
+    //过期时间
+    int32 expire_time = 2; 
+}

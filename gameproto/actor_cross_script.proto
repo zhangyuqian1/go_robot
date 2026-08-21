@@ -1,0 +1,14 @@
+syntax = "proto3";
+import "common.proto";
+
+
+//测试数据
+message cross_script_type_1 {
+    int32 aid = 1;
+    string name = 2;
+    string url = 3;
+    proto_common.actor_appear appear = 4;
+    proto_common.actor_basic info = 5;
+}
+
+

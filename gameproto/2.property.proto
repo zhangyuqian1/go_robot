@@ -1,0 +1,83 @@
+//属性子系统
+syntax = "proto3";
+
+//请求复活
+message c_apply_relive_1 {
+	enum Proto {A = 0; MSG = 2; ID = 10001;}
+    int32 type = 1;     //1复活点复活，2原地复活
+}
+
+
+//创角属性
+message s_actor_init_1 {
+	enum Proto {A = 0; MSG = 2; ID = 10001;}
+    int64 handle = 1;
+    int32 id = 2;
+    int32 raw_srv = 3;      //玩家本身所在服务器id
+    string name = 4;
+    map<int32, int64> map_data = 5;
+    string ico_url = 6;
+    int32 cur_srv = 7;      //当前登录服务器id
+
+    int32 cur_open_time = 8;    //当前所在服开服时间
+    int32 raw_open_time = 9;    //自己服的开服时间
+}
+
+//玩家变量变更列表
+message s_actor_map_data_change_2 {
+	enum Proto {A = 0; MSG = 2; ID = 10002;}
+    map<int32, int64> vals = 1;
+    bool    buff_chg = 2;  //是否buff影响属性变更
+}
+
+//列表数据结构
+message actor_list_data_info {
+    int32 id = 1;       //数据id
+    int32 idx = 2;      //id下的索引
+    int32 lv = 3;       //数据等级
+    int32 val = 4;      //数据值
+}
+
+//玩家列表数据
+message s_actor_list_data_3 {
+	enum Proto {A = 0; MSG = 2; ID = 10003;}
+    int32 type = 1;
+    repeated actor_list_data_info list = 2;
+}
+
+//玩家列表数据删除
+message s_actor_list_data_del_4 {
+	enum Proto {A = 0; MSG = 2; ID = 10004;}
+    message info {
+        int32 type = 1;
+        int32 id = 2;       //如果id和idx都为-1，则清空该类型列表
+        int32 idx = 3;
+    }
+    repeated info list = 1;
+}
+
+//玩家列表数据改变, 如改动,新增等
+message s_actor_list_data_change_5 {
+	enum Proto {A = 0; MSG = 2; ID = 10005;}
+    int32 type = 1;
+    actor_list_data_info data = 2;
+}
+
+//玩家被统计添加目标对象
+message s_actor_attacker_add_6 {
+	enum Proto {A = 0; MSG = 2; ID = 10006;}
+    uint64 handle = 1;
+}
+
+//打开复活界面
+message s_open_relive_dialog_7 {
+	enum Proto {A = 0; MSG = 2; ID = 10007;}
+    int32 type = 1;     //击杀者类型 0玩家，1怪物，2其他
+    string killer_name = 2;         //击杀者名字
+    int32 live_time = 3;            //窗口存活时长(秒)
+}
+
+//关闭复活界面
+message s_close_relive_dialog_8 {
+	enum Proto {A = 0; MSG = 2; ID = 10008;}
+}

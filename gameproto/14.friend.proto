@@ -1,0 +1,71 @@
+syntax = "proto3";
+import "common.proto";
+
+enum SocialRelation {
+	SOCIAL_APPLY = 0;			//申请状态
+	SOCIAL_FRIEND = 1;			//好友
+	SOCIAL_BLANK = 2;			//黑名单
+}
+
+//添加关系
+message c_add_social_1 {
+	enum Proto {A = 0; MSG = 14; ID = 10001;}
+    int32 aid = 1;
+    int32 type = 2;     //SocialRelation
+}
+
+//移除关系
+message c_remove_social_2 {
+	enum Proto {A = 0; MSG = 14; ID = 10002;}
+    int32 aid = 1;
+}
+
+//处理申请
+message c_handle_social_3 {
+	enum Proto {A = 0; MSG = 14; ID = 10003;}
+    int32 aid = 1;      //0则为一键处理
+    bool result = 2;
+}
+
+//根据名字搜索在线玩家
+message c_search_online_actor_by_name_4 {
+	enum Proto {A = 0; MSG = 14; ID = 10004;}
+    string name = 1;
+}
+
+//请求好友列表
+message c_friend_list_5 {
+	enum Proto {A = 0; MSG = 14; ID = 10005;}
+}
+
+////////////////////////////
+
+//下发列表,初始化/新增/更新
+message s_social_list_1 {
+	enum Proto {A = 0; MSG = 14; ID = 10001;}
+    message info {
+        proto_common.actor_basic basic = 1;
+
+        int32 social = 2;
+        int32 offline_time = 3; //0为在线
+        int32 sid = 4;  //所在场景id, 0为在跨服
+    }
+
+    repeated info list = 1;
+}
+
+//移除关系
+message s_remove_social_2 {
+	enum Proto {A = 0; MSG = 14; ID = 10002;}
+    int32 aid = 1;
+}
+
+//搜索结果
+message s_search_result_3 {
+	enum Proto {A = 0; MSG = 14; ID = 10003;}
+    message info {
+        proto_common.actor_basic basic = 1;
+        int32 sid = 2;
+    }
+    repeated info list = 1;
+}

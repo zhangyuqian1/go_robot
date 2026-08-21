@@ -1,0 +1,281 @@
+syntax = "proto3";
+import "common.proto";
+
+//任务
+message spark_exp_task {
+    int32 grid = 1;         //任务格子
+    int32 id = 2;           //任务id
+    int32 progress = 3;     //任务完成进度
+    int32 needMax = 4;      //完成任务所需总数
+    int32 state = 5;        //任务状态 0 未完成 1完成
+    int32 time = 6;         //任务到期时间
+}
+
+//格子数据
+message spark_exp_grid {
+    int32 grid = 1;
+    int32 owner = 2;         //拥有者阵营，没有人拥有则为0，否则1阵营拥有则为1,2阵营拥有则为2
+    int32 flag = 3;         // 探索者阵营，没人探索则为0，否则1阵营探索则为1,2阵营探索则为2
+    int32 type = 4;         // 类型 0 表示无 1表示任务 2表示建筑 3表示boss
+    int32 id = 5;           //分别对应 类型为0,1时 此值无效，为2时 为建筑id，为3时为 bossId
+}
+
+//排行榜
+message spark_exp_rank_info {
+    int32 rank = 1;
+    int32 score = 2;
+    proto_common.actor_basic info = 3;
+    proto_common.actor_appear appear = 4;
+}
+
+//结算排行榜数据
+message spark_exp_rank_calc_info {
+    int32 rank = 1;
+    int32 score = 2;
+    proto_common.actor_basic info = 3;
+}
+
+//boss场景数据
+message spark_exp_scene_boss {
+    int32 id = 1;       //对应配置中的固定建筑id
+    string killerName = 2;
+    string serverName = 3;
+    int32 flag = 4;         //0表示未入侵 1表示入侵
+    int32 camp = 5;         //0中立 1 阵营1 2阵营2
+}
+
+
+//获取数据
+message c_spark_expedition_1 {
+	enum Proto {A = 0; MSG = 104; ID = 10001;}
+}
+
+//获取排行榜
+message c_spark_expedition_rank_2 {
+	enum Proto {A = 0; MSG = 104; ID = 10002;}
+    int32 type = 1;     //1每日排行榜 2周排行榜
+}
+
+//探索
+message c_spark_expedition_act_3 {
+	enum Proto {A = 0; MSG = 104; ID = 10003;}
+    int32 grid = 1;
+}
+
+//挑战
+message c_spark_expedition_pvp_4 {
+	enum Proto {A = 0; MSG = 104; ID = 10004;}
+    int32 grid = 1;
+}
+
+//进入boss副本
+message c_spark_expedition_fuben_5 {
+	enum Proto {A = 0; MSG = 104; ID = 10005;}
+    int32 grid = 1;
+}
+
+//进入boss场景
+message c_spark_expedition_scene_6 {
+	enum Proto {A = 0; MSG = 104; ID = 10006;}
+    int32 id = 1;
+}
+
+//领取任务奖励
+message c_spark_exp_task_award_7 {
+	enum Proto {A = 0; MSG = 104; ID = 10007;}
+    int32 grid = 1;
+}
+
+//领取每日结算奖励
+message c_spark_exp_award_8 {
+	enum Proto {A = 0; MSG = 104; ID = 10008;}
+}
+
+//获取格子详细信息
+message c_spark_exp_grid_info_9 {
+	enum Proto {A = 0; MSG = 104; ID = 10009;}
+    int32 grid = 1;
+}
+
+//pvp挑战放弃
+message c_spark_exp_pvp_give_up_10 {
+	enum Proto {A = 0; MSG = 104; ID = 10010;}
+}
+
+//pvp退出副本
+message c_spark_exp_pvp_leave_11 {
+	enum Proto {A = 0; MSG = 104; ID = 10011;}
+}
+
+//退出boss副本
+message c_spark_exp_boss_leave_12 {
+	enum Proto {A = 0; MSG = 104; ID = 10012;}
+}
+
+
+
+
+//下发数据
+message s_spark_expedition_1 {
+	enum Proto {A = 0; MSG = 104; ID = 10001;}
+    string serverName = 1;     //阵营1服务器名字
+    int32 grids = 2;            //阵营1占领格子数量
+    string eneryServerName = 3;    //阵营2服务器名字
+    int32 eneryGrids = 4;           //阵营2占领格子数量    
+}
+
+//数据下发
+message s_spark_expedition_init_2 {
+	enum Proto {A = 0; MSG = 104; ID = 10002;}
+    repeated spark_exp_grid grids = 1;    //格子数据
+    repeated spark_exp_task tasks = 2;    //当前任务
+    repeated spark_exp_scene_boss bosses = 3;   //场景boss
+}
+
+//积分体力同步
+message s_spark_expedition_cnt_sco_3 {
+	enum Proto {A = 0; MSG = 104; ID = 10003;}
+    int32 score = 1;                //我的积分
+    int32 count = 2;                //我的已用体力
+}
+
+//格子更新
+message s_spark_expedition_grid_4 {
+	enum Proto {A = 0; MSG = 104; ID = 10004;}
+    spark_exp_grid grid = 1;     //格子数据
+}
+
+//任务更新
+message s_spark_expedition_task_5 {
+	enum Proto {A = 0; MSG = 104; ID = 10005;}
+    spark_exp_task task = 1;     //任务更新
+}
+
+//场景boss更新
+message s_spark_expedition_boss_6 {
+	enum Proto {A = 0; MSG = 104; ID = 10006;}
+    spark_exp_scene_boss boss = 1;   //场景boss
+}
+
+//下发排行榜数据
+message s_spark_expedition_rank_7 {
+	enum Proto {A = 0; MSG = 104; ID = 10007;}
+    int32 type = 1;     //1每日排行榜 2周排行榜
+    repeated spark_exp_rank_info ranks = 2;
+    int32 myRank = 3;
+    int32 myScore = 4;
+}
+
+//删除任务
+message s_spark_exp_delete_task_8 {
+	enum Proto {A = 0; MSG = 104; ID = 10008;}
+    int32 grid = 1;
+}
+
+//占领弹窗
+message s_spark_exp_show_win_9 {
+	enum Proto {A = 0; MSG = 104; ID = 10009;}
+
+    int32 type = 1; // 1 是任务 2是建筑 3是boss
+    int32 grid_num = 2; //格子数量
+    int32 taskId = 3;   //任务id 类型是任务的时候生效
+    int32 buildId = 4;  //建筑id 类型是建筑的时候生效
+    string serverName = 5; //类型是建筑和boss的时候生效
+    string userName = 6;    //类型是建筑的时候生效
+    int32 bossIdx = 7;       //boss配置idx
+    int32 bossId = 8;       //bossId
+    int32 firstBuild = 9;   //是否探险 0不是 1是
+    int32 grid = 10;        //格子下标
+}
+
+//格子详情
+message s_spark_exp_grid_detail_info_10 {
+	enum Proto {A = 0; MSG = 104; ID = 10010;}
+    int32 grid = 1;
+    int32 type = 2;         // 类型 0 表示无 1表示任务 2表示建筑 3表示boss
+    string serverName = 3;   //归属服务器名字
+    int32 aid = 4;          //玩家id  类型为建筑时有效
+    string name = 5;         //玩家名字  类型为建筑时有效
+    string attack = 6;      //玩家攻击力  类型为建筑时有效
+    proto_common.actor_appear appear = 7; //玩家形象  类型为建筑时有效
+    int32 buildId = 8;          //建筑id
+    int32 bossId = 9;       //bossId
+    int32 bossHpRate = 10;  //boss剩余血量万分比
+}
+
+//每日结算通知（初始化下发）  周一下发的是全默认为空字符串或者0
+message s_spark_exp_clac_11 {
+	enum Proto {A = 0; MSG = 104; ID = 10011;}
+    string serverName = 1;     //阵营1服务器名字
+    int32 grids = 2;            //阵营1占领格子数量
+    int32 builds = 3;           //阵营1占领建筑数量
+    string secServerName = 4;    //阵营2服务器名字
+    int32 secGrids = 5;           //阵营2占领格子数量
+    int32 secbuilds = 6;           //阵营2占领建筑数量
+    repeated spark_exp_rank_calc_info list = 7;    //前三名数据
+    repeated proto_common.AwardInfo awards = 8; //可以领取的奖励
+    int32 state = 9;        //领取状态 0 不能领取 1可以领取 2已领取
+}
+
+//基础数据，如果有则有比赛，则对应的阵营，我的积分，我的已用体力下发
+message s_spark_exp_actor_data_12 {
+	enum Proto {A = 0; MSG = 104; ID = 10012;}
+    int32 gameId = 1;               //远征比赛id 如果为0，则表示当日没有活动
+    int32 score = 2;                //我的积分
+    int32 count = 3;                //我的已用体力
+    int32 camp = 4;                 //我方阵营
+    string winServer = 5;           //本期胜利服务器名字
+    string serverName1 = 6;         //下期对决阵营1服务器
+    string serverName2 = 7;         //下期对决阵营2服务器
+}
+
+//pvp挑战进入副本协议
+message s_spark_exp_pvp_enter_fuben_13 {
+	enum Proto {A = 0; MSG = 104; ID = 10013;}
+    int32  lastTime = 1;       //剩余时间
+    string attack = 2;      //敌方攻击力
+}
+
+//pvp挑战失败通知
+message s_spark_exp_pvp_fail_notice_14 {
+	enum Proto {A = 0; MSG = 104; ID = 10014;}
+    string userName = 1;            //玩家名字
+    int32 srv = 2;                  //玩家服务器id
+}
+
+//副本boss进入副本协议
+message s_spark_exp_fuben_enter_fuben_15 {
+	enum Proto {A = 0; MSG = 104; ID = 10015;}
+    int32 bossIdx = 1;          //配置idx 直接去事件配置表根据boss类型3，取bossIdx的配置
+    string serverName = 2;      //服务器名字
+}
+
+//副本boss击杀弹窗
+message s_spark_exp_fuben_boss_kill_16 {
+	enum Proto {A = 0; MSG = 104; ID = 10016;}
+    int32 bossIdx = 1;      //副本boss配置id
+    int32 bossId = 2;       //副本boss 怪物id
+}
+
+//场景boss进入场景协议
+message s_spark_exp_scene_enter_scene_17 {
+	enum Proto {A = 0; MSG = 104; ID = 10017;}
+    int32 buildId = 1;      //固定建筑配置id
+    string serverName = 2;      //归属阵营
+    string killName = 3;     //击杀玩家
+}
+
+
+//场景boss击杀弹窗
+message s_spark_exp_scene_boss_kill_18 {
+	enum Proto {A = 0; MSG = 104; ID = 10018;}
+    int32 buildId = 1;      //固定建筑配置id
+    string serverName = 2;      //归属阵营
+    string killName = 3;     //击杀玩家
+}
+
+//每日奖励领取状态下发
+message s_spark_exp_clac_state_19 {
+	enum Proto {A = 0; MSG = 104; ID = 10019;}
+    int32 state = 1;        //领取状态 0 不能领取 1可以领取 2已领取
+}

@@ -1,0 +1,967 @@
+syntax = "proto3";
+package enum_def;
+
+//脚本导出c++枚举时会默认在最后面增加最大值
+
+//系统提示的类型
+enum TipmsgType {
+    ttNoneType = 0;
+    ttFlyTip = 1;			//飘字   1 << 0
+    ttScreenCenter = 2;		//屏幕中央 1 << 1
+    ttChatWindow = 4;       //聊天窗口, 也就是系统频道 1 << 2
+    ttPlatform = 8;			//平台公告 1 << 3
+}
+
+//聊天频道定义
+enum ChatMsgType {
+    Channel_Secret = 0; //私聊 密语 
+    Channel_Guild = 1;  //帮派
+    Channel_Team = 2;   //队伍频道
+    Channel_System = 3; //系统频道
+    Channel_World = 4;  //世界频道
+    Channel_Friend = 5; //好友聊天
+    Channel_Cross = 6;  //跨服聊天
+    Channel_GuildCheck = 7;    //行会字符检测
+    Channel_Max = 8;    //最大频道号
+}
+
+//背包类型定义
+enum BagType {
+    enBag_Weapon = 0;		//武器背包
+    enBag_Defence = 1;		//防具背包
+    enBag_Relic = 2;		//遗物背包
+    enBag_Other = 3;		//普通背包
+    enBag_Depot = 4;		//仓库背包
+    enBag_Hangup = 5;       //挂机背包
+    enBag_SoulCard = 6;     //魂卡背包
+    enBag_Diamond = 7;      //宝石背包
+    enBag_ChessBoard = 8;   //棋盘背包
+    enBag_DiamondBoard = 9; //宝石棋盘背包（棋盘格子为背包格子之后一个，比如6*6则棋盘格子为37）
+    enBag_Max = 10;
+
+    enBag_None = -1;		//未定义,进入背包时系统根据配置选定进入的背包
+    enBag_BodyEquip = 200;	//身上装备,属于特殊背包
+    enBag_AuctionPending = 300;	//拍卖行待领取物品(购买成功/取消归还,玩家离线时暂存)
+}
+
+//技能作用效果定义
+enum SkillDmgType{
+    enSd_None = 0;
+    enSd_BulletSurround =5;     //环绕子弹
+    enSd_Bullet = 7;  		    //子弹伤害
+    enSd_MultiSubEffect = 8;    //多段子效果
+    enSd_AddSpBuff = 13;        //加特殊BUFF(会根据已有id的BUFF直接设置层数)
+    enSd_RapidMove = 14;        //冲锋
+    enSd_MultiDamage = 15;      //多段伤害
+    enSd_ConsumeBuffLayer=18;   //消耗buff层数(buff层数减少)
+    enSd_RandTargetList = 20;   //随机技能目标集
+    enSd_TrackMissile = 21;     //追踪导弹伤害
+    enSd_ToggleTransform=23;    //变身
+    enSd_SelfFlash = 62;        //闪现
+    enSd_Relive = 87;		    //复活
+    enSd_SoulChain =93;         //灵魂链
+    enSd_SoulChainDmg=96;       //灵魂链伤害
+    enSd_BulletBounce = 97;     //子弹反弹
+    enSd_BulletRicochet =98;    //子弹回弹
+}
+
+//子弹类型
+enum Bullet_Type{
+    enBt_None = 0;
+    enBt_Track = 3;     //追踪子弹   
+    enBt_Maneuver  = 6; //回旋子弹
+}
+
+//攻击类型定义
+enum CritType {
+    emCT_None = 0;
+    emCT_Crit = 1;		    //暴击
+    emCT_Devil = 2;		    //合击
+    emCT_Buff = 4;		    //buff
+    emCT_Pet = 5;		    //宠物
+    emCT_DoubleHit = 6;     //连击
+    emCT_CounterAtk = 7;    //反击
+    emCT_Coma = 8;	        //击晕(废弃)
+    emCT_HuiXin = 9;        //会心一击
+    emCT_DamageAdd = 10;    //致命一击
+    emCT_Dodge = 11;        //闪避
+    emCT_DuangKill = 12;    //秒杀
+    emCT_Cutting = 13;      //切割
+    emCT_Seckilll = 14;     //斩杀
+    emCT_ShieldKill = 15;   //护盾减免
+    emCT_SuckBlood = 16;    //吸血
+    emCT_RuduceHurt = 17;   //反伤
+    emCT_Arrow = 18;        //弩箭
+    emWsSkillAtkBegin = 19; //将魂技能飘字开始
+    emWsSkillAtkEnd = 36;   //将魂技能飘字结束
+    emDragonSkillBegin = 37;//龙装技能飘字开始
+    emDragonSkillEnd = 44;  //龙装技能飘字结束
+    emCT_FuckBoss = 45;		//148 aFuckBoss
+    emCT_poison = 46;		//中毒
+    emCT_recvHp = 47;		//回血
+    emCT_MagicBook = 109;   //魔法书
+    emCT_Physics = 48;		//物理伤害
+    emCT_Fire = 49;			//火焰
+    emCT_Ice = 50;			//冰系
+    emCT_Sacred = 51;		//光系
+    emCT_Dark = 52;			//暗系
+    emCT_FirstAttack = 53;	//先攻
+    emCT_NoSend = 200;	    //不发送的前端的类型
+}
+
+//实体状态定义; CFG_Export::CREATURE_STATE; 最多支持50位
+enum EntityState {
+    esStateMove = 0;				//行走状态或者跳跃状态
+    esStateRide = 1;				//骑马状态
+    esStateSing = 2;				//吟唱状态
+    esStateBattle = 3;				//战斗状态
+    esStateDeath = 4;				//死亡状态
+    esStateMoveForbid = 5;			//禁止移动状态
+    esStateDizzy = 6;				//麻痹状态
+    esStateReturnHome = 7;			//回归状态(用于怪物)
+    esDisableSkillCD = 8;			//禁用技能CD标志（开发和测试用）
+    esPickUping = 9;				//正在去拾取物品的状态
+    esCanCollect = 10;				//怪物的可采集状态,某些怪物死掉后会变成可采集状态
+    esNewPlayerSafe = 11;			//新手保护状态
+    esStateDesSpeed = 12;			//减速状态
+    esStateHide = 13;				//隐身状态
+    esStatePoisoning = 14;			//中毒状态
+    esStateChiDun = 15;				//迟钝状态
+    esStateFrost = 16;				//冰冻状态
+    esStateStun = 17;				//击晕状态
+    esStateBurn = 18;				//灼烧状态
+    esStateInMonsterState = 19;		//变身状态
+    aStateElectrification = 20;		//感电状态
+    esStateImmunity = 21;			//免疫状态
+    esImmunityAttr = 22;			//免疫流派属性状态
+    esMonsterWarning = 23;          //怪物刷新预警状态
+    esBulletRefresh = 24;			//换弹中...
+    esEasyHurt = 25;				//易伤状态
+    esAbsorbed = 26;				//被吸附状态
+    esWithAura = 27;				//光环状态
+    esStateNextAttack = 28;			//下一次自动攻击状态
+    esStateAbyss = 29;				//在深渊副本状态
+    esStateSilence = 30;			//沉默状态(禁技)
+    esStateSuperman = 31;			//无敌
+    esStateMockery = 32;			//嘲讽
+    esStateSoulChain = 33;          //灵魂链状态
+    esStateDeathBomb = 34;          //死亡炸弹
+    esStateAttachment = 35;         //附身状态
+    esStateBeAttached = 36;         //被附身状态
+    esStateHangUp = 37;             //托管状态
+    esStateAmmoFree = 38;           //无限弹药
+}
+
+//技能攻击元素类型
+enum skill_element_type {
+    se_none = 0;	//无类型
+    se_physics = 1;	//物理
+    se_fire = 2;	//火焰
+    se_ice = 3;		//冰系
+    se_god = 4;		//光系
+    se_dark = 5;	//暗系
+}
+
+
+
+//技能大类, 对应配置表 skillFarType
+enum skill_big_type {
+    sbt_none = 0;
+    sbt_weapon = 1;		//武器技能
+    sbt_hero = 2;		//英雄技能
+    sbt_normal = 3;		//自选技能
+    sbt_advanced = 4;	//进阶技能, 就是普通技能穿戴了武器进阶后的技能
+    sbgt_relic = 5;     //遗物技能
+    sbt_suit = 6;		//套装技能
+    sbt_transfer =7;	//变身技能
+    sbt_pet_normal = 8;     // 宠物普攻
+    sbt_pet_skill = 9;     // 宠物技能
+    sbt_pet_aura = 10;      // 宠物光环
+    sbt_pet_passive = 11;   // 宠物被动
+
+}
+//技能小类, 对应配置表 skillSonType
+enum skill_son_type {
+    sst_none = 0;
+    sst_base = 1;		//基础技
+    sst_core = 2;		//核心技
+    sst_tactics = 3;	//战术技
+    sst_niubi = 4;		//终结技
+
+}
+
+//技能范围的分类
+enum enSkillRangeType {
+    stSkillRangeSingle = 0;        //无范围，仅针对目标的单体技能(单体)
+    stSkillRangeCircle = 1;        //圆形攻击距离
+    stSkillRangeRectangle = 2;     //矩形攻击距离
+    stSkillRangeSector = 3;        //扇形攻击距离
+    stSkillRangeLaser = 4;        //旋转激光范围参数(纯前端使用)
+    stSkillRangeRotationSingle = 5;//线性旋转(单体)
+    stSkillRangeGrid = 6;          //指定中心点格子内
+    stSkillRangeSector2 = 7;       //扇形攻击距离2(跟3相同;有修改;后续统一下)
+    stSkillRangePointRange = 8;    //以施法者为中心点的矩形区域
+}
+
+//技能效果作用点继承类型
+enum enSkillInheritType {
+    siInheritTypeNone = 0;       //不继承
+    siInheritTypeRandPosList = 1; //继承随机位置列表
+    siInheritTypeSafePoint = 2;		//继承安全区中心点
+    siInheritTypeRandTarget =3;     //继承预选随机目标
+}
+
+//技能效果豁免安全区域类型
+enum skill_safe_area_type {
+    ssat_none = 0;
+    ssat_quadrant = 1;	//中心点象限
+    ssat_nearpoint =2;	//中心点附近区域
+    ssat_nearrandp =3;	//中心点附近随机点区域
+}
+
+//技能释放错误码
+enum skill_use_errorno{
+    sue_Success = 0;
+    sue_NotLearn = 1;       //没有学技能
+    sue_CdNotOver =2;       //CD中
+    sue_SkillNotExits=3;    //技能不存在
+    sue_FubenUseLimit=4;    //副本次数限制
+    sue_InDenySkillState=5; //禁技状态
+    sue_ConsumeFailed =6;   //消耗不够
+    sue_SkillIng =7;        //技能释放未结束
+    sue_UseTooFrequent=8;   //释放太频繁
+    sue_FbUseTmsLimit=9;    //副本使用次数限制
+    sue_SpStateDenySkill=10;//附身or变身禁止使用技能
+}
+
+//条件类型
+enum ActorCondition {
+    emAC_Level = 0;						//等级等级检测
+    emAC_Circle = 1;					//转生等级检测
+    emAC_Guild = 2;						//行会等级检测
+    emAC_Open = 3;						//大于等于此开服天数
+    emAC_Fight = 4;						//战斗力
+    emAC_CardType = 5;					//月卡
+    emAC_Achieve = 6;					//完成指定成就
+    emAC_StrongMinLv = 7;				//全身强化最低等级
+    emAC_StrongAllLv = 8;				//全身强化总等级
+    emAC_MindMinLv = 9;					//全身最低注灵等级
+    emAC_MinStar = 10;					//全身最低星级
+    emAC_ZhuzaiMinLv = 11;				//全身主宰最低强化等级
+    emAC_LtLv = 12;						//小于此等级
+    emAC_LtOpenDay = 13;				//小于此开服天数
+    emAC_GtCombine = 14;				//大于等于此合服天数
+    emAC_LtConbine = 15;				//小于此合服天数
+    emAC_FinishedQuest = 16;			//完成指定任务
+    emAC_GtHours = 17;					//大于等于指定时间点
+    emAC_LtHours = 18;					//小于指定时间点
+    emAC_ConsumeYB = 19;				//总消费元宝,奖励类型7
+    emAC_AllRecharge15 = 20;			//累计充值数量 （充值卡也算）
+    emAC_DayRecharge15 = 21;			//今天充值数量 （充值卡也算）
+    emAC_RechargeDays = 22;				//连续充值天数
+    emAC_FirstRecharge = 23;			//完成首充
+    emAC_NeedInCross = 24;				//在跨服生效
+    emAC_NotInCross  = 25;				//在跨服失效
+    emAC_IsOpenWarPermit = 26;			//是否开启战令
+    emAC_IsInSomScene = 27;				//是否在某个地图
+    emAC_IsSbkMember = 28;				//是否是沙巴克成员
+    emAC_LearnGroupSkill = 29;			//没学习指定组技能
+    emAc_EquipStrong = 30;				//装备强化总等级    < itMaxEquipPos
+    emAC_SceneLimit = 31;				//指定场景解锁
+    emAC_LtMaxCircle = 32;				//小于转生
+    emAC_AttackLimit = 33;				//攻击力限制
+    emAC_BagNotHave = 34;				//背包不能用有该物品
+    emAC_CreateDayMin = 35;				//创角天数大于等于
+    emAC_CreateDayMax = 36;				//创角天数小于
+    emAC_CreateSecMin = 37;				//创角时间大于等于指定时间点(秒)
+    emAC_CreateSecMax = 38;				//创角时间小于指定时间点(秒)
+    emAC_CombinesTimes = 39;			//大于等于合服次数
+    emAC_CombinesLTimes = 40;			//小于合服次数
+    emAC_CombinesETimes = 41;			//等于合服次数
+    emAC_DouPeng = 42;					//首充装备,前端用
+    emAC_RmbLimitIsBuy = 43;			//是否购买某个限购礼包
+    emAC_FlagBit = 44;					//检查标记位是否为1， 对应ActorFlagBit
+    emAC_AbyssOver = 45;				//当前深渊副本是否已经结束（前端用）
+    emAC_AbyssTakeWeaponCnt = 46;		//深渊战斗背包穿戴武器数量小于此值
+    emAC_AbyssTakeWeaponType = 47;		//深渊战斗背包穿戴武器限制仅限此类型, WeaponDistanceType
+    emAC_OpenDay = 48;					//等于该开服天数
+    emAC_GetQuest = 49;                 //接取了任务（没完成）
+    emAC_AponsorAct = 50;               //赞助value已激活
+    emAC_ArtifactCnt = 51;              //神器激活数量
+
+
+    // 大于100000前端定义
+    emAC_TEST = 100000;
+    emAC_ViewOPen = 100001; // 是否开启界面
+    emAC_SecretRewardCanGet1 = 100002; // 是否可以领取大秘境首通奖励
+    emAC_SecretRewardCanGet2 = 100003; // 是否可以领取大秘境通关奖励
+    emAC_ActiveSponsorCount = 100004; // 激活赞助数量
+    emAC_ReviewBlock = 100005;//过审屏蔽
+    emAC_PrivilegeByType = 100006;//是否激活这个特权（类型）values [0]为没激活 [1]为激活
+    emAC_PrivilegeById = 100007;//是否激活这个特权（id）values [0]为没激活 [1]为激活
+    emAC_TriggerToGuide = 100008;//是否触发引导开关 value 对应的引导id
+    emAC_IsInZoneId = 100009;// 是否在某个区域id的场景里面（一个区域id对应多个场景） value 为区域id values [0]不在这个区域 [1]在这个区域
+    emAC_AbyssCurId = 100010;// 当前的大秘境关卡id
+    emAC_AbyssLessLv = 100011;// 大秘境未完成关数（小于等于）
+    emAC_AbyssProgress = 100012;// 当前大秘境大于等于打怪进度
+    emAC_AbyssFirstHit = 100013;// 当前大秘境是否首次打到怪物 value 1为是 0为否 values为 {引导id 引导步骤id}
+    emAC_AbyssOpenBoxId = 100014;// 当前大秘境开启的宝箱id
+    emAC_AbyssHasOpenedBox = 100015;// 当前大秘境是否已经开过这个宝箱
+    emAC_DefendGridStrong = 100016; //  强化石对应防具部位达到等级才显示 value 为防具对应部位 values [0]大于等于这个部位的等级
+    emAC_AbyssProgressLess = 100017;// 当前大秘境打怪进度小于 value 为打怪进度
+    emAC_SkillActiveType = 100018;// 技能激活类型 value 为技能激活类型 1基础 2核心 3战术 4终结
+    emAC_AbyssBoxIsActive = 100019;// 当前大秘境宝箱是否已经激活(是否可以按) 
+    emAC_TeamExist = 100020;// 当前是否已经存在队伍
+    emAC_GuildExist = 100021;// 当前是否已经存在公会
+    emAC_HasFriendChat = 100022; // 当前是否有好友私聊
+}
+
+//场景类型定义
+enum SceneType {
+    enSceneTypeCommon = 0;		//普通场景
+    enSceneTypeActivity = 1;	//挂机场景
+    enSceneTypeFb = 2;			//副本场景
+    enSceneTypePractice = 3;	//挂机场景
+    enSceneTypeHotSpring = 4;	//可以点击寻路
+    enSceneWholeBoss = 5;		//野外boss场景
+    enSceneTypeHell = 6;		//转生场景
+    enSceneTypeWorldBoss = 7;	//世界boss
+    enSceneTypeVIPBoss = 8;		//决战比奇场景
+    enCrossSwornScene = 9;		//跨服情义之战场景
+    enSceneAbyssBoss = 14;		//深渊场景
+    enPracticeRoomBoss = 25;	//练功房副本
+    enPracticeRoom = 26;		//练功房副本
+    enSceneDemonTower = 27;		//炼妖塔场景
+    enSceneYeZhanBiQi = 28;     //夜战比奇场景
+    enCrossMainCity = 29;		//跨服主城
+    enCrossExtreamPlace = 30;   //跨服至尊领域场景
+    enUndyingFightMap = 31;     //尸王争夺战地图
+    enLingFuBossMap = 42;      	//灵符BOSS场景
+    enHunYuBossMap = 43;       	//魂域BOSS场景
+    enVisionBossMap = 44;       //异像BOSS场景
+    enCrossArenaMap = 45;       //跨服竞技场
+    enFengMoBossMap = 47;		//封魔古城场景
+    enRelicBossMap = 49;		//战场遗迹BOSS场景
+    enZhuqueBossMap = 51;		//朱雀boss场景
+    enXuanwuBossMap = 52;		//玄武boss场景
+    enKillDragonMap = 55;	    //屠龙场景
+    enWzadSceneType = 60;		//未知暗殿场景
+    enFileBossMap	= 64;		//野外BOSS
+}
+
+//怪物类型
+enum MonsterType {
+    mtNone = 0;			//未定义
+    mtCommon = 1;		//普通怪
+    mtElite = 2;		//精英怪
+    mtToumu = 3;		//首领
+}
+
+//实体类型定义
+enum EntityType {
+    //这些是动物
+    enActor = 0;			//玩家
+    enMonster = 1;			//怪物，具有战斗功能
+    enNpc = 2;				//NPC,继承于Monster，有会话功能,战斗功能
+    enDropItem = 3;			//掉落的物品
+    enPet = 4;				//宠物
+
+    //这些是生物中的非动物
+    enFire = 5;				//法师的火
+    enMine = 6;				//矿物,采集对象
+    enDefender = 7;			//防御设施,采集对象
+    enPlant = 8;			//植物,采集对象
+
+    //非生物，包括传送门，建筑，技能效果等
+    enTransfer = 9;			//传送门
+    enLandscape = 10;		//场景的坐标点
+    enEffects = 11;			//特效，后面的伤害性的一些特效
+    
+    enGatherMonster = 12;	// 采集怪
+    enDisplayMonster = 13;	// 显示怪？	
+    enHero = 14;			//英雄
+    enTotem = 15;			//图腾怪
+    enHumanoid = 16;		//人形怪
+    enActorSlave = 17;		//玩家的随从，比如马车
+    enStaticObject = 18;	//静态对象,不会动,会不会被攻击要看配置
+    enPetFollow = 19;		//真正的宠物,不能被选中,不显示血条
+    enBuildMonster = 20;	//坟墓,就是怪死了的倒计时
+    enOfflineActor = 21;	//离线玩家
+    enPetMonster = 25;		//宠物怪给前端判断用的
+    enMagicBook = 26;		//魔法书
+    enMrRobot = 27;			//机器人,自由活动,主动攻击怪物
+    enGuildBoss = 28;		//行会魔神里的boss
+    enDropBox = 29;			//掉落宝箱
+    enMountDemonGod = 30;	//坐骑魔神活动里的boss
+    enHatDemonBoss = 31;	//斗笠魔神活动里的boss
+    enLuckDemonBoss = 32;	//幸运魔神boss 前端用
+    enAttackCnt2Damage = 36;//玩家攻击不掉血,但是统计一秒内被多少人攻击,从而按比例掉血
+    enKillDragonBoss = 37;	//屠龙BOSS
+    enRecordDamage = 38;	//玩家攻击不掉血,但是会记录下每个人打了多少血
+    enBullet = 39;         //子弹实体
+
+
+    //新增的,如果是宗族,就加上race,否则怪物类型和种族就混乱了
+    enRaceSoulCardBoss = 40;    //魂卡boss
+    enGroundAura =41;       //地面光环
+}
+
+//活动定义
+enum GameActivityDef {
+    GA_Error = 0;				//占位
+    GA_Carnival = 1;			//全民狂欢
+    GA_CutePet = 2;				//宠物来袭活动(萌宠来袭)
+    GA_FashionPet = 3;			//宠物来袭活动(时装达人)
+    GA_SuperPet = 4;			//宠物来袭活动(超凡神装)
+    GA_CashProfit = 5;			//现金返利活动2
+    GA_LoginProfit = 6;			//登陆红包活动1
+
+    GA_GuildBoss = 10;			//行会魔神
+    GA_YuanBaoCarvial = 11;     //元宝嘉年华
+    GA_DevilField = 12;			//魔神领域
+    GA_GuildBonfire = 13;		//行会烤火
+    GA_NightFighting = 14;      //夜战比奇
+    GA_GuildSBK = 15;			//沙城争霸
+    GA_RiddlesAnswer = 16;      //谜语答题
+    GA_Investigation = 17;		//问卷调查
+    GA_CrossKfc = 18;			//跨服吃鸡活动
+    GA_UndyingFight = 19;		//尸王争夺战
+    GA_MountDemon	= 20;		//坐骑魔神
+    GA_HatDemon		= 21;		//斗笠魔神
+    GA_WeekendCel   = 22;		//周末庆典,神龙赐福
+    GA_XZMH = 23;				//血战蛮荒1
+    GA_ZumaTreasure = 24;		//祖玛宝藏
+    //26前端占用了
+    GA_CombineActivity = 25;	//合服狂欢
+    GA_KillCelebrateActivity = 27;	//杀戮庆典
+    GA_DragonCelebrateActivity = 28;//龙装庆典
+    GA_LoopActivity = 29;		//循环活动 - 将魂庆典
+    GA_AllPeople = 30;			//全民庆典
+    GA_KingWarActivity = 31;	//王者争霸
+    GA_Junqi = 32;				//军旗狂欢
+    GA_Hanbin = 33;				//寒冰狂欢
+    GA_OpenSrv = 34;			//开服庆典
+    
+    //限定英雄招募 用于后开控制限定奖池出现 预留10个
+    GA_PetLottery_1 = 40;		//英雄招募-哪吒限定
+    GA_PetLottery_2 = 41;		//英雄招募-敖丙限定
+
+    //100以上的活动会有成就检测;成就组和活动id一致
+    GA_ActAchieve = 100;
+    GA_PopStar = 102;			//消除星星, 英雄庆典
+    GA_Lieyan = 103;			//烈焰庆典
+    GA_Xuanwu = 104;			//玄武狂欢
+    GA_Hunwu = 105;				//魂武狂欢
+}
+
+//玩家身上的社会关系的bit位定义, CFG_Export::SocialMask
+enum SocialMaskDef {
+    smNoUse = 0;
+    // smGuildCommon = 0;			//帮会普通成员
+    // smGuildLeader = 1;			//帮主
+    // smGuildAssistLeader = 2;	//副帮主
+    smTeamMember = 3;			//是队伍的普通成员
+    smTeamCaptin = 4;			//是队长	
+    smServerNaming = 5;			//冠名大哥
+}
+
+//定义物品类型的枚举类型
+enum ItemType {
+    //允许重复
+    option allow_alias = true;
+
+    itUndefine = 0;				//未定义的类型
+    itWeapon = 0;				//武器
+    itHelmet = 1;				//头盔
+    itShoulder = 2;				//肩膀
+    itCuirass = 3;				//胸甲
+    itHand = 4;					//护手
+    itStockings = 5;			//JK长筒袜
+    itFoot = 6;					//足部
+    itRing = 7;					//戒指
+    itNecklace = 8;				//项链
+    itBracelet = 9;				//手镯
+    itBaseEquip = 10;			//以上基础装备
+
+    itRelic1 = 10;				//遗物6件
+    itRelic2 = 11;
+    itRelic3 = 12;
+    itRelic4 = 13;
+    itRelic5 = 14;
+    itRelic6 = 15;
+
+    //魂卡6件
+    itSoulCard1 = 16;
+    itSoulCard2 = 17;
+    itSoulCard3 = 18;
+    itSoulCard4 = 19;
+    itSoulCard5 = 20;
+    itSoulCard6 = 21;
+
+    itEquipMax = 22;            //以上都是装备,在身上有装备格子的
+
+    //1000以上是非装备类型
+    itChangeName = 1000;		//改名卡
+    itVipItem = 1001;			//vip卡
+    itEventItem = 1002;			//使用后触发脚本的道具
+    itFingerTep = 1003;			//指尖遁术装备
+    itAwardItem = 1004;			//使用了给奖励的道具
+    itMaterial = 1005;			//通用材料,消耗用的
+    itOptionalGift = 1006;      //自选礼包
+    itRandGift = 1007;          //随机礼包
+    itFixedGift = 1008;         //固定礼包
+    itRelicBlessUp = 1009;      //遗物祝福直升卡
+    itFuWen = 1010;             //符文
+    itRedPacket = 1011;         //红包道具
+    itPet = 1013;               //宠物
+    itSoulCardAny = 1014;       //魂卡万能材料,新增一个类型是因为要进入魂卡背包
+    itDiamond = 1015;           //宝石
+    itChessBoard = 1016;        //棋盘
+    itArtifact = 1017;          //神器
+}
+
+// 近、中、远程武器类型
+enum WeaponRangeType{
+    WeaponRangeType_None = 0;
+    WeaponRangeType_Near = 1;   // 近程
+    WeaponRangeType_Mid  = 2;   // 中程
+    WeaponRangeType_Far  = 3;    // 远程
+}
+
+//武器子类型
+enum WeaponType {
+    WT_None = 0;
+    WT_Normal = 1;		// 普通武器
+    WT_Gun = 2;			// 枪械
+    WT_Magic = 3;		// 魔法武器;要消耗能量的
+    WT_Axe = 4;         // 斧头
+    WT_Hammer = 5;      // 锤子
+    WT_Stick = 6;       // 棍子
+    WT_Dagger = 7;      // 匕首
+    WT_Shield = 8;      // 盾牌
+    WT_MagicStone = 9;  // 魔法石
+    WT_Computer = 10;   // 电脑
+    WT_Crossbow = 11;   // 弩
+    WT_Arrow = 12;		// 弓箭
+    WT_Cannon = 13;     // 炮
+    WT_FlySword = 14;   // 飞剑
+    WT_Talisman = 15;   // 符箓
+    WT_DarkDevice = 16; // 暗器
+    WT_Spear = 17;		// 长矛
+}
+
+//技能作用目标定义
+enum SKillAffectTargetType {
+    satat_None = 0;				//无效
+    satat_Self = 1;				//自己
+    satat_Friend = 2;			//友方
+    satat_Enemy = 3;			//敌方
+    satat_We_NoSelf=4;          //己方不包括自己
+    satat_Owner = 5;            //主人
+};
+
+//技能选择目标类型
+enum SkillSelectType {
+    sst_Random = 0;				//随机选择
+    sst_Recent = 1;				//最近的对象
+    sst_Self = 2;				//以自己为中心
+    sst_Target = 3;				//以目标为中心
+    sst_Attack = 4;				//以攻击目标为中心
+    sst_LowHpRate = 5;			//Hp百分比最低的单位
+    sst_LowHpVal = 6;			//Hp值最低的单位
+    sst_DeathFriend = 7;		//已死亡己方
+    sst_CurTarget = 8;			//以当前目标为中心
+    sst_RangeRandom = 9;		//范围内随机
+}
+
+
+//技能效果条件检测类型定义
+enum SkillTriggerCondType{
+    stc_None =0;
+    stc_EntityType = 1;  //检测实体类型    
+}
+
+enum PassiveSkillClass{
+    psc_None = 0;		
+    psc_Relic = 1;		//遗物技能
+}
+
+//被动技能触发条件类型
+enum PassiveSkillTrigger{
+    pst_None = 0;
+    pst_Attack = 1;  			//攻击目标时触发
+    pst_BeAttacked = 2;			//被攻击时触发
+    pst_AddBuff =3;				//给目标添加buff时触发
+    pst_CalcDmg = 4;			//攻击计算伤害时触发
+    pst_UseSkill = 5;			//使用指定技能触发
+    pst_Ontime = 6;				//定时触发
+    pst_CalcCureVal =7;			//计算治疗值时触发
+    pst_AddBuffByGroup =8;		//给目标添加指定组buff时触发
+    pst_KillTarget = 9;			//击杀目标触发(value=技能id)
+    pst_UseElementAtk = 10;		//使用元素攻击时触发(1:物理 2:火焰 3:冰霜 4:道术 5:毒宗 6:雷电)
+    pst_OnDeath = 11;			//死亡时触发
+    pst_RmvBuff =12;			//移除buff时触发(value=buffid)
+    pst_CallPetAtk = 13;		//召唤物攻击时触发    
+    pst_RideOff = 14;           //下坐骑时触发
+    pst_UseTypeSkill=15;        //使用指定类型技能(skillFarType)
+    pst_CallPetKillTar = 16;    //召唤物击杀目标
+    pst_CalcElementDmg = 17;    //攻击计算元素伤害时触发
+    pst_CalcReMpRate = 18;      //计算能量恢复时触发
+    pst_TypeCallPetDie = 19;    //指定类型召唤物死亡触发
+    pst_CalcDmgDec = 20;        //攻击计算伤害减免触发
+    pst_IdCallPetDie = 21;      //指定id召唤物死亡触发
+}
+
+//被动技能目标检测
+enum PassiveTargetChk{
+    ptc_None = 0;
+    ptc_HasState = 1;		//检测目标是否某种状态
+    ptc_HasBuffFloor = 2;	//检测目标是否存在指定buff指定层数
+    ptc_EntityType =3;		//检测目标类型	
+    ptc_NoState = 4;		//检测目标是否不存在指定状态
+    ptc_PropValueChk=5;		//检测目标指定属性值
+    ptc_HpRateChk = 6;		//检测目标血量比例
+    ptc_BackAttack =7;		//检查是否背刺
+    ptc_IsAdvanceEntity=8;   //是否高级实体(boss或者英雄)
+    ptc_CallPetType = 9;        //检测目标是否指定召唤物类型
+    ptc_WithoutGroupBuff=10;    //检测目标是否不存在指定buff组
+}
+
+//被动技能触发效果类型
+enum PassiveSkillEffectDef {
+    pse_None = 0;
+    pse_UseActiveSkill = 1;		//触发主动技能
+    pse_TriggerSkillEffect =2;	//触发技能子效果(不用客户端释放)
+    pse_AddDamageRate = 3;		//触发增伤万分比
+    pse_AddBuff = 4;			//增加buff
+    pse_RemoveBuff = 5;			//移除buff
+}
+
+//被动技能作用目标
+enum PassiveSkillAffect{
+    psa_Self = 0; 		//自己
+    psa_Target = 1;		//当前作用目标
+    psa_CallPets =2;	//所有召唤物
+    psa_TrigCallPet =3;	//触发被动效果召唤物
+    psa_DarkCallPet = 4;    //所有亡灵单位
+}
+
+//被动技能作用效果倍率来源
+enum PassiveSkillRateDef {
+    psr_None = 0; 
+    psr_BuffFloor = 1; 		//指定buff层数	
+    psr_LostHp10PerTms =2; //失去10%血量次数
+    psr_HasCanAtkEmemy =3;	//周围是否有可攻击敌人
+    psr_TargetAbnoamalState=4;  //目标异常状态的个数
+    psr_DistanceBaseValue = 5;  //基于基础距离的倍数
+    psr_TypeCallPetCnt = 6;     //指定类型召唤物个数
+}
+
+//玩家列表数据类型
+enum ActorDataType {
+    ADT_RmbBuyRecord = 0;			//人民币礼包限购记录, id为礼包id, val为已购买次数，lv为(限购周期内第一次购买时间戳)
+    ADT_StoreBuyRecord = 1;			//普通商城购买记录, id为商城id,idx为索引, val为已购买次数
+    ADT_DropLimit = 2;				//掉落限制
+    ADT_HeroList = 3;				//英雄列表, 有数据即为此英雄已解锁, val为穿戴皮肤id
+    ADT_RmbRebateRecord = 4;		//人民币道具返利次数记录, id为礼包id, val为返利次数
+    ADT_AbyssRecord = 5;			//深渊通关记录, id为关卡id, idx为类型(1深渊,2大秘境) lv为领取标记(0首通,1速通), val为最短通关时长
+    ADT_DressUpData = 6;			//装扮数据, id为装扮id, lv为等级, val为过期时刻
+    ADT_CollectionData = 7;			//藏品数据, id为藏品id, lv为等级, val为星级
+    ADT_WeaponDress = 8;            //武器装扮数据, id为武器id, val为选择的装扮id
+	ADT_RideData = 9;            	//坐骑数据, id为坐骑id, lv为星级, val为阶级等级(wHi为阶级 wLo为等级)
+    ADT_ADSData = 10;               //广告数据, id为广告id, lv为最近一次观看广告的时间戳, val为限制周期内看的次数
+    ADT_FuWenData = 11;             //符文数据, id为符文id, idx为品质, val为数量, lv暂时没用
+    ADT_FuWenInlayData = 12;        //符文镶嵌数据, id为遗物部位(10-15), idx为镶嵌位置(1-5), lv为符文id, val为品质
+    ADT_BossKillData = 13;          //boss击杀数据, id为bossid, lv为击杀次数, val为领取标记(0:首杀福利, 配置表索引为次数奖励)
+    ADT_MysticRecord = 14;			//神秘商城购买记录, id为表类型,idx为索引, val为已购买次数
+    ADT_Artifact = 15;              //神器数据, id神器id, lv任务完成次数, val(wHi星级 wLo等级)
+};
+
+//品质定义
+enum QualityDef {
+    QD_None = 0;
+    QD_Normal = 1;
+    QD_Max = 16;	//最大品质
+}
+
+//道具动态属性类型定义
+enum ItemAttrDef {
+    IAD_Attr1 = 0;	//品质
+    IAD_Attr2 = 1;	//前缀
+    IAD_Attr3 = 2;	//后缀
+}
+
+//奖励类型
+// enum tagAwardType {
+// 	qatEquipment = 0;		//道具
+// 	qatTitle = 2;			//称号
+// 	qatSkill = 3;			//技能
+// 	qatBullet = 4;			//子弹
+
+// 	qatDropib = 999;		//掉落物品库里要加一个通用库,只能占用一个id来标记
+// 	qatShowItem = 1000;		//假道具，只是展示，不进背包
+// }
+
+//场景区域属性
+enum tagMapAreaAttribute {
+    aaNoAttri = 0;	//无意义
+    aaSaft = 1;		//"世界安全区"，无参数
+    aaAddBuff = 2;	//进入自动增加buff;离开后会自动删除buff;参数：[buff的个数]+N*{[buff类型][groupid][周期（秒）][次数][buff值]};
+    //注：应该给区域属性的buff分配个固定的id，另外由于这里参数都是填整数类型的，buff值如果是浮点数类型的，比如0.01，就写100，即0.01的10000倍;
+    //为保险起见，加的buff需要限定次数，以避免buff没正常删除的情况
+    aaWar = 3;		//"战斗"，战斗专门区域，打死人是不用负责任滴，无参数;注：暂未实现
+    aaGuildWar = 4;	//"帮派战斗"，帮派战的合理区域，，无参数;注：暂未实现
+    aaChat = 5;		//"禁言"，无参数;注：暂未实现
+    aaReloadMap = 6;//"重配地图";如果玩家在这个区域挂掉或重新上线，会转移到之前的非重配地图区域，无参数
+    aaExpDouble = 7;	//"经验倍数"，，无参数，注：可能取消
+    aaPKAddLevel = 8;	//"PK胜利加等级"，[等级增加的数量];注：暂未实现
+    aaPkAddExp = 9;		//"PK胜利加经验"  [增加经验的数量];注：暂未实现
+    aaPkSubLevel = 10;	//"PK失败减等级"	[等级减少的数量];注：暂未实现
+    aaPkSubExp = 11;	//"PK失败减经验"	[减少的经验];注：暂未实现
+    aaAutoSubHP = 12;	//"自动减HP"		[减少的比例]
+    aaAutoAddHP = 13;	//"自动加HP;MP"		[增加的值; 加的类型(0固定值;1万分比)]，注：执行的周期是1秒
+    aaXiuweiRate = 14;	//"修为加成"	[加成值，整数;每20秒增加一次]
+    aaAutoSubBindYuanbao = 15;	//"自动减游戏点"	[数量];注：暂未实现
+    aaAutoAddYuanbao = 16;	//"自动加游戏币"		[数量];注：暂未实现
+    aaAUtoAddBindYuanbao = 17;	//"自动加游戏点"	[数量];注：暂未实现
+    aaCrossMan = 18;		//"穿人"	，无参数;	 
+    aaCrossMonster = 19;		//"穿怪"，无参数;	
+    aaNotCrossMan = 20;		//"禁止穿人"，无参数
+    aaNotCrossMonster = 21;		//"禁止穿怪"，无参数
+    aaNotSubDura = 22;		//死亡不减武器的耐久度
+    aaNotGuildTran = 23;		//"禁止使用行会拉传"，参数：【召唤1，行会集结令2，行会回城卷3;队伍集结4】
+    aaNotMarryTran = 24;		//"禁止使用夫妻传送"，无参数;注：可能取消
+    aaNotMasterTran = 25;		//"禁止使用师徒传送"，无参数;注：暂未实现
+    aaRandTran = 26;		//"禁止随机传送"，无参数;注：暂未实现
+    aaNoDrug = 27;			//"禁止使用药品"，无参数;注：暂未实现
+    aaZyProtect = 28;			//"阵营保护区域";【被保护的阵营id】，如果有2个阵营被保护，则2个参数。
+    aaNotTransfer = 29;		//"禁止定点传送"，无参数
+    aaNotBeTran = 30;		//"禁止被行会拉传"，参数：【召唤1，行会集结令2，行会回城卷3;队伍集结4】
+    aaNotBeMasterTran = 32;		//"禁止被师徒传送"，无参数;注：暂未实现
+    aaNotSkillId = 33;		//"限制技能使用"，[技能1，技能2，技能3...];技能id
+    aaNotItemId = 34;		//"限制物品使用"[物品1，物品2，物品3...]，都是指物品id
+    aaNotAttri = 35;		//"限制特殊属性";注：暂未实现
+    aaSceneLevel = 36;		//"进地图等级"，[等级;转数]
+    aaSceneFlag = 37;		//"进地图标志"	;注：暂未实现
+    aaRunNpc = 38;			//"进入触发NPC脚本";注：
+    aaCity = 39;			//"城镇"，无参数;表示回城卷或者回城复活，就会回到这里
+    aaNotLevelProtect = 40;			//"关闭新手保护"，无参数，现低于40级（以下）是保护状态，免受攻击，进入该区域后，这个规则失效
+    aaAutoAddExp = 41;		//"自动加经验"，[经验的数量]，注：执行的周期是1秒
+    aaAutoSubExp = 42;		//"自动减经验"，[经验的数量]，注：
+    aaNotMount = 43;		//"限制骑乘宝物"	，无参数，骑乘宝物;注：
+    aaReliveType = 44;		//"复活类型" 注：1原地复活(弹窗) 2原地复活(不弹窗) 3传送回城(不弹窗)  4 无处理 5复活回安全区(不弹窗) 6复活弹倒计时;倒计时结束在本场景随机点复活（2;3;5;6类型时，2数字为复活hp%，3数字为复活时间） 2/3数字不填时为默认 44类型同步定义在ActorDieHandler.txt MapReliveType  该属性为类型5时注意不要与属性46共存。
+    aaNotCallMount = 45;		//"禁止骑马"，无参数;注：
+    aaSaftRelive = 46;		//"安全复活区"，即复活点，无参数;		如果是表示沙巴克战是复活，第五个参数表示复活的地图id
+    aaSubHPByPercent = 47;		//"按千分比减少HP"[每次减少的千分比]，注：可能取消
+    aaAddHPByPercent = 48;		//"按千分比增加HP"[每次增加的千分比]，注：可能取消
+    aaEndPkCanHereRelive = 49;	//"PK死亡允许原地复活"，无参数;注：暂未实现
+    aaForcePkMode = 50;		//"强制攻击模式";[PK模式]，注意：只接受一个参数。0和平模式，1团队模式，2帮派模式，3阵营模式，4杀戮模式，5联盟模式，6阵营模式
+    aaNotSkillAttri = 51;		//"禁止使用任何技能属性"，无参数;注：暂未实现
+    aaNotTeam = 52;			//"禁止组队"，无参数
+    aaLeftTeam = 53;		//"强制离开队伍"，无参数
+    aaNotAutoAddHpDrug = 54;	//"自动恢复体力类物品无效"，无参数;注：暂未实现
+    aaNotAutoAddMpDrug = 55;	//"自动恢复灵力类物品无效"，无参数;注：暂未实现
+    aaNotDeal = 56;			//"禁止交易"，无参数;注：暂未实现
+    aaNotMeditation = 57;		//"禁止打坐"，无参数
+    aaEndPkNotHereRelive = 58;	//"PK死亡后禁止原地复活"，无参数;注：暂未实现
+    aaNotProtect = 59;		//"关闭保护"，无参数
+    aaNotAutoBattle = 60;		//禁止自动战斗，无参数;注：暂未实现
+    aaNotMatch = 61;		//禁止切磋，无参数
+    aaNotJump = 62;			//禁止跳跃，无参数
+    aaNotJumpTarget = 63;	//禁止以这个为跳跃目的点，无参数
+    aaJumpNotQg = 64;			//跳跃不消耗轻功，无参数
+    aaNotAddZhanHun = 65;		//禁止PK获得战魂
+    aaAddZhanHunByPercent = 66;	//"PK胜利按千分比增加战魂"[每次增加的千分比]
+    aaNotSubZhanHun = 67;		//禁止PK掉落战魂
+    aaSubZhanHunByPercent = 68;	//"PK失败按千分比减少战魂"[每次减少的千分比]
+    aaPkNotAddExp = 69;			//禁止PK获得经验
+    aaPkAddExpByPercent = 70;		//"PK胜利按千分比增加经验"[每次增加的千分比]
+    aaPkNotSubExp = 71;		//禁止PK掉落经验
+    aaPkSubExpByPercent = 72;	//"PK失败按千分比减少经验"[每次减少的千分比]
+    aaCannotViewOther=73;		// "无法查看其他玩家信息"
+    aaCannotShutUp=74;			// "无法聊天频道发言"
+    aaCannotSeeName=75;			// "无法看到周围玩家名字"
+    aaLeaveDelBuf=76;			// 删除场景的时候删除buff[bufftype;buffid;bufftype;buffid]
+    aaSceneMaxLevel = 77;		//进入地图的最高等级[等级;转数]
+    asStallArea = 78;			//摆摊区域
+    asSceneAreaMode = 79;		//区域玩家属性 参数： 1 进入沙巴克区域 2 卫城区域
+    asNoDropEquip = 80;			//所在场景不爆装备
+    aaDigArea=81;               //挖矿区域
+    aaCitydoorArea=82;           //城门区域;如沙巴克城门
+    aaNoFire = 83;				//禁止使用火墙术
+    aaHorseRace = 84;			//赛马区域
+    aaNotCallDog = 85;			//禁止召唤道士狗
+    aaSwimArea = 86;			//游泳地图
+    aaNewPlayerProtect = 87;	//新手保护有效，有此地图属性的区域，新手保护BUFF将产生效果，在此区域内，玩家不会被他人攻击，也不可攻击他人
+    aaChangeModel = 88;			//切换模型[男模ID;女模ID]
+    aaNoDropItem = 89;			//不能丢弃物品
+    aaBigFire	= 90;			//大篝火区域
+    aaNotItemTran = 91;			//禁止使用物品类速传
+    aaAnswerArea = 92;			//答题区域
+    aaSunlight = 93;			//沐光区域
+    aaMonsterSafe = 94;			//无法攻击怪物区
+    aaNotOpenShop = 95;			//禁止打开商城
+    aaNotUseDrug = 96;			//禁止使用药物 包括迅回药，BUFF药
+    aaNotRun = 97;				//禁止跑
+    aaDunkArea = 98;			//沙城占领者泡点区域   参数：1 沙城占领者泡点区域
+    aaCanNotTakeOnWarCar = 99;	//不能再战车上
+    aaForceRelivePos = 100;		//强制安全复活坐标区域 参数：[复活到场景id; 复活到坐标x; 复活到坐标y]
+    aaNotLostNedanValue = 101;		//在该区域内死亡不损耗内丹值
+    aaChangeModelExt = 102;		//切换模型[男模ID;女模ID;男模ID;女模ID;...] 多个模型随机取
+    aaBarrageArea = 103;		//弹幕场景
+    aaActorNotDamage = 104;		//角色不受伤害;无参数
+    aaPetActiveMonster = 105;	//宠物主动攻击怪物
+    aaPetByMonsterActive = 106;	//宠物可以被怪物攻击
+    aaToRobDamageRate = 107;	//当前场景击杀对方获得抢夺的伤害量
+    aaCanSeeAll = 108;			//全地图视野
+    aaFightCity = 109;          //有该属性为攻城地图
+    aaNoRingRelive = 110;       //有该属性复活特戒不作用
+    aaDieNoMail = 111;          //配了该属性死亡没有死亡邮件
+    aaDieNoBroad = 112;          //配了该属性没有死亡播报
+    aaNoBattlePet = 113;		//禁止出战战宠
+    aaPKAddValue = 114;			//pk不加红名
+    aaNotFingerTep = 115;		//禁止指尖传送
+    aaNotRecover = 116;			//禁止回血
+    aaCityFullHp = 117;			//有指定特权时;到此区域即满血
+    aaAssistArea = 118;			//计算助攻区域
+    aaRelive2Raw = 119;			//复活回到本服
+    aaLeaveDelBuffGroup = 120;	//离开删除buff组
+    aaFubenReLoginHpNotFull = 121;  //副本重登不满血
+    aaPurifyEffect = 122;           //净化效果区域(去除所有负面debuff)
+    //不能超过256
+};
+
+//技能数据标记位, 目前最多支持16个
+enum SkillDataFlag {
+    SF_ActAward = 0;		//技能激活奖励领取标记
+    SF_SkillEx = 1;			//技能进化标记
+};
+
+//限购类型
+enum StoreLimitType {
+    SLT_None = 0;
+    SLT_Day = 1;			//日限购
+    SLT_Week = 2;			//周限购
+    SLT_Month = 3;			//月限购
+    SLT_Forever = 4;		//永久限购
+    SLT_FixedDays = 5;      //指定天数限购(从购买当天开始算天数)
+};
+
+//获得奖励展示类型
+enum AwardShowType {
+    AST_Normal = 0;			//普通
+    AST_SkillDraw = 1;		//技能抽奖
+    AST_AbyssResult = 2;	//深渊副本结算奖励
+    AST_LotteryResult = 3;	//抽奖结果
+    AST_Achieve = 4;        //成就奖励
+    AST_Loop_Act = 5;       //循环活动
+};
+
+//武器攻击距离类型
+enum WeaponDistanceType {
+    WDT_None = 0;
+    WDT_Short = 1;			//近距离
+    WDT_Middle = 2;			//中距离
+    WDT_Long = 3;			//远距离
+};
+
+//pk模式
+enum PkMode {
+    pk_Peace = 0;
+    pk_All = 1;
+    pk_Guild = 2;
+    pk_Team = 3;
+    pk_Cross = 4;
+};
+
+//装扮类型
+enum DressUpType {
+    DUT_None = 0;
+    DUT_Hero = 1;
+    DUT_Weapon = 2;
+    DUT_Head = 3;
+    DUT_Title = 4;
+}
+
+//特权类型
+enum PrivilegeType {
+    PT_None = 0;
+    PT_AbyssAutoBattle = 1;                     //大秘境自动攻击
+    PT_OfflineAFKMaxTime = 2;                   //离线挂机时长上限增加时长(单位秒)
+    PT_AddProp = 3;                             //增加属性
+    PT_DayFreeAds = 4;                          //每日跳过广告增加次数
+    PT_EquipRecycleAdd = 5;                     //防具回收收益增加比例
+    PT_DayAbyssTime = 6;                        //每日大秘境时间额外增加时长(单位秒)
+    PT_ForeverFreeAds = 7;                      //永久跳过所有广告
+    PT_AbyssAwardRate = 8;                      //大秘境倍率消耗，倍率奖励
+    PT_AutoLootItem = 9;                        //自动拾取
+    PT_AutoUseItem = 10;                        //自动使用
+    PT_AutoRecycle = 11;                        //自动回收
+    PT_FingerTeleport = 12;                     //任意传送
+    PT_ForeverItemAward = 13;                   //无限返利
+    PT_RecycleItemRateAdd = 14;                 //遗物回收加成
+    PT_HangupAwardRateAdd = 15;                 //挂机收益加成
+    PT_HeroPortraitFull = 16;                   //英雄终极技能全屏立绘
+    PT_ChangeSkill = 17;                        //技能增强
+    PT_SoulCard1 = 18;                          //魂卡特权
+    PT_SoulCard2 = 19;                          //魂卡星权
+}
+
+//广告限制类型
+enum ADSLimitType {
+    ADST_None = 0;                              //没有次数限制(会用cd)
+    ADST_Day = 1;                               //每日限制
+}
+
+
+enum BitFlag0Def {
+    flag0_EmblemGetAward = 0;		//是否领取过本等级的徽章奖励
+    flag0_AbyssWathcAd = 1;
+}
+
+//循环活动类型
+enum LoopActivityDef {
+    LAD_none = 0;           //占位，用于判断最小值
+    LAD_ride = 1;           //坐骑
+    LAD_pet = 2;            //宠物
+    LAD_treasure = 3;       //寻宝
+    LAD_rune = 4;           //符文
+    LAD_diamond = 5;        //宝石
+    LAD_artifact = 6;       //神器     
+}
+
+//刷怪类型
+enum MonsterRefreshType {
+    MRT_Game = 0;
+    MRT_Cross = 1;
+    MRT_ALL = 2;
+}
+
+enum SparkExpeditionEvent {
+    SEE_None = 0;
+	SEE_WildBoss = 1; //击杀野外boss
+    SEE_Arena = 2; //完成竞技场
+    SEE_GuildBoss = 3; //公会首领挑战次数
+    SEE_KillSoulBoss = 4; //击杀魂卡boss
+    SEE_AbyssSuccess = 5; //深渊副本结算成功
+    SEE_PetAdventrue = 6;       //宠物探险
+    SEE_LoopActRankAward = 7;   //循环排行达标奖励
+    SEE_StrongEquip = 8;        //强化防具
+    SEE_PrayEquip = 9;          //祝福遗物
+    SEE_SkillCount = 10;        //技能领悟
+    SEE_GoodsCount = 11;        //藏品祈福
+    SEE_WeaponCount = 12;       //武器召唤
+    SEE_TeamFuben = 13;         //组队副本（暂无）
+    SEE_Tower = 14;             //塔防爬塔（暂无）
+    SEE_TutomBoss = 15;         //图腾boss（暂无）
+}
+
+//成长基金类型
+enum GrowUpActType {
+    GUAT_None = 0;
+    GUAT_Ride = 1;              //坐骑
+    GUAT_Pet = 2;               //宠物
+    GUAT_SparkExpediton = 3;    //远征
+    GUAT_Diamond = 4;    //宝石
+    GUAT_Artifact = 5;    //神器
+}

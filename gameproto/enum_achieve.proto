@@ -1,0 +1,56 @@
+syntax = "proto3";
+package enum_def;
+
+//脚本导出c++枚举时会默认在最后面增加最大值
+
+enum AchieveEventID {
+	achieve_ClientFinish = 0;			//客户端请求完成
+ 
+	achieve_Level = 1;					//等级达到count级
+	achieve_FubenIdCnt = 2;				//挑战副本count次, 参数: 副本id, 秘境等级
+	achieve_KillMonsterOnId = 3;   		//击杀count只怪物, 参数: 怪物id
+	achieve_AbyssAward = 4;				//领取count次深渊奖励, 参数: 首通1, 速通2
+	achieve_Lottery = 5;				//抽奖count次, 参数: 抽奖类型id, 0特殊为技能抽奖
+	achieve_UseSkill = 6;				//使用技能count次, 参数: 技能大类, 技能小类, 英雄id
+	achieve_SkillStarUp = 7;			//技能升星count次
+	achieve_TakeSkillFarType = 8;		//穿戴大类技能count次, 参数: 技能大类
+	achieve_TalentLv = 9;				//天赋升级count次
+	achieve_SoulCardLvUp = 10;			//魂卡升星count次
+	achieve_RecverEquip = 11;			//回收count件装备
+	achieve_RecverRelic = 12;			//回收count件遗物
+	achieve_StrongWeapon = 13;			//强化武器count次
+	achieve_StrongEquip = 14;			//强化防具count次
+	achieve_WeaponRefined = 15;			//武器精炼count次
+	achieve_BlessRelic = 16;			//遗物祝福count次
+	achieve_TakeRelic = 17;				//穿戴count件遗物, 参数: 品质
+	achieve_TakeOnEquip = 18;			//穿戴count件装备, 参数: 品质
+	achieve_CollectAct = 19;			//激活count件藏品
+	achieve_CollectLvUp = 20;			//藏品升级count次
+	achieve_TakeHeroId = 21;			//出战英雄count次, 参数: 英雄id
+	achieve_EnterScene = 22;			//进入场景count次, 参数: 场景id
+	achieve_GetOfflineAward = 23;		//领取挂机奖励count次
+	achieve_WorldChat = 24;				//世界聊天count次
+	achieve_AcutionAdd = 25; 			//拍卖行上架count次
+	achieve_BossAward = 26;				//领取野外boss奖励count次
+	achieve_Actmount = 27;				//激活指定坐骑count次
+	achieve_MountLvUp = 28;				//坐骑升级count次
+	achieve_ShopBuy = 29;		    	//神秘商城购买count次
+	achieve_ArenaTimes = 30;			//竞技场挑战count次数
+	achieve_KickSoulBoss = 31;			//击败count次魂卡首领,造成伤害的都算
+	achieve_ArenaRankAward = 32;		//领取count次竞技榜奖励
+	achieve_DailyRecharge = 33;			//领取count次每日累充奖励
+	achieve_PetFight = 34;				//宠物出战count个
+	achieve_PetLvUp = 35;				//宠物升级count次
+	achieve_FinishAchieve = 36;			//完成指定成就count次, 参数: 成就id
+	achieve_EmbleLevel = 37;			//纹章达到指定等级count次, 参数: 纹章等级
+	achieve_SkillLvUp = 38;				//技能升级count次
+	achieve_loopActivity = 39;			//参与count次冲刺活动
+	achieve_PetAdvenTimes = 40;			//宠物探险count次
+	achieve_SparkExp = 41;				//参与星火远征count次 
+	achieve_FuwenTakeOn = 42;			//符文镶嵌count次
+	achieve_SparkExpDayAward = 43;		//领取星火远征每日奖励count次
+	achieve_AbyssIdAndHero = 44;		//秘境完成count次, 参数: 关卡id, 英雄id
+	achieve_AbyssEvacuateMoney = 45;	//秘境完成count次, 参数: 关卡id, 钞票数量
+	achieve_MysteryShopRefresh = 46;	//刷新神秘商城count次
+	achieve_ArmorSetAct = 47;			//激活任意防具套装count次, 参数: 件套数(如2,4,6)
+}

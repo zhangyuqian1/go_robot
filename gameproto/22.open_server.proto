@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+enum OpenTaskType {
+    OpenTask_Abyss = 0;     //*挑战深渊秘境N分钟：在深渊秘境副本消耗了N分钟的意思
+    OpenTask_Recharge = 1;  //*充值N元：真实充值N元，包括红包
+    OpenTask_KillBoss = 2;  //*击杀任意BOSSN次：击杀类型为BOSS的怪物N次
+    OpenTask_ArenaPk = 3;   //*竞技场PKN次
+    OpenTask_Login = 4;     //*每日登录
+    OpenTask_Spark = 5;     //*星火远征体力消耗
+}
+
+//摇骰子
+message c_openserver_run_1 {
+	enum Proto {A = 0; MSG = 22; ID = 10001;}
+    bool normal = 1;        //普通骰子true, 指定骰子false
+    int32 point = 2;        //指定骰子点数
+}
+
+//领取圈数奖励
+message c_openserver_circle_award_2 {
+	enum Proto {A = 0; MSG = 22; ID = 10002;}
+    int32 idx = 1;          //圈数奖励索引(对应CFG_OpenCircleAward.id)
+}
+
+//领取任务奖励
+message c_openserver_task_award_3 {
+	enum Proto {A = 0; MSG = 22; ID = 10003;}
+    int32 id = 1;           //任务id(对应CFG_OpenTask.id)
+}
+
+//////////////////////////////////////////////////////////////////
+
+//开服活动数据推送
+message s_openserver_info_1 {
+	enum Proto {A = 0; MSG = 22; ID = 10001;}
+    int32 circle_times = 1;         //已完成圈数
+    int32 cur_grid_idx = 2;         //当前格子索引
+    int32 circle_award_flag = 3;    //圈数奖励标记
+    int32 task_award_flag = 4;      //任务奖励标记
+
+    //任务次数,按类型存了个总数,当天的
+    repeated int32 task_times = 5 [packed = true];
+}

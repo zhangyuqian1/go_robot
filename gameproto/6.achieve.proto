@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+//成就组定义
+enum AchieveGroup {
+    ACHIEVE_GROUP_None = 0;
+    ACHIEVE_GROUP_Emblem = 1;       //纹章成就
+}
+
+enum AchieveFlag {
+    ACHIEVE_FLAG_FINISHED = 0;      // 成就已完成
+    ACHIEVE_FLAG_GET_AWARD = 1;     // 成就奖励已领取
+}
+
+//前端完成成就
+message c_finished_achieve_1 {
+	enum Proto {A = 0; MSG = 6; ID = 10001;}
+    int32 id = 1;
+}
+
+//领取成就奖励
+message c_get_achieve_award_2 {
+	enum Proto {A = 0; MSG = 6; ID = 10002;}
+    int32 id = 1;
+}
+
+//推送成就
+message s_achieve_list_push_1 {
+	enum Proto {A = 0; MSG = 6; ID = 10001;}
+    message achieve {
+        int32 id = 1;
+        int64 count = 2;    //数量-1为成就已被删除
+        int32 flag = 3;     //AchieveFlag
+    }
+
+    repeated achieve list = 1;
+}

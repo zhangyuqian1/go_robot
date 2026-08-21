@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+//切换英雄
+message c_switch_hero_1 {
+	enum Proto {A = 0; MSG = 17; ID = 10001;}
+    int32 hero_id = 1;
+}
+
+//激活英雄
+message c_activity_hero_2 {
+	enum Proto {A = 0; MSG = 17; ID = 10002;}
+    int32 hero_id = 1;
+}

@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+//走
+message c_actor_move_1 {
+	enum Proto {A = 0; MSG = 1; ID = 10001;}
+    int32 cur_x = 1;
+    int32 cur_y = 2;
+    int32 dest_x = 3;
+    int32 dest_y = 4;
+    int32 tick = 5;
+}
+
+//设置方向
+message c_actor_set_dir_2 {
+	enum Proto {A = 0; MSG = 1; ID = 10002;}
+    int32 dir = 1;
+}
+
+//实体移动消息
+message s_entity_move_1 {
+	enum Proto {A = 0; MSG = 1; ID = 10001;}
+    int64 handle = 1;
+    int32 cur_x = 2;
+    int32 cur_y = 3;
+    int32 dest_x = 4;
+    int32 dest_y = 5;
+    int32 tick = 6;
+    //达到目的地的时刻
+    int32 dest_tick = 7;
+}
+
+//广播实体方向
+message s_entity_set_dir_2 {
+	enum Proto {A = 0; MSG = 1; ID = 10002;}
+    int64 handle = 1;
+    int32 dir = 2;
+}
+
+//广播实体瞬移
+message s_entity_flash_3 {
+	enum Proto {A = 0; MSG = 1; ID = 10003;}
+    int64 handle = 1;
+    int32 x = 2;
+    int32 y = 3;
+    int32 dir = 4;
+    int32 time = 5;
+}
+
+//同步实体位置
+message s_sync_entity_postion_4 {
+	enum Proto {A = 0; MSG = 1; ID = 10004;}
+    int64 handle = 1;
+    int32 cur_x = 2;
+    int32 cur_y = 3;
+}
+
+//移动失败
+message s_actor_move_fail_5 {
+	enum Proto {A = 0; MSG = 1; ID = 10005;}
+    //移动起始坐标
+    int32 x = 1;
+    int32 y = 2;
+    //当前后端坐标
+    int32 srv_x = 3;
+    int32 srv_y = 4;
+}

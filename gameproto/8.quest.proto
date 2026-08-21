@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+// 接受下一个任务, 目前是按id顺序来接取下一个
+message c_accept_quest_1 {
+	enum Proto {A = 0; MSG = 8; ID = 10001;}
+}

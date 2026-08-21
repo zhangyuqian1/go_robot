@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+//拾取一个掉落物
+message c_loot_drop_entity_1 {
+	enum Proto {A = 0; MSG = 12; ID = 10001;}
+    int32 handle_idx = 1;
+}

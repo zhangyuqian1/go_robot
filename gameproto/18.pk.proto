@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+//设置pk模式
+message c_set_pk_mode_1 {
+	enum Proto {A = 0; MSG = 18; ID = 10001;}
+    int32 mode = 1;
+}

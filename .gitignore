@@ -1,0 +1,10 @@
+# Generated files
+.idea/
+
+# CMake
+cmake-build-*/
+
+# logs
+logs/
+metricsdata/
+

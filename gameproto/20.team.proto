@@ -1,0 +1,224 @@
+syntax = "proto3";
+import "common.proto";
+
+//成员数据
+message team_actor_data {
+    proto_common.actor_basic info = 1;  //玩家信息
+    proto_common.actor_appear appear = 2;   //玩家模型
+    int32 cap = 3;      //是否队长 1队长 0队员
+    int32 hpRate = 4;   //血量百分比
+    int32 enter_time = 5;   //加入时间
+    int32 offline_time = 6; //离线时间 为0表示在线
+    int32 sceneId = 7;  //玩家场景
+    int32 x = 8;        //坐标x
+    int32 y = 9;        //坐标y
+}
+
+//血量更新
+message team_actor_hp_data {
+    int32 aid = 1;   //成员id
+    int32 hpRate = 2;   //血量百分比
+    int32 sceneId = 3;  //场景id
+    int32 x = 4;        //位置x
+    int32 y = 5;        //位置y
+}
+
+//队伍基础信息
+message team_basic_data {
+    int32 id = 1;       //队伍id
+    int32 aid = 2;      //队长id
+    int32 target = 3;       //队伍目标 0 全部
+    int32 level_min = 4;    //等级限制 0 不限
+    int32 level_max = 5;    //等级限制 0 不限
+    repeated proto_common.actor_basic list = 6;  //玩家信息
+    int32 apply = 7;  //是否已申请 0 未申请 1已申请
+}
+
+//申请玩家基础信息
+message team_apply_basic_data {
+    proto_common.actor_basic info = 1;  //玩家信息
+    int32 time = 2;             //申请时间
+}
+
+//创建队伍
+message c_team_create_1 {
+	enum Proto {A = 0; MSG = 20; ID = 10001;}
+}
+
+//邀请组队
+message c_team_invate_2 {
+	enum Proto {A = 0; MSG = 20; ID = 10002;}
+    int32 aid = 1;      //邀请玩家id
+}
+
+//申请入队
+message c_team_apply_3 {
+	enum Proto {A = 0; MSG = 20; ID = 10003;}
+    repeated int32 id = 1;       //队伍id
+}
+
+//移除成员
+message c_team_remove_4 {
+	enum Proto {A = 0; MSG = 20; ID = 10004;}
+    int32 aid = 1;      //成员id
+}
+
+//离开队伍
+message c_team_left_5 {
+	enum Proto {A = 0; MSG = 20; ID = 10005;}
+}
+
+//解散队伍
+message c_team_release_6 {
+	enum Proto {A = 0; MSG = 20; ID = 10006;}
+}
+
+//转移队长
+message c_team_leader_change_7 {
+	enum Proto {A = 0; MSG = 20; ID = 10007;}
+    int32 aid = 1;      //转让队长给成员
+}
+
+//邀请招募
+message c_team_chat_invate_8 {
+	enum Proto {A = 0; MSG = 20; ID = 10008;}
+    string msg = 1;         //招募信息
+}
+
+//队伍设置
+message c_team_setting_9 {
+	enum Proto {A = 0; MSG = 20; ID = 10009;}
+    int32 target = 1;       //队伍目标 0 全部
+    int32 level_min = 2;    //等级限制 0 不限
+    int32 level_max = 3;    //等级限制 0 不限
+    int32 limit = 4;        //审核限制 0关闭 1开启 2仅限好友和公会成员
+    int32 sub_target = 5;       //队伍子目标
+}
+
+//刷新队友状态 
+message c_team_refresh_actor_10 {
+	enum Proto {A = 0; MSG = 20; ID = 10010;}
+}
+
+//更新队友血量
+message c_team_update_hp_11 {
+	enum Proto {A = 0; MSG = 20; ID = 10011;}
+}
+
+//队长审核
+message c_team_apply_result_12 {
+	enum Proto {A = 0; MSG = 20; ID = 10012;}
+    repeated int32 aid = 1;     //玩家id列表
+    int32 agree = 2;     //是否同意 1 同意 2 拒绝
+}
+
+//邀请应答
+message c_team_invate_result_13 {
+	enum Proto {A = 0; MSG = 20; ID = 10013;}
+    int32 id = 1;           //队伍id
+    int32 aid = 2;          //邀请玩家id
+    int32 agree = 3;        //是否同意 1 同意 2 拒绝
+}
+
+//获取邀请玩家列表
+message c_team_get_actor_list_14 {
+	enum Proto {A = 0; MSG = 20; ID = 10014;}
+    int32 type = 1;         //1未加入队伍的好友 2未加入队伍的行会成员 3未加入队伍的同场景
+}
+
+//获取可加入的队伍信息
+message c_team_get_team_list_15 {
+	enum Proto {A = 0; MSG = 20; ID = 10015;}
+}
+
+
+
+//下发队伍信息
+message s_team_info_1 {
+	enum Proto {A = 0; MSG = 20; ID = 10001;}
+    int32 id = 1;           //队伍id
+    int32 target = 2;       //队伍目标 0 全部
+    int32 level_min = 3;    //等级限制 0 不限
+    int32 level_max = 4;    //等级限制 0 不限
+    int32 limit = 5;        //审核限制 0关闭 1开启 2仅限好友和公会成员
+    repeated team_actor_data list = 6;  //队伍成员
+    int32 call_cd = 7;          //队伍招募cd到期时间（服务器短时间戳）
+    int32 data_type = 8;        // 1初始化 2加入队伍 3前段请求更新
+    int32 sub_target = 9;       //队伍子目标
+}
+
+//单个成员信息，包括数据更新，新人加入等
+message s_team_actor_info_2 {
+	enum Proto {A = 0; MSG = 20; ID = 10002;}
+    team_actor_data info = 1;  //队伍成员
+}
+
+//踢出成员
+message s_team_leave_notice_3 {
+	enum Proto {A = 0; MSG = 20; ID = 10003;}
+    int32 aid = 1;      //离开的成员id
+    int32 reason = 2;   //离开原因 0 主动 1被踢 2 解散 3离线到期
+}
+
+
+//通知被邀请
+message s_team_notice_invate_4 {
+	enum Proto {A = 0; MSG = 20; ID = 10004;}
+    int32 id = 1;           //队伍id
+    int32 aid = 2;          //邀请玩家id 
+    string name = 3;         //邀请玩家名字
+    int32 target = 4;       //队伍目标 0 全部
+}
+
+//设置修改返回
+message s_team_setting_5 {
+	enum Proto {A = 0; MSG = 20; ID = 10005;}
+    int32 target = 1;       //队伍目标 0 全部
+    int32 level_min = 2;    //等级限制 0 不限
+    int32 level_max = 3;    //等级限制 0 不限
+    int32 limit = 4;        //审核限制 0关闭 1开启 2仅限好友和公会成员
+    int32 sub_target = 5;       //队伍子目标
+}
+
+//获取可加入的队伍信息
+message s_team_basic_info_list_6 {
+	enum Proto {A = 0; MSG = 20; ID = 10006;}
+    repeated team_basic_data list = 1;
+}
+
+//队伍血量更新
+message s_team_mem_hp_update_7 {
+	enum Proto {A = 0; MSG = 20; ID = 10007;}
+    repeated team_actor_hp_data list = 1;
+}
+
+//可邀请玩家列表
+message s_team_actor_list_8 {
+	enum Proto {A = 0; MSG = 20; ID = 10008;}
+    int32 type = 1;         //1未加入队伍的好友 2未加入队伍的行会成员 3未加入队伍的同场景
+    repeated proto_common.actor_basic list = 2;  //玩家信息
+}
+
+//下发申请玩家列表 累计不替换
+message s_team_apply_list_9 {
+	enum Proto {A = 0; MSG = 20; ID = 10009;}
+    repeated team_apply_basic_data list = 1;
+}
+
+//下发队长改变
+message s_team_captain_change_10 {
+	enum Proto {A = 0; MSG = 20; ID = 10010;}
+    int32 aid = 1;              //队长id
+}
+
+//更新招募cd时间
+message s_team_update_call_cd_11 {
+	enum Proto {A = 0; MSG = 20; ID = 10011;}
+    int32 call_cd = 1;          //队伍招募cd到期时间（服务器短时间戳） 
+}
+
+//已申请的队伍列表 累计不替换 teamid大于0时，清空
+message s_team_apply_list_12 {
+	enum Proto {A = 0; MSG = 20; ID = 10012;}
+    repeated int32 list = 1;
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+//发送buff,可能是更新, 可能是新增
+message s_send_buff_list_1 {
+	enum Proto {A = 0; MSG = 3; ID = 10001;}
+    message info {
+        bool is_new = 1;
+        int32 buff_id = 2;
+        int32 over_time = 3;
+        int32 overlay = 4;
+        //buff唯一索引,用于定位具体buff
+        int32 idx = 5;
+        int64 giver = 6;
+    }
+    uint64 handle = 1;
+    repeated info buffs = 2;
+}
+
+//移除buff
+message s_remove_buff_2 {
+	enum Proto {A = 0; MSG = 3; ID = 10002;}
+    uint64 handle = 1;
+    int32 idx = 2;
+}

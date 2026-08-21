@@ -1,0 +1,301 @@
+syntax = "proto3";
+import "common.proto";
+
+enum AbyssFbType {
+    AbyssNone = 0;
+    AbyssNormal = 1;     //普通深渊
+    AbyssWonderland = 2; //大秘境
+}
+
+message AbyssItem {
+    proto_common.Series series = 1;
+    int32 id = 2;
+    int32 quality = 3;
+    int32 take_idx = 4;     //武器的穿戴位置
+    int32 bullets = 5;      //枪械类子弹数量
+    int32 bag_idx = 6;      //大秘境里存在多个箱子,这里是标记属于哪个箱子,仅限缓存背包有
+}
+message AbyssGrid {
+    AbyssItem item = 1;
+    int32 x = 2;
+    int32 y = 3;
+}
+message AbyssItemMove {
+    int32 from_bag = 1;
+    int32 to_bag = 2;
+    proto_common.Series series = 3;
+    int32 x = 4;
+    int32 y = 5;
+    int32 take_idx = 6;
+    int32 bag_idx = 7;      //放回到背包的,也要指定背包索引
+}
+
+//进入副本
+message c_abyss_enter_1 {
+	enum Proto {A = 0; MSG = 100; ID = 10001;}
+    //关卡id
+    int32 level = 1;
+    //类型
+    int32 type = 2;     //AbyssFbType
+    int32 rate = 3;     //挑战倍率
+}
+
+//进入下一关
+message c_abyss_next_2 {
+	enum Proto {A = 0; MSG = 100; ID = 10002;}
+}
+
+//离开副本
+message c_abyss_leave_3 {
+	enum Proto {A = 0; MSG = 100; ID = 10003;}
+}
+
+//物品拖动,支持任意背包拖动
+message c_abyss_item_move_4 {
+	enum Proto {A = 0; MSG = 100; ID = 10004;}
+    repeated AbyssItemMove items = 1;
+}
+
+//物品合成
+message c_abyss_item_merge_5 {
+	enum Proto {A = 0; MSG = 100; ID = 10005;}
+    int32 to_bag = 1;
+    proto_common.Series to_series = 2;
+    int32 from_bag = 3;
+    proto_common.Series from_series = 4;
+
+    //合成后的穿戴位置
+    int32 x = 5;
+    int32 y = 6;
+
+    //大秘境当前已打开的箱子索引
+    int32 bag_idx = 7;
+}
+
+//请求发放本波奖励
+message c_abyss_get_level_award_6 {
+	enum Proto {A = 0; MSG = 100; ID = 10006;}
+}
+
+//请求结算,在副本结束后
+message c_abyss_settled_7 {
+	enum Proto {A = 0; MSG = 100; ID = 10007;}
+    int32 id = 1;
+}
+
+//领取通关奖励
+message c_abyss_get_pass_award_8 {
+	enum Proto {A = 0; MSG = 100; ID = 10008;}
+    int32 level = 1;
+    int32 type = 2;     //0首通奖励, 1速通奖励
+    int32 fb_type = 3;  //AbyssFbType
+}
+
+//保存哪个宝箱被打开了
+message c_abyss_save_box_open_9 {
+	enum Proto {A = 0; MSG = 100; ID = 10009;}
+    int32 idx = 1;
+}
+
+//看广告
+message c_abyss_watch_ad_10 {
+	enum Proto {A = 0; MSG = 100; ID = 10010;}
+    bool start = 1;     //true:开始看广告, false:广告结束
+    bool success = 2;   //结束广告是成功还是失败, 成功了才有奖励
+}
+
+//开始挂机
+message c_abyss_start_hang_11 {
+	enum Proto {A = 0; MSG = 100; ID = 10011;}
+    int32 level = 1;     //挂机关卡id
+    int32 rate = 2;  //挂机倍率
+}
+
+//结束挂机
+message c_abyss_stop_hang_12 {
+	enum Proto {A = 0; MSG = 100; ID = 10012;}
+}
+
+//请求挂机展示奖励
+message c_abyss_hang_data_13 {
+	enum Proto {A = 0; MSG = 100; ID = 10013;}
+}
+
+
+//深渊触发副本看广告
+message c_abyss_trigger_ad_14 {
+	enum Proto {A = 0; MSG = 100; ID = 10014;}
+    int32 id = 1;     //副本id
+    int32 abyss = 2;    //选择的深渊副本难度
+}
+
+//进入副本
+message c_abyss_trigger_enter_fuben_15 {
+	enum Proto {A = 0; MSG = 100; ID = 10015;}
+}
+
+//选择的副武器
+message c_abyss_trigger_choice_weapon_16 {
+	enum Proto {A = 0; MSG = 100; ID = 10016;}
+    int32 id = 1;           //选择的副武器id
+}
+
+//执行倍率骰子
+message c_abyss_trigger_ran_rate_17 {
+	enum Proto {A = 0; MSG = 100; ID = 10017;}
+}
+
+//放弃特殊副本
+message c_abyss_trigger_give_up_18 {
+	enum Proto {A = 0; MSG = 100; ID = 10018;}
+
+}
+
+
+//离开特殊副本
+message c_abyss_trigger_leave_19 {
+	enum Proto {A = 0; MSG = 100; ID = 10019;}
+
+}
+
+
+
+//初始化物品
+message s_abyss_init_bag_1 {
+	enum Proto {A = 0; MSG = 100; ID = 10001;}
+    repeated AbyssItem caches = 1;
+
+    //只发了道具第一个存在的格子信息,其他占位的和空的没发
+    repeated AbyssGrid fights = 2;
+    repeated AbyssGrid safes = 3;
+}
+
+//缓存背包新增
+message s_bayss_cache_bag_item_2 {
+	enum Proto {A = 0; MSG = 100; ID = 10002;}
+    repeated AbyssItem item = 1;
+    bool new_item = 2;
+}
+//背包删除
+message s_abyss_delete_item_3 {
+	enum Proto {A = 0; MSG = 100; ID = 10003;}
+    int32 bag_type = 1;
+    proto_common.Series series = 2;
+}
+
+//通知物品移动
+message s_abyss_item_move_4 {
+	enum Proto {A = 0; MSG = 100; ID = 10004;}
+    message one_item {
+        AbyssItemMove items = 1;
+        bool new_item = 2;          //是否新道具
+        bool move_result = 3;       //如果不是新道具,则有移动是否成功
+    }
+
+    repeated one_item items = 1;
+}
+
+//战斗背包或者安全背包脱下到缓存背包
+message s_abyss_item_take_off_5 {
+	enum Proto {A = 0; MSG = 100; ID = 10005;}
+    int32 bag_type = 1;
+    proto_common.Series series = 2;
+    //脱下到的背包二级索引,用于标记大秘境的那个箱子
+    int32 bag_idx = 3;
+}
+
+//通知物品品质变化
+message s_abyss_item_quality_change_6 {
+	enum Proto {A = 0; MSG = 100; ID = 10006;}
+    int32 bag_type = 1;
+    proto_common.Series series = 2;
+    int32 quality = 3;
+}
+
+//副本状态同步
+message s_abyss_fuben_status_7 {
+	enum Proto {A = 0; MSG = 100; ID = 10007;}
+    //是否结束
+    bool is_over = 1;
+    //是否胜利
+    bool is_win = 2;
+    //是否已经结算,结算后只能离开副本
+    bool is_settled = 3;
+    //进入的是哪一关
+    int32 enter_level = 4;
+    //当前轮次
+    int32 cur_index = 5;
+    //当前轮次完成状态
+    bool is_level_finish = 6;
+    //本轮次奖励是否可领取
+    bool can_get_award = 7;
+    //副本开启的时刻
+    int32 fb_create_tick = 8;
+    //本轮已刷怪数量
+    int32 refresh_monster_cnt = 9;
+    //本次副本总共用时
+    int32 total_time = 10;
+    //副本类型  AbyssFbType
+    int32 type = 11;
+    //宝箱开启状态标记位
+    int32 box_flag = 12;
+}
+
+//同步当前进度值和节点
+message s_abyss_sync_progress_8 {
+	enum Proto {A = 0; MSG = 100; ID = 10008;}
+    //进度值
+    int32 progress = 1;
+    //当前节点
+    int32 cur_node = 2;
+}
+
+//请求挂机展示奖励
+message s_abyss_hang_data_9 {
+	enum Proto {A = 0; MSG = 100; ID = 10009;}
+    int32 time = 1;     //挂机时长
+    repeated proto_common.AwardInfo items = 2; //挂机奖励
+}
+
+//下发触发副本数据
+message s_abyss_trigger_fuben_10 {
+	enum Proto {A = 0; MSG = 100; ID = 10010;}
+    int32 id = 1;       //触发的副本的配置id
+    int32 time = 2;     //到期时间
+    int32 abyss = 3;    //触发的深渊副本等级
+    int32 monster = 4;  //bossId
+    int32 rate = 5;     //所选倍率 只有boss副本和掉落副本有效
+}
+
+//材料副本结算下发通关波数
+message s_abyss_trigger_fuben_pass_11 {
+	enum Proto {A = 0; MSG = 100; ID = 10011;}
+    int32 count = 1;            //材料副本通关波数 只有id为3，4,5的材料副本才会在结算的时候下发
+}
+
+//执行的骰子点数
+message s_abyss_trigger_rate_12 {
+	enum Proto {A = 0; MSG = 100; ID = 10012;}
+    int32 rate = 1;         //随机掉落倍率
+}
+
+//下发副武器列表
+message s_abyss_trigger_weapon_list_13 {
+	enum Proto {A = 0; MSG = 100; ID = 10013;}
+    repeated int32 list = 1 [packed = true];        //副武器id列表
+}
+
+//触发副本数据同步
+message s_abyss_trigger_fuben_sync_14 {
+	enum Proto {A = 0; MSG = 100; ID = 10014;}
+    int32 id = 1; //配置id
+    int32 rate = 2; //掉落倍率
+    repeated int32 last_monsters = 3 [packed = true];        //金币副本剩余数量
+    int32 idx = 4;          //材料副本第几波
+    int32 bossId = 5;       //bossId
+    int32 step = 6;         //阶段 1准备阶段，选择副武器  2战斗时间  3离开阶段
+    int32 time = 7;         //阶段到期时间
+}
+
+
+

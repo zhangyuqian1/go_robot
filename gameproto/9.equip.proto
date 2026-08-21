@@ -1,0 +1,206 @@
+syntax = "proto3";
+import "common.proto";
+
+//穿戴装备
+message c_take_on_equip_1 {
+	enum Proto {A = 0; MSG = 9; ID = 10001;}
+    int32 pos = 1;
+    proto_common.Series series = 2;
+}
+
+//脱下装备
+message c_take_off_equip_2 {
+	enum Proto {A = 0; MSG = 9; ID = 10002;}
+    int32 pos = 1;
+}
+
+//武器升星
+message c_weapon_star_up_3 {
+	enum Proto {A = 0; MSG = 9; ID = 10003;}
+    //主武器, 0身上装备, 其他为背包道具序列号
+    proto_common.Series series = 1;
+    //材料列表,传入的不足升星的会主动查找替换材料
+    repeated proto_common.Series materials = 2;
+}
+
+//装备格子强化
+message c_equip_grid_strength_4 {
+	enum Proto {A = 0; MSG = 9; ID = 10004;}
+    int32 pos = 1;
+}
+
+//武器精炼
+message c_weapon_refined_5 {
+	enum Proto {A = 0; MSG = 9; ID = 10005;}
+    //主武器, 0身上装备, 其他为背包道具序列号
+    proto_common.Series series = 1;
+    //材料列表
+    repeated proto_common.Series materials = 2;
+}
+
+//遗物祝福
+message c_relic_blessing_6 {
+	enum Proto {A = 0; MSG = 9; ID = 10006;}
+    int32 type = 1;
+    bool lv_protect = 2;
+    bool item_protect = 3;
+}
+
+//遗物祝福交换
+message c_relic_blessing_exchange_7 {
+	enum Proto {A = 0; MSG = 9; ID = 10007;}
+    proto_common.Series seriesA = 1;
+    proto_common.Series seriesB = 2;
+}
+
+//遗物祝福直升
+message c_relic_blessing_up_8 {
+	enum Proto {A = 0; MSG = 9; ID = 10008;}
+    proto_common.Series item_serise = 1;        //使用道具
+    proto_common.Series relic_serise = 2;       //遗物
+}
+
+//符文信息
+message fuwen_info {
+    int32 id = 1;                               //符文id
+    int32 quality = 2;                          //品质
+}
+
+//符文镶嵌
+message c_fuwen_take_on_9 {
+	enum Proto {A = 0; MSG = 9; ID = 10009;}
+    fuwen_info fuwen = 1;                       //符文
+    int32 relic_pos = 2;                        //镶嵌的遗物部位
+    int32 pos = 3;                              //镶嵌的孔位
+}
+
+//符文卸下
+message c_fuwen_take_off_10 {
+	enum Proto {A = 0; MSG = 9; ID = 10010;}
+    int32 relic_pos = 1;                        //镶嵌的遗物部位
+    int32 pos = 2;                              //镶嵌的孔位
+}
+
+//符文一键合成
+message c_fuwen_merge_11 {
+	enum Proto {A = 0; MSG = 9; ID = 10011;}
+    message merge_info {
+        int32 id = 1;                               //符文id
+        int32 quality = 2;                          //品质
+        int32 count = 3;                            //数量
+    }
+    repeated merge_info merges = 1;                 //合成信息
+}
+
+//符文孔位解锁
+message c_fuwen_unlock_12 {
+	enum Proto {A = 0; MSG = 9; ID = 10012;}
+    int32 relic_pos = 1;                        //镶嵌的遗物部位
+    int32 pos = 2;                              //镶嵌的孔位
+}
+
+//魂卡格子解锁
+message c_soulcard_grid_unlock_13 {
+	enum Proto {A = 0; MSG = 9; ID = 10013;}
+    int32 pos = 1;      //装备格子索引,16-21
+}
+//魂卡格子强化
+message c_soulcard_grid_strong_14 {
+	enum Proto {A = 0; MSG = 9; ID = 10014;}
+    int32 pos = 1;      //装备格子索引,16-21
+}
+//魂卡道具升星
+message c_soulcard_item_star_up_15 {
+	enum Proto {A = 0; MSG = 9; ID = 10015;}
+    //可为身上魂卡,可为背包魂卡
+    proto_common.Series series = 1;
+    //材料列表,包括魂卡和万能材料
+    repeated proto_common.Series materials = 2;
+}
+
+////////////////////////////////////////////
+
+
+
+//身上装备列表
+message s_equip_list_1 {
+	enum Proto {A = 0; MSG = 9; ID = 10001;}
+    repeated proto_common.UserItem items = 1;
+}
+
+//通知穿戴
+message s_take_on_equip_2 {
+	enum Proto {A = 0; MSG = 9; ID = 10002;}
+    int32 pos = 1;
+    proto_common.Series series = 2;
+}
+
+//通知脱下
+message s_take_off_equip_3 {
+	enum Proto {A = 0; MSG = 9; ID = 10003;}
+    int32 pos = 1;
+}
+
+//通知装备属性变化
+message s_equip_attr_update_4 {
+	enum Proto {A = 0; MSG = 9; ID = 10004;}
+    enum Type {
+        Bullets = 0;    //当前子弹数量
+        WeaponStar = 1; //武器星级
+        Refined = 2;    //精炼等级
+        RefinedExp = 3; //精炼经验
+    }
+
+    proto_common.Series series = 1;
+    Type type = 2;   //属性类型
+    int32 value = 3; //属性值
+}
+
+//下发格子数据, 初始化或者更新
+message s_equip_grid_data_5 {
+	enum Proto {A = 0; MSG = 9; ID = 10005;}
+    message grid {
+        int32 pos = 1;
+        int32 strong = 2;
+    }
+
+    repeated grid grids = 1;
+}
+
+//升星后的新属性
+message s_weapon_star_up_ret_6 {
+	enum Proto {A = 0; MSG = 9; ID = 10006;}
+    proto_common.Series series = 1;
+    int32 star = 2;
+    repeated proto_common.attr_info attr = 3;
+}
+
+//遗物祝福结果
+message s_relic_bless_ret_7 {
+	enum Proto {A = 0; MSG = 9; ID = 10007;}
+    int32 type = 1;
+    int32 ret_type = 2;
+    int32 ret_value = 3;
+    bool lv_protect = 4;
+    bool item_protect = 5;
+    int32 new_lv = 6;
+}
+
+//遗物祝福交换结果
+message s_relic_bless_exchange_ret_8 {
+	enum Proto {A = 0; MSG = 9; ID = 10008;}
+    proto_common.Series seriesA = 1;
+    proto_common.Series seriesB = 2;
+}
+
+//遗物祝福直升返回
+message s_relic_blessing_up_ret_9 {
+	enum Proto {A = 0; MSG = 9; ID = 10009;}
+    proto_common.Series serise = 1;
+    int32 new_lv = 2;
+}
+
+//魂卡升星失败
+message s_soulcard_up_star_fail_10 {
+	enum Proto {A = 0; MSG = 9; ID = 10010;}
+}

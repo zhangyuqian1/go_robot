@@ -1,0 +1,432 @@
+syntax = "proto3";
+import "common.proto";
+
+//权限
+enum GuildAuthDef {
+    GuildAuth_None = 0;
+    GuildAuth_Base = 1;       //基本信息 工会名称,设置,审批
+    GuildAuth_Recruit = 2;    //招募
+    GuildAuth_Memo = 3;       //公告
+    GuildAuth_Appoint = 4;    //任命, 范围为小于自己职位
+    GuildAuth_Kick = 5;       //开除成员
+}
+
+//审核
+enum GuildReviewDef {
+    GuildReview_Yes = 0;
+    GuildReview_No = 1;
+}
+
+//设置结构
+message guild_setting_info {
+    string recruit = 1;
+    int32 flag_icon = 2;
+    int32 flag_color = 3;
+    int32 enter_type = 4;
+    int32 lv_limit = 5;
+}
+
+//行会科技item
+message guild_tech_item {
+    int32 lv = 1;       //行会科技等级
+    int32 progress = 2;     //行会科技进度
+    int32 time = 3;         //行会科技突破时间
+}
+
+//科技数据结构
+message guild_tech_info {
+    repeated guild_tech_item item = 1;
+}
+
+//砍价明细
+message guild_gift_bargain {
+    int32 aid = 1;
+    string name = 2;
+    int32 money = 3;
+    int32 time = 4;
+}
+
+//获取公会列表
+message c_guild_list_1 {
+	enum Proto {A = 0; MSG = 11; ID = 10001;}
+}
+
+//创建公会
+message c_create_guild_2 {
+	enum Proto {A = 0; MSG = 11; ID = 10002;}
+    string name = 1;
+    string recruit = 2;
+    int32 enter_type = 3;
+    int32 lv_limit = 4;
+    int32 flag_icon = 5;
+    int32 flag_color = 6;
+}
+
+//请求加入
+message c_join_apply_3 {
+	enum Proto {A = 0; MSG = 11; ID = 10003;}
+    repeated int32 gid = 1;
+}
+
+//审核信息
+message c_join_apply_result_4 {
+	enum Proto {A = 0; MSG = 11; ID = 10004;}
+    bool result = 1;
+    int32 aid = 2;
+}
+
+//行会设置
+message c_update_guild_setting_5 {
+	enum Proto {A = 0; MSG = 11; ID = 10005;}
+    guild_setting_info info = 1;
+}
+
+//调整别人职位
+message c_set_guild_pos_6 {
+	enum Proto {A = 0; MSG = 11; ID = 10006;}
+    int32 aid = 1;
+    int32 pos = 2;
+}
+
+//行会公告
+message c_update_guild_memo_7 {
+	enum Proto {A = 0; MSG = 11; ID = 10007;}
+    string memo = 1;
+}
+
+//获取成员列表
+message c_get_guild_members_8 {
+	enum Proto {A = 0; MSG = 11; ID = 10008;}
+}
+
+//移除成员
+message c_guild_remove_member_9 {
+	enum Proto {A = 0; MSG = 11; ID = 10009;}
+    int32 aid = 1;
+}
+
+//离开行会
+message c_guild_member_left_10 {
+	enum Proto {A = 0; MSG = 11; ID = 10010;}
+}
+
+//解散行会
+// message c_guild_break_11 {
+// }
+
+//改名
+message c_guild_change_name_11 {
+	enum Proto {A = 0; MSG = 11; ID = 10011;}
+    string name = 1;
+}
+
+//招募
+message c_guild_recruit_12 {
+	enum Proto {A = 0; MSG = 11; ID = 10012;}
+    string msg = 1;
+}
+
+//转让
+message c_guild_change_leader_13 {
+	enum Proto {A = 0; MSG = 11; ID = 10013;}
+    int32 aid = 1;
+}
+
+//捐献
+message c_guild_donate_14 {
+	enum Proto {A = 0; MSG = 11; ID = 10014;}
+    int32 type = 1;
+    int32 isAd = 2;  //是否广告
+}
+
+//请求行会事件列表
+message c_get_guild_event_15 {
+	enum Proto {A = 0; MSG = 11; ID = 10015;}
+}
+
+//请求行会信息
+message c_get_guild_info_16 {
+	enum Proto {A = 0; MSG = 11; ID = 10016;}
+}
+
+//公会首领初始化信息
+message c_guild_boss_init_17 {
+	enum Proto {A = 0; MSG = 11; ID = 10017;}
+}
+
+//进入公会首领副本
+message c_guild_boss_enter_18 {
+	enum Proto {A = 0; MSG = 11; ID = 10018;}
+}
+
+//离开公会首领副本
+message c_guild_boss_leave_19 {
+	enum Proto {A = 0; MSG = 11; ID = 10019;}
+}
+
+//领取进度奖励
+message c_guild_boss_progress_award_20 {
+	enum Proto {A = 0; MSG = 11; ID = 10020;}
+}
+
+//购买次数
+message c_guild_boss_buy_count_21 {
+	enum Proto {A = 0; MSG = 11; ID = 10021;}
+}
+
+//公会首领扫荡
+message c_guild_boss_sweep_22 {
+	enum Proto {A = 0; MSG = 11; ID = 10022;}
+}
+
+//公会科技升级
+message c_guild_tech_upgrade_23 {
+	enum Proto {A = 0; MSG = 11; ID = 10023;}
+    int32 id = 1;
+    int32 sub_id = 2;
+    int32 count = 3;
+}
+
+//公会砍价
+message c_guild_gift_oper_24 {
+	enum Proto {A = 0; MSG = 11; ID = 10024;}
+    int32 type = 1;  // 1是砍价 2是购买 3是招募
+}
+
+//公会首领结算
+message c_guild_boss_settle_25 {
+	enum Proto {A = 0; MSG = 11; ID = 10025;}
+}
+
+//公会科技加速
+message c_guild_tech_speed_26 {
+	enum Proto {A = 0; MSG = 11; ID = 10026;}
+    int32 id = 1;
+    int32 sub_id = 2;
+}
+
+//公会可以求助
+message c_guild_tech_chat_27 {
+	enum Proto {A = 0; MSG = 11; ID = 10027;}
+}
+
+//公会科技数据请求
+message c_guild_tech_data_28 {
+	enum Proto {A = 0; MSG = 11; ID = 10028;}
+}
+
+
+/////////////////////////////////////////////////////
+//行会列表
+message s_guild_list_1 {
+	enum Proto {A = 0; MSG = 11; ID = 10001;}
+    message info {
+        int32 id = 1;
+        string name = 2;
+        int32 level = 3;
+        int32 member = 4;
+        string master_name = 5;
+        string recruit = 6;
+        int32 flag_icon = 7;
+        int32 flag_color = 8;
+        int32 create_time = 9;
+        int32 enter_type = 10;
+        int32 enter_limit = 11;
+        bool applied = 12;      //是否已经申请过加入了
+    }
+
+    repeated info list = 1;
+}
+
+//创建结果
+message s_create_guild_2 {
+	enum Proto {A = 0; MSG = 11; ID = 10002;}
+    int32 id = 1;
+    int32 error_code = 2;
+}
+
+//推送申请信息, 新增或者初始化都是这个
+message s_apply_join_guild_3 {
+	enum Proto {A = 0; MSG = 11; ID = 10003;}
+    repeated proto_common.actor_basic info = 1;
+}
+
+//删除申请信息,可能是别人已经处理了
+message s_delete_join_4 {
+	enum Proto {A = 0; MSG = 11; ID = 10004;}
+    int32 aid = 1;
+}
+
+//行会事件
+message s_guild_event_5 {
+	enum Proto {A = 0; MSG = 11; ID = 10005;}
+    message info {
+        int32 eid = 1;
+        int32 tick = 2;
+        string name = 3;
+        string p0 = 4;
+    }
+
+    repeated info list = 1;
+}
+
+//行会成员信息
+message guild_member_info {
+    proto_common.actor_basic info = 1;
+    int32 contrib = 2;      //贡献
+    int32 online = 3;       //在线状态,0在线, 其他值为上次下线的时间
+    int32 scene_id = 4;     //所在地图
+    int32 pos = 5;          //职位
+}
+
+//行会成员添加或者移除
+message s_guild_member_change_6 {
+	enum Proto {A = 0; MSG = 11; ID = 10006;}
+    int32 type = 1;     //0移除, 1新增
+    int32 aid = 2;
+    guild_member_info info = 3;
+}
+
+//行会设置
+message s_update_guild_setting_7 {
+	enum Proto {A = 0; MSG = 11; ID = 10007;}
+    int32 id = 1;
+    guild_setting_info info = 2;        // 广播所有工会本行会玩家，以及未入行会的功能开启玩家
+}
+
+//玩家职位变化
+message s_guild_member_pos_change_8 {
+	enum Proto {A = 0; MSG = 11; ID = 10008;}
+    int32 aid = 1;
+    int32 pos = 2;
+}
+
+//更新公告
+message s_update_guild_memo_9 {
+	enum Proto {A = 0; MSG = 11; ID = 10009;}
+    string memo = 1;
+}
+
+//行会成员信息
+message s_guild_member_list_10 {
+	enum Proto {A = 0; MSG = 11; ID = 10010;}
+    repeated guild_member_info info = 3;
+}
+
+//更新招募信息
+message s_update_recruit_msg_11 {
+	enum Proto {A = 0; MSG = 11; ID = 10011;}
+    int32 id = 1;           //行会id
+    string name = 2;        //行会名字
+    string msg = 3;         //内容
+    int32 enter_type = 4;       //进入类型
+    int32 enter_limit = 5;      //进入限制
+}
+
+//推送本行会基础信息
+message s_guild_basic_data_12 {
+	enum Proto {A = 0; MSG = 11; ID = 10012;}
+    int32 id = 1;           //id为0表示未加入行会
+    int32 level = 2;        
+    string name = 3;
+    string leader = 4;
+    int32 exp = 5;
+    int32 member = 6;
+    int32 contrib = 7;
+    string memo = 8;        //公告
+    int32 flag_icon = 9;
+    int32 flag_color = 10;
+    int32 enter_type = 11;
+    int32 enter_limit = 12;
+    string recruit = 13;        //宣言
+    int32 change_name_free_cnt = 14;      //改名使用的免费次数
+}
+
+//返回申请成功的公会id列表
+message s_apply_join_success_13 {
+	enum Proto {A = 0; MSG = 11; ID = 10013;}
+    repeated int32 id = 1 [packed = true];   
+}
+
+//离开公会下发
+message s_leave_guild_14 {
+	enum Proto {A = 0; MSG = 11; ID = 10014;}
+    int32 id = 1;
+}
+
+//公会boss信息
+message s_guild_boss_init_15 {
+	enum Proto {A = 0; MSG = 11; ID = 10015;}
+    int32 bossIdx = 1;  //第几个boss
+    string maxDamage = 2; //今日最大伤害
+    int32 count = 3; //今日已挑战次数
+    int32 buycount = 4; //今日购买挑战次数
+    string guildDamage = 5; //公会总伤害
+    int32 awardIndex= 6; //当前已经领取的奖励最大进度
+}
+
+//副本状态同步
+message s_guild_boss_fuben_status_16 {
+	enum Proto {A = 0; MSG = 11; ID = 10016;}
+    //当前bossidx
+    int32 bossIdx = 1;
+    //副本开启的时刻
+    int32 fb_create_tick = 2;
+    //造成的伤害
+    string damage = 3;
+    //宝箱个数
+    int32 box = 4;
+}
+
+//同步当前伤害
+message s_guild_boss_sync_progress_17 {
+	enum Proto {A = 0; MSG = 11; ID = 10017;}
+    //造成的伤害
+    string damage = 1;
+    //宝箱个数
+    int32 box = 2;
+}
+
+//结算数据
+message s_guild_boss_battle_award_18 {
+	enum Proto {A = 0; MSG = 11; ID = 10018;}
+    //类型 1是挑战 2 是扫荡
+    int32 type = 1;   
+    //造成的伤害
+    string damage = 2;
+    //是否今日最高 挑战才有用
+    int32 is_max = 3;
+    //本次挑战获得奖励
+    repeated proto_common.AwardInfo awards = 4;
+}
+
+//广播公会总伤害
+message s_guild_boss_notice_damage_19 {
+	enum Proto {A = 0; MSG = 11; ID = 10019;}
+    string guilddamage = 1;
+}
+
+//公会科技数据下发
+message s_guild_tech_init_data_20 {
+	enum Proto {A = 0; MSG = 11; ID = 10020;}
+    repeated guild_tech_info info = 1;
+    int32 isReq = 2;                //是否请求
+}
+
+//公会科技升级返回
+message s_guild_tech_update_21 {
+	enum Proto {A = 0; MSG = 11; ID = 10021;}
+    int32 id = 1;
+    int32 sub_id = 2;
+    int32 lv = 3;
+    int32 progress = 4;
+    int32 time = 5;
+}
+
+//公会砍价数据
+message s_guild_gift_data_22 {
+	enum Proto {A = 0; MSG = 11; ID = 10022;}
+    int32 lastMoney = 1;
+    int32 isInit = 2;  //是否初始化 是则重置，不是则增加砍价明细
+    repeated guild_gift_bargain list = 3;
+}

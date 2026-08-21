@@ -1,0 +1,174 @@
+syntax = "proto3";
+import "common.proto";
+
+message diamond_compose_data {
+    repeated proto_common.Series series = 1;
+}
+
+//获取背包列表
+message c_get_bag_items_1 {
+	enum Proto {A = 0; MSG = 10; ID = 10001;}
+    int32 type = 1;
+}
+
+//使用物品
+message c_use_bag_item_2 {
+	enum Proto {A = 0; MSG = 10; ID = 10002;}
+    message single {
+        proto_common.Series series = 1;
+        int32 use_cnt = 2;
+    }
+    int32 bag_type = 1;
+    repeated single items = 2;
+}
+
+//回收装备
+message c_rec_bag_item_3 {
+	enum Proto {A = 0; MSG = 10; ID = 10003;}
+    message single {
+        int32 bag_type = 1;
+        proto_common.Series series = 2;
+    }
+    repeated single items = 1;
+    bool is_auto = 2;
+}
+
+//背包扩展
+message c_enlarge_user_bag_4 {
+	enum Proto {A = 0; MSG = 10; ID = 10004;}
+    int32 bag_type = 1;
+    int32 cnt = 2;
+}
+
+//背包放入仓库
+message c_bag_to_depot_5 {
+	enum Proto {A = 0; MSG = 10; ID = 10005;}
+    message single {
+        int32 bag_type = 1;
+        proto_common.Series serises = 2;
+    }
+    repeated single items = 1;
+}
+
+//仓库放入背包
+message c_depot_to_bag_6 {
+	enum Proto {A = 0; MSG = 10; ID = 10006;}
+    repeated proto_common.Series serises = 2;
+}
+
+//使用礼包
+message c_use_bag_gift_7 {
+	enum Proto {A = 0; MSG = 10; ID = 10007;}
+    //自选礼包选择的物品信息
+    message single {
+        int32 index = 1;    //第几个 从1开始
+        int32 cnt = 2;      //数量
+    }
+    int32 bag_type = 1;
+    proto_common.Series serise = 2;
+    int32 use_cnt = 3;
+    repeated single items = 4;  //自选礼包选择信息
+}
+
+//宝石购买
+message c_diamond_buy_8 {
+	enum Proto {A = 0; MSG = 10; ID = 10008;}
+    int32 id = 1;       //抽取库  1 2 3
+    int32 count = 2;       //宝石抽取 1 或者10
+}
+
+//宝石合成
+message c_diamond_compose_9 {
+	enum Proto {A = 0; MSG = 10; ID = 10009;}
+    repeated diamond_compose_data list = 1;
+}
+
+//棋盘合成 
+message c_chess_board_compose_10 {
+	enum Proto {A = 0; MSG = 10; ID = 10010;}
+    repeated diamond_compose_data list = 1;
+}
+
+//宝石穿戴
+message c_diamond_take_on_11 {
+	enum Proto {A = 0; MSG = 10; ID = 10011;}
+    proto_common.Series series = 1;
+    int32 grid = 2;             //0-35
+}
+
+//宝石卸载
+message c_diamond_take_off_12 {
+	enum Proto {A = 0; MSG = 10; ID = 10012;}
+    int32 grid = 1;             //0-35
+}
+
+//棋盘操作
+message c_chess_board_oper_13 {
+	enum Proto {A = 0; MSG = 10; ID = 10013;}
+    int32 type = 1;         //1穿戴 2卸载       //格子必然是棋盘后面一个，比如目前的36
+    proto_common.Series series = 2;
+} 
+
+
+//推送背包列表
+message s_push_bag_item_1 {
+	enum Proto {A = 0; MSG = 10; ID = 10001;}
+    //背包类型
+    int32 type = 1;
+    //总页数
+    int32 all_page = 2;
+    //当前页数
+    int32 cur_page = 3;
+    //本页数量
+    int32 page_cnt = 4;
+
+    repeated proto_common.UserItem list = 5;
+}
+
+//背包新增道具
+message s_bag_add_new_item_2 {
+	enum Proto {A = 0; MSG = 10; ID = 10002;}
+    int32 type = 1;
+    proto_common.UserItem item = 2;
+}
+
+//背包道具数量变化
+message s_bag_item_num_change_3 {
+	enum Proto {A = 0; MSG = 10; ID = 10003;}
+    int32 type = 1;
+    proto_common.Series series = 2;
+    int32 cnt = 3;
+}
+
+//背包删除道具
+message s_bag_delete_item_4 {
+	enum Proto {A = 0; MSG = 10; ID = 10004;}
+    int32 type = 1;
+    proto_common.Series series = 2;
+}
+
+//通知背包放入仓库
+message s_bag_to_depot_5 {
+	enum Proto {A = 0; MSG = 10; ID = 10005;}
+    message single {
+        int32 bag_type = 1;
+        proto_common.Series serises = 2;
+    }
+    repeated single items = 1;
+}
+
+//通知仓库到背包
+message s_depot_to_bag_6 {
+	enum Proto {A = 0; MSG = 10; ID = 10006;}
+    repeated proto_common.Series serises = 2;
+}
+
+//通知回收列表
+message s_rec_bag_item_7 {
+	enum Proto {A = 0; MSG = 10; ID = 10007;}
+    message single {
+        int32 bag_type = 1;
+        proto_common.Series series = 2;
+    }
+    repeated single items = 1;
+}

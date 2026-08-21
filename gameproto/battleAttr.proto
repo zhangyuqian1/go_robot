@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+message PbBattleAttr {
+	int64 hp = 1;	//当前血量
+	int64 maxHp = 2;	//生命
+	int64 atk = 3;	//攻击
+	int64 def = 4;	//防御
+	int64 hpRate = 5;	//血量加成
+	int64 atkRate = 6;	//攻击加成
+	int64 defRate = 7;	//防御加成
+	int64 dmgRate = 8;	//伤害加成
+	int64 hit = 9;	//命中
+	int64 dodge = 10;	//闪避
+	int64 crit = 11;	//暴击
+	int64 critDmgRate = 12;	//暴击伤害
+	int64 vampireRate = 13;	//吸血
+	int64 reduceDmg = 14;	//减伤固定值
+	int64 reduceDmgRate = 15;	//伤害减免
+	int64 cdSpdRate = 16;	//冷却时间
+	int64 moveSpd = 17;	//移动速度
+	int64 moveSpdRate = 18;	//移动速度加成
+	int64 atkSpd = 19;	//攻击速度
+	int64 atkSpdRate = 20;	//攻击速度加成
+	int64 dmgbl = 21;	//技能伤害加成
+	int64 dmg = 22;	//增伤固定值
+}

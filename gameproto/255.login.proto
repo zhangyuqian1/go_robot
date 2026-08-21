@@ -1,0 +1,116 @@
+syntax = "proto3";
+
+//玩家登陆
+message c_check_password_1 {
+	enum Proto {A = 0; MSG = 255; ID = 10001;}
+    //玩家选择登陆的服务器,一般是创角所在服务器
+    int32 select_srv = 1;
+    string name = 2;
+    string pwd = 3;
+    //玩家正在登陆的服务器,可能是跨服,可能是合服后的主服
+    int32 login_srv = 4;
+    //玩家本身所在的服务器,可能是合服后的主服
+    int32 raw_srv = 5;
+    string ip = 6;
+    string md5 = 7;
+    string tick = 8;
+    string id = 9;
+    int32 channed_id = 10;
+}
+
+//获取角色列表, 无内容
+message c_get_actor_list_3 {
+	enum Proto {A = 0; MSG = 255; ID = 10003;}
+}
+
+//请求创角
+message c_create_actor_4 {
+	enum Proto {A = 0; MSG = 255; ID = 10004;}
+    string name = 1;
+    int32 sex = 2;
+    int32 job = 3;
+    int32 icon = 4;
+    string token = 5;
+    int32 ad_id = 6;
+}
+
+//删除角色
+message c_delete_actor_5 {
+	enum Proto {A = 0; MSG = 255; ID = 10005;}
+    int32 aid = 1;
+}
+
+//随机名字
+message c_get_rand_name_6 {
+	enum Proto {A = 0; MSG = 255; ID = 10006;}
+    int32 sex = 1;
+}
+
+///////////////////////////////////////////
+
+//登陆错误码
+message s_login_result_1 {
+	enum Proto {A = 0; MSG = 255; ID = 10001;}
+    int32 code = 1;
+}
+
+//下发角色列表
+message s_actor_list_2 {
+	enum Proto {A = 0; MSG = 255; ID = 10002;}
+    int32 account_id = 1;
+    //大于100就是错误码
+    int32 actor_cnt = 2;
+
+    message actor {
+        int32 actor_id = 1;
+        string name = 2;
+        int32 icon = 3;
+        int32 sex = 4;
+        int32 level = 5;
+        int32 job = 6;
+        int32 zy = 7;
+        int32 circle = 8;
+        int64 battle = 9;
+        int32 status = 10;
+    }
+    repeated actor actors = 4;
+    int32 last_login = 5;
+    int32 less_job = 6;
+}
+
+//创角结果
+message s_create_actor_result_3 {
+	enum Proto {A = 0; MSG = 255; ID = 10003;}
+    int32 aid = 1;
+    int32 result = 2;
+}
+
+//删除角色结果
+message s_delete_actor_result_4 {
+	enum Proto {A = 0; MSG = 255; ID = 10004;}
+    int32 aid = 1;
+    int32 result = 2;
+}
+
+//随机名字结果
+message s_rand_name_result_5 {
+	enum Proto {A = 0; MSG = 255; ID = 10005;}
+    int32 code = 1;
+    int32 sex = 2;
+    string name = 3;
+}
+
+//顶号通知, 空消息
+message s_actor_be_fucked_8 {
+	enum Proto {A = 0; MSG = 255; ID = 10008;}
+}
+
+//服务器关闭通知, 空消息
+message s_server_be_closed_9 {
+	enum Proto {A = 0; MSG = 255; ID = 10009;}
+}
+
+//服务器踢人
+message s_server_kick_10 {
+	enum Proto {A = 0; MSG = 255; ID = 10010;}
+}

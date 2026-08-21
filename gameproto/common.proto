@@ -1,0 +1,77 @@
+syntax = "proto3";
+package proto_common;
+
+//序列号定义
+message Series {
+    int32 time = 1;
+    int32 series = 2;
+    int32 server = 3;
+}
+
+//实体共有属性
+message EntityCommon {
+    int64 handle = 1;
+    int32 id = 2;
+    int32 model = 3;
+    int32 x = 4;
+    int32 y = 5;
+    int32 dir = 6;
+}
+
+//属性结构
+message attr_info {
+    //前缀后缀类型      ItemAttrDef
+    int32 show_type = 1;
+    int32 type = 2;
+    int32 value = 3;
+}
+
+//道具
+message UserItem {
+    Series series = 1;
+    int32 id = 2;
+    int32 count = 3;
+    int32 flag = 4;         //各种标记位
+    int32 strong = 5;       //武器星级      防具套装id  遗物套装id
+    int32 quality = 6;      //武器精炼等级  防具品质    遗物品质
+    int32 bullets = 7;      //武器子弹数量  防具未使用  遗物未使用
+    int32 refined_exp = 8;  //精炼经验      防具未使用  遗物祝福等级
+    repeated attr_info attr = 9;
+}
+
+//奖励
+message AwardInfo {
+    int32 type = 1;
+    int32 id = 2;
+    int32 count = 3;
+    int32 quality = 4;
+    int32 bind = 5;
+    int32 strong = 6;           //宝石形状
+}
+
+//头像信息
+message icon_info {
+    int32 icon = 1;
+    int32 icon_frame = 2;
+    string icon_url = 3;
+}
+
+//基础信息
+message actor_basic {
+    int32 aid = 1;
+    string name = 2;
+    int32 lv = 3;
+    icon_info icon = 4;
+    int32 emblemLv = 5;
+    string guild = 6;
+}
+
+//角色外观形象
+message actor_appear {
+    int32 hero_id = 1;      //英雄id
+    int32 weapon_id = 2;    //武器id
+    int32 hero_appear = 3;  //英雄装饰
+    int32 weapon_appear = 4;    //武器装饰
+    int32 title = 5;    //称号装饰
+    int32 head_up = 6;  //头饰装饰
+}

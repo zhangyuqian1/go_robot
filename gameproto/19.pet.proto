@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+//宠物天赋信息
+message PetTalentInfo {
+    int32 id = 1;           //天赋id
+    int32 level =2;         //等级
+}
+
+//宠物信息
+message PetInfo {
+    int32 serise_id = 1;
+    int32 id = 2;                                   //宠物id
+    int32 level = 3;                                //等级
+    int32 star = 4;                                 //星级
+    repeated int32 skill_lvs = 5 [packed = true];                   //对应的技能等级
+    repeated PetTalentInfo talents = 6;             //天赋信息
+    repeated PetTalentInfo last_refine = 7;         //最近洗炼出来的天赋信息(未选择的)
+    int32 last_refine_flag = 8;                     //最近洗炼的锁住天赋(位标志)
+}
+
+//宠物升级
+message c_pet_level_up_1 {
+	enum Proto {A = 0; MSG = 19; ID = 10001;}
+    int32 serise_id = 1;
+}
+
+//宠物升星
+message c_pet_star_up_2 {
+	enum Proto {A = 0; MSG = 19; ID = 10002;}
+    int32 serise_id = 1;
+    repeated int32 cost_pets = 2 [packed = true];                   //消耗的同id宠物
+}
+
+//宠物重置
+message c_pet_reset_3 {
+	enum Proto {A = 0; MSG = 19; ID = 10003;}
+    int32 serise_id = 1;
+}
+
+//宠物放生
+message c_pet_decompose_4 {
+	enum Proto {A = 0; MSG = 19; ID = 10004;}
+    int32 serise_id = 1;
+}
+
+//天赋洗炼
+message c_pet_refine_5 {
+	enum Proto {A = 0; MSG = 19; ID = 10005;}
+    int32 serise_id = 1;
+    int32 lock_flag = 2;                            //锁定的天赋(位标识)
+}
+
+//天赋洗炼确认
+message c_pet_refine_confirm_6 {
+	enum Proto {A = 0; MSG = 19; ID = 10006;}
+    int32 serise_id = 1;
+    int32 is_ok = 2;                                //是否保留 0不保留 1保留
+}
+
+//宠物出战
+message c_pet_battle_7 {
+	enum Proto {A = 0; MSG = 19; ID = 10007;}
+    int32 serise_id = 1;
+    int32 index = 2;                                  //0卸下 1主战 2协战1 3协战2
+}
+
+//宠物召唤
+message c_pet_summon_8 {
+	enum Proto {A = 0; MSG = 19; ID = 10008;}
+    int32 index = 1;                                  //1-3对应位置
+}
+
+//宠物召唤刷新
+message c_pet_summon_update_9 {
+	enum Proto {A = 0; MSG = 19; ID = 10009;}
+    int32 type = 1;                                  //1广告刷新 2付费刷新
+}
+
+//设置心愿宠物
+message c_pet_wish_10 {
+	enum Proto {A = 0; MSG = 19; ID = 10010;}
+    int32 id = 1;                                   //宠物id
+}
+
+
+//宠物信息返回
+message s_pet_update_1 {
+	enum Proto {A = 0; MSG = 19; ID = 10001;}
+    int32 type = 1;                                 //类型 1登录 2召唤获得 3升级 4升星 5重置 6洗炼 7洗炼确认返回 8奖励获得
+    repeated PetInfo pet_info = 2;                  //同步的宠物信息
+}
+
+//删除宠物
+message s_pet_remove_2 {
+	enum Proto {A = 0; MSG = 19; ID = 10002;}
+    repeated int32 remove_serise = 1 [packed = true]; //删除的宠物
+}
+
+

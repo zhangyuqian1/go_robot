@@ -1,0 +1,22 @@
+syntax = "proto3";
+import "battleAttr.proto";
+
+message PbSprite {
+	int32 id = 1;			//精灵唯一ID
+	PbSpriteType type = 2;	//精灵类型
+	int32 identity = 3;		//英雄标识、怪物ID（对应G怪物表）
+	int32 level = 4;		//精灵等级
+	int64 reborn_time = 5;	//重生时间，毫秒，0不进行重生
+	int32 ctype = 6;		//对于怪物来说的刷新方式1世界坐标附近区域随机刷新，2世界坐标定点刷新
+	int32 cx = 7;			//地图文件中的世界坐标
+	int32 cy = 8;			//地图文件中的世界坐标
+	PbBattleAttr battle_attr = 9;	//战斗属性
+	int32 config_id = 10;	//配置ID
+	int32 fog_area = 11;	//迷雾ID
+}
+
+enum PbSpriteType {
+	UNKNOWN_SPRITE_TYPE = 0;
+	HERO = 1;
+	MONSTER = 2;
+}

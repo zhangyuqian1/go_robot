@@ -1,0 +1,57 @@
+syntax = "proto3";
+import "common.proto";
+
+enum MailStateDef {
+	MS_UnRead = 0;
+	MS_Read = 1;
+	MS_GetItem = 2;
+}
+
+message mail_info {
+    proto_common.Series series = 1;
+    string title = 2;
+    string content = 3;
+    int32 create_time = 4;
+    int32 state = 5;        //0 未读 1 已读
+    repeated proto_common.AwardInfo items = 6;
+}
+
+//设置邮件已读,无返回
+message c_read_mail_1 {
+	enum Proto {A = 0; MSG = 13; ID = 10001;}
+    proto_common.Series ids = 1;
+}
+
+//请求删除邮件
+message c_del_mail_2 {
+	enum Proto {A = 0; MSG = 13; ID = 10002;}
+    repeated proto_common.Series ids = 1;
+}
+
+//收取附件
+message c_get_mail_item_3 {
+	enum Proto {A = 0; MSG = 13; ID = 10003;}
+    repeated proto_common.Series ids = 1;
+}
+
+//推送邮件
+message s_push_mail_1 {
+	enum Proto {A = 0; MSG = 13; ID = 10001;}
+    repeated mail_info mails = 1;
+}
+
+//推送删除邮件
+message s_del_mail_2 {
+	enum Proto {A = 0; MSG = 13; ID = 10002;}
+    repeated proto_common.Series ids = 1;
+}
+
+//更新邮件附件信息, 更新邮件信息时, mail_info.title和content,create_time字段不填充
+message s_update_mail_items_3 {
+	enum Proto {A = 0; MSG = 13; ID = 10003;}
+    message update_info {
+        proto_common.Series series = 1;
+        int32 state = 2;
+    }
+    repeated update_info updates = 1;
+}

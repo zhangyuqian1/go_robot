@@ -1,0 +1,253 @@
+syntax = "proto3";
+import "common.proto";
+
+//上阵宠物
+message use_pet_info {
+    int32 pid = 1; //宠物唯一id
+    int32 id = 2;   //宠物怪物id
+}
+
+//探险item
+message pet_adventrue_info {
+    int32 grid = 1; //格子id 0-5
+    int32 type = 2; //类型 那种藏宝图 1-3
+    int32 state = 3; //状态 0 未使用 1 被掠夺过（保护）
+    int32 lost = 4; //奖励状态 0 没有损失 1 有损失
+    int32 time = 5; //到期时间 短时间戳
+
+    repeated use_pet_info list = 6;
+
+    int32 aid = 7;      //掠夺玩家id
+    string name = 8;    //掠夺玩家名字
+    string attack = 9;  //攻击力
+    proto_common.actor_appear appear = 10;   //形象
+    int32 rob_time = 11;    //掠夺到期时间 短时间戳
+}
+
+//掠夺item
+message pet_adventrue_rob_item {
+    int32 grid = 1; //格子id 0-5
+    int32 type = 2; //类型 那种藏宝图 1-3
+    proto_common.actor_basic info = 3;
+    string attack = 4;
+    int32 time = 5;             //掠夺到期时间
+    int32 state = 6;            // 0不能领取 1可以领取
+}
+
+//探险日志
+message pet_adventrue_log_item {
+    int32 type = 1; //类型 那种藏宝图 1-3
+    int32 lost = 2; //奖励状态 0 没有损失 1 有损失
+    proto_common.actor_basic info = 3;
+}
+
+//掠夺日志
+message pet_adventrue_rob_log_item {
+    int32 type = 1; //类型 那种藏宝图 1-3
+    string name = 2;    //玩家名字
+    int32 lost = 3; //奖励状态 0 掠夺失败 1 掠夺成功
+}
+
+//他人探险item
+message pet_other_adventrue_item {
+    int32 grid = 1; //格子id 0-5
+    int32 type = 2; //类型 那种藏宝图 1-3
+    proto_common.actor_basic info = 3;
+    string attack = 4;
+}
+
+
+// 请求数据 
+message c_pet_adventrue_data_1 {
+	enum Proto {A = 0; MSG = 103; ID = 10001;}
+}
+
+// 请求探险
+message c_other_pet_adventrue_2 {
+	enum Proto {A = 0; MSG = 103; ID = 10002;}
+    int32 type = 1;         //1 普通探险 2仇人探险
+}
+
+//发起探险
+message c_start_pet_adventrue_3 {
+	enum Proto {A = 0; MSG = 103; ID = 10003;}
+    int32 grid = 1; //格子id 0-5
+    int32 type = 2; //类型 那种藏宝图 1-3
+    repeated use_pet_info list = 3;
+}
+
+//发起掠夺
+message c_start_pet_rob_4 {
+	enum Proto {A = 0; MSG = 103; ID = 10004;}
+    int32 grid = 1;       //掠夺的玩家grid 0-5
+    int32 aid = 2;      //掠夺的玩家id
+    int32 type = 3;     //1 普通探险 2仇人探险 用于如果当前掠夺对象不能掠夺的时候重新刷新一份
+}
+
+//加速
+message c_pet_adventrue_speed_5 {
+	enum Proto {A = 0; MSG = 103; ID = 10005;}
+    int32 grid = 1;     //格子id 0-5
+    int32 count = 2;    //使用的道具个数 多退，少则全用
+}
+
+//公会求助
+message c_pet_adventrue_help_6 {
+	enum Proto {A = 0; MSG = 103; ID = 10006;}
+    int32 grid = 1;         //格子id 0-5
+}
+
+//亲自驱逐
+message c_pet_adventrue_kick_7 {
+	enum Proto {A = 0; MSG = 103; ID = 10007;}
+    int32 grid = 1;         //格子id 0-5
+}
+
+//帮人驱逐
+message c_pet_adven_kick_help_8 {
+	enum Proto {A = 0; MSG = 103; ID = 10008;}
+    int32 aid = 1;      //帮助的人物id
+    int32 grid = 2;     //格子id 0-5
+}
+
+//领取奖励
+message c_pet_adven_award_9 {
+	enum Proto {A = 0; MSG = 103; ID = 10009;}
+    int32 grid = 1;     //格子id 0-5
+}
+
+//领取掠夺奖励
+message c_pet_adven_rob_award_10 {
+	enum Proto {A = 0; MSG = 103; ID = 10010;}
+    int32 aid = 1;      //被掠夺的玩家id
+    int32 grid = 2;     //被掠夺的玩家格子id 0-5
+}
+
+//放弃战斗
+message c_pet_adven_give_up_11 {
+	enum Proto {A = 0; MSG = 103; ID = 10011;}
+}
+
+//离开副本
+message c_pet_adven_leave_12 {
+	enum Proto {A = 0; MSG = 103; ID = 10012;}
+}
+
+//我的掠夺状态更新
+message c_pet_adven_rob_update_13 {
+	enum Proto {A = 0; MSG = 103; ID = 10013;}
+    int32 grid = 1;       //被掠夺的玩家grid 0-5
+    int32 aid = 2;      //被掠夺的玩家id
+}
+
+//我的探险状态更新,掠夺时间到和探险时间到都需要发
+message c_pet_adven_update_14 {
+	enum Proto {A = 0; MSG = 103; ID = 10014;}
+    int32 grid = 1;         //格子id 0-5
+}
+
+//宠物探险打开面板
+message c_pet_adven_open_win_15 {
+	enum Proto {A = 0; MSG = 103; ID = 10015;}
+}
+
+//下发数据
+message s_pet_adventrue_data_1 {
+	enum Proto {A = 0; MSG = 103; ID = 10001;}
+    repeated pet_adventrue_info list = 1;
+}
+
+//下发我的掠夺数据
+message s_pet_adven_rob_data_2 {
+	enum Proto {A = 0; MSG = 103; ID = 10002;}
+    repeated pet_adventrue_rob_item list = 1;
+}
+
+//下发我的掠夺日志
+message s_pet_adven_rob_log_3 {
+	enum Proto {A = 0; MSG = 103; ID = 10003;}
+    int32 isInit = 1;       // 1是 0 不是
+    repeated pet_adventrue_rob_log_item list = 2;       
+}
+
+//下发我的探险日志
+message s_pet_adven_log_4 {
+	enum Proto {A = 0; MSG = 103; ID = 10004;}
+    int32 isInit = 1;       // 1是 0 不是
+    repeated pet_adventrue_log_item list = 2;       
+}
+
+
+//下发可掠夺的他人探险
+message s_other_pet_adven_5 {
+	enum Proto {A = 0; MSG = 103; ID = 10005;}
+    int32 type = 1;         //1 普通探险 2仇人探险
+    repeated pet_other_adventrue_item list = 2;
+}
+
+//删除我的掠夺
+message s_delete_my_rob_6 {
+	enum Proto {A = 0; MSG = 103; ID = 10006;}
+    int32 grid = 1; //被掠夺的玩家grid 0-5
+    int32 aid = 2;  //被掠夺的玩家id
+}
+
+//更新数据
+message s_pet_adventrue_update_7 {
+	enum Proto {A = 0; MSG = 103; ID = 10007;}
+    pet_adventrue_info info = 1;
+}
+
+//更新我的掠夺数据
+message s_pet_adven_rob_update_8 {
+	enum Proto {A = 0; MSG = 103; ID = 10008;}
+    pet_adventrue_rob_item info = 1;   
+}
+
+//删除我的探险
+message s_delete_my_adventrue_9 {
+	enum Proto {A = 0; MSG = 103; ID = 10009;}
+    int32 grid = 1; //格子id 0-5
+}
+
+//公会求助返回
+message s_pet_adven_help_back_10 {
+	enum Proto {A = 0; MSG = 103; ID = 10010;}
+    int32 grid = 1;     //格子id 0-5
+    proto_common.actor_basic info = 2;  
+    string attack = 3;
+    int32 type = 4;
+    proto_common.actor_appear appear = 5;
+}
+
+//探险掠夺驱逐
+message s_pet_adven_kick_enter_fuben_11 {
+	enum Proto {A = 0; MSG = 103; ID = 10011;}
+    string attack = 1;   //对手的攻击力
+    int32 lastTime = 2;         //战斗剩余时间
+}
+
+//驱逐战斗结算返回
+message s_pet_adven_kick_result_12 {
+	enum Proto {A = 0; MSG = 103; ID = 10012;}
+    string name = 1;    //对手名字
+    int32 win = 2;      //是否胜利 1 胜利 2失败
+}
+
+//更新我的掠夺次数
+message s_pet_update_rob_count_13 {
+	enum Proto {A = 0; MSG = 103; ID = 10013;}
+    int32 rob_count = 1;    //今日已掠夺次数
+}
+
+
+
+
+
+
+
+
+
+
+
+

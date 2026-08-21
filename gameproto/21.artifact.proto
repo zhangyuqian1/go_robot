@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+//升级
+message c_artifact_lv_up_1 {
+	enum Proto {A = 0; MSG = 21; ID = 10001;}
+    int32 id = 1;
+}
+
+//升星/激活
+message c_artifact_star_up_2 {
+	enum Proto {A = 0; MSG = 21; ID = 10002;}
+    int32 id = 1;
+    bool replace = 2;
+}
+
+//上阵/下阵
+message c_artifact_fight_3 {
+	enum Proto {A = 0; MSG = 21; ID = 10003;}
+    int32 idx = 1;
+    int32 id = 2;
+}

@@ -1,0 +1,356 @@
+syntax = "proto3";
+import "common.proto";
+
+//有些玩法就一两个消息
+//就放到这个里面
+
+//上传设置内容
+message c_game_setting_1 {
+	enum Proto {A = 0; MSG = 15; ID = 10001;}
+    bytes setting = 1;
+}
+
+//请求排行榜
+message c_get_game_rank_2 {
+	enum Proto {A = 0; MSG = 15; ID = 10002;}
+    int32 type = 1;
+}
+
+//改名
+message c_actor_change_name_3 {
+	enum Proto {A = 0; MSG = 15; ID = 10003;}
+    string name = 1;
+}
+
+//请求传送
+message c_teleport_4 {
+	enum Proto {A = 0; MSG = 15; ID = 10004;}
+    int32 tpid = 1;
+}
+
+//使用礼品卡
+message c_use_gift_card_5 {
+	enum Proto {A = 0; MSG = 15; ID = 10005;}
+    string key = 1;
+}
+
+//领取首充礼包
+message c_get_first_recharge_gift_6 {
+	enum Proto {A = 0; MSG = 15; ID = 10006;}
+    int32 gift_idx = 1;
+    int32 award_idx = 2;
+}
+
+//请求抽奖
+message c_draw_lottery_7 {
+	enum Proto {A = 0; MSG = 15; ID = 10007;}
+    int32 lib = 1;
+    int32 times_idx = 2;
+    bool is_ad = 3;
+}
+
+//天赋节点升级
+message c_talent_big_node_up_8 {
+	enum Proto {A = 0; MSG = 15; ID = 10008;}
+    int32 type = 1; //1-大节点 2-小节点
+    int32 idx = 2;
+}
+
+//藏品升级升星
+message c_collection_up_9 {
+	enum Proto {A = 0; MSG = 15; ID = 10009;}
+    int32 type = 1; //1-升星 2-升级
+    int32 id = 2;
+}
+
+//获取小地图boss信息
+message c_minimap_boss_info_10 {
+	enum Proto {A = 0; MSG = 15; ID = 10010;}
+    int32 sid = 1;
+}
+
+//获取boss面板信息
+message c_boss_panel_info_11 {
+	enum Proto {A = 0; MSG = 15; ID = 10011;}
+    int32 id = 1;
+    int32 group = 2;
+}
+
+//领取纹章组奖励
+message c_get_emblem_award_12 {
+	enum Proto {A = 0; MSG = 15; ID = 10012;}
+}
+
+//装扮穿戴,升级
+message c_dress_up_msg_13 {
+	enum Proto {A = 0; MSG = 15; ID = 10013;}
+    int32 id = 1;   //装扮id
+    int32 type = 2; //1升级,2穿戴,3卸下
+}
+
+//坐骑激活、升星、升级、突破、骑乘/卸下
+message c_ride_action_14 {
+	enum Proto {A = 0; MSG = 15; ID = 10014;}
+	int32 type = 1; //1-升星 2-升级 3-突破 4-骑乘/卸下(id为0卸下 非0则骑乘对应坐骑或者切换) 5-上下阵(id为0下阵)
+    int32 id = 2;	//坐骑id
+}
+
+//坐骑赐福
+message c_ride_bless_15 {
+	enum Proto {A = 0; MSG = 15; ID = 10015;}
+    int32 id = 1;	//赐福级别
+}
+
+//领取七天登录奖励
+message c_get_seven_day_login_award_16 {
+	enum Proto {A = 0; MSG = 15; ID = 10016;}
+}
+
+//请求领取月卡奖励
+message c_get_month_card_reward_17 {
+	enum Proto {A = 0; MSG = 15; ID = 10017;}
+    int32 id = 1;       //id
+}
+
+//请求挂机数据
+message c_get_hangup_data_18 {
+	enum Proto {A = 0; MSG = 15; ID = 10018;}
+}
+
+//领取挂机奖励
+message c_get_hangup_award_19 {
+	enum Proto {A = 0; MSG = 15; ID = 10019;}
+}
+
+//领取深渊基金奖励
+message c_get_abyss_fund_award_20 {
+	enum Proto {A = 0; MSG = 15; ID = 10020;}
+}
+
+//特权任意传送
+message c_use_finger_tel_21 {
+	enum Proto {A = 0; MSG = 15; ID = 10021;}
+    int32 sceneid = 1;
+    int32 posx = 2;
+    int32 posy = 3;
+}
+
+//激活赞助/领取赞助奖励
+message c_sponsor_apply_22 {
+	enum Proto {A = 0; MSG = 15; ID = 10022;}
+    int32 type = 1;     //0激活, 1领取奖励
+    int32 idx = 2;
+}
+
+//领取每日累充奖励
+message c_daily_total_recharge_23 {
+	enum Proto {A = 0; MSG = 15; ID = 10023;}
+    int32 id = 1;     //id
+}
+
+//领取boss首杀奖励
+message c_boss_first_kill_24 {
+	enum Proto {A = 0; MSG = 15; ID = 10024;}
+    int32 boss_id = 1;
+    int32 idx = 2;      //0为全服首杀福利,1为全服个人首杀归属和个人击杀次数奖励
+}
+
+//材料合成
+message c_material_merge_25 {
+	enum Proto {A = 0; MSG = 15; ID = 10025;}
+    int32 id = 1;
+    int32 idx = 2;
+    int32 cnt = 3;
+}
+
+//领取假累充奖励
+message c_get_fake_recharge_award_26 {
+	enum Proto {A = 0; MSG = 15; ID = 10026;}
+    int32 idx = 1;
+}
+
+//跨服返回本服
+message c_cross_to_raw_srv_27 {
+	enum Proto {A = 0; MSG = 15; ID = 10027;}
+}
+
+//开宝箱
+message c_open_treasure_box_28 {
+	enum Proto {A = 0; MSG = 15; ID = 10028;}
+    int32 type = 1;
+}
+
+//领取宝箱
+message c_get_treasure_box_29 {
+	enum Proto {A = 0; MSG = 15; ID = 10029;}
+    int32 type = 1;         //类型为1 则是一个一个领取 类型为0则一起领取
+}
+
+//领取超值直购礼包
+message c_get_open_day_buy_gift_award_30 {
+	enum Proto {A = 0; MSG = 15; ID = 10030;}
+    int32 id = 1;
+}
+
+//获取boss首杀数据
+message c_get_boss_first_kill_data_31 {
+	enum Proto {A = 0; MSG = 15; ID = 10031;}
+}
+
+//消耗激活特权
+message c_activity_privilege_32 {
+	enum Proto {A = 0; MSG = 15; ID = 10032;}
+    int32 id = 1;
+}
+
+//开始看广告
+message c_start_see_asd_33 {
+	enum Proto {A = 0; MSG = 15; ID = 10033;}
+    int32 id = 1;
+}
+
+//结束看广告
+message c_end_see_asd_34 {
+	enum Proto {A = 0; MSG = 15; ID = 10034;}
+    int32 id = 1;
+}
+
+//领取成长好礼
+message c_grow_up_award_35 {
+	enum Proto {A = 0; MSG = 15; ID = 10035;}
+    int32 type = 1;         //类型 1坐骑 2宠物 3远征
+}
+
+//使用丹药
+message c_user_elixir_36 {
+	enum Proto {A = 0; MSG = 15; ID = 10036;}
+    int32 id = 1;
+}
+
+///////////////////////////////////////
+
+
+//通知被T下线
+message s_kick_actor_1 {
+	enum Proto {A = 0; MSG = 15; ID = 10001;}
+}
+
+//下发服务器时间
+message s_sync_server_time_2 {
+	enum Proto {A = 0; MSG = 15; ID = 10002;}
+    int32 cur_time = 1;
+    int32 open_time = 2;
+    bool new_day = 3;
+}
+
+//下发设置内容
+message s_game_setting_3 {
+	enum Proto {A = 0; MSG = 15; ID = 10003;}
+    bytes setting = 1;
+}
+
+//下发游戏排行榜
+message s_game_rank_4 {
+	enum Proto {A = 0; MSG = 15; ID = 10004;}
+    int32 type = 1;
+    //...
+}
+
+//推送活动状态
+message s_activity_status_5 {
+	enum Proto {A = 0; MSG = 15; ID = 10005;}
+    message act {
+        int32 id = 1;
+        int32 status = 2;
+        int32 open_time = 3;
+        int32 close_time = 4;
+        int32 progress = 5;
+        int32 param = 6;
+    }
+
+    repeated act acts = 1;
+}
+
+//推送活动进度
+message s_activity_progress_6 {
+	enum Proto {A = 0; MSG = 15; ID = 10006;}
+    int32 id = 1;
+    int32 progress = 2;
+}
+
+//通用奖励推送
+message s_common_show_awards_7 {
+	enum Proto {A = 0; MSG = 15; ID = 10007;}
+    int32 show_type = 1;
+    repeated proto_common.AwardInfo awards = 2;
+}
+
+//下发小地图boss信息
+message s_minimap_boss_info_8 {
+	enum Proto {A = 0; MSG = 15; ID = 10008;}
+    message info {
+        int32 x = 1;
+        int32 y = 2;
+        int32 id = 3;
+        int32 relive = 4;       //复活时长,0为存活状态
+    }
+
+    int32 sid = 1;
+    repeated info bosses = 2;
+}
+//boss面板信息
+message s_boss_panel_info_9 {
+	enum Proto {A = 0; MSG = 15; ID = 10009;}
+    message one_boss {
+        int32 sid = 1;
+        int32 relive = 2;
+    }
+    message one_label {
+        int32 mid = 1;
+        repeated one_boss bosses = 2;
+    }
+    int32 id = 1;
+    int32 group = 4;
+    repeated one_label labels = 2;
+}
+//推送boss死亡复活信息
+message s_boss_state_chage_10 {
+	enum Proto {A = 0; MSG = 15; ID = 10010;}
+    int32 sid = 1;
+    int32 mid = 2;
+    int32 x = 3;
+    int32 y = 4;
+    int32 relive = 5;
+}
+
+//请求传送返回
+message s_teleport_11 {
+	enum Proto {A = 0; MSG = 15; ID = 10011;}
+    int32 tpid = 1;
+}
+
+//下发boss首杀数据
+message s_boss_first_kill_12 {
+	enum Proto {A = 0; MSG = 15; ID = 10012;}
+    message info {
+        int32 boss_id = 1;
+        bool is_get = 2;    //击杀者是否领取了
+        proto_common.actor_basic actor = 3;
+        int32 tick = 4;
+    }
+
+    repeated info list = 1;
+}
+
+//材料合成成功
+message s_material_merge_success_23 {
+	enum Proto {A = 0; MSG = 15; ID = 10023;}
+    int32 id = 1;
+    int32 idx = 2;
+}
+
+//调查问卷完成状态
+message s_survey_flag_24 {
+	enum Proto {A = 0; MSG = 15; ID = 10024;}
+    int32 flag = 1;
+}

@@ -1,0 +1,131 @@
+syntax = "proto3";
+//import "common.proto";
+
+//跨服离线战斗技能数据
+message db_cross_skill_data {
+    int32 skill_id = 1;     //技能id
+    int32 star = 2;         //星级
+    int32 grid = 3;         //格子位置
+    int32 flag = 4;         //标志
+}
+
+//跨服战斗数据
+message db_proto_fight_data {
+    int64 hp = 1;       //总血量
+    repeated db_cross_skill_data skills = 2;   //主动技能
+    repeated int32 passive_skill = 3;       //被动技能
+    repeated int64 attrs = 4;               //角色属性
+}
+
+
+//宠物数据
+message db_pet_adventrue_pet_data {
+    int32 petId = 1;            //宠物实例id
+    int32 id = 2;               //宠物配置id
+}
+
+//探险数据
+message db_pet_adventrue_item {
+    int32 idx = 1;          //格子id
+    int32 type = 2;         //探险类型
+    int32 state = 3;        //格子状态 0 正常 1 被掠夺过
+    int32 lost = 4;         //格子损失 0 没有损失 1 有损失
+    int32 time = 5;         //到期时间，服务器短时间戳
+    int32 aid = 6;          //掠夺方id
+    int32 rob_time = 7;     //掠夺到期时间
+    repeated db_pet_adventrue_pet_data list = 8;   //宠物数据
+}
+
+//掠夺数据
+message db_pet_adventrue_rob_item {
+    int32 aid = 1;      //探险方id
+    int32 idx = 2;      //格子id
+    int32 type = 3;     //探险类型
+    int32 state = 4;    //掠夺成功与否 0 没有掠夺成功 1 掠夺成功
+    int32 time = 5;     //掠夺成功到期时间，服务器短时间戳	
+}
+
+//宠物探险敌人数据
+message db_pet_adventrue_enemy_item {
+    int32 aid = 1;          //敌人id
+    int32 anger = 2;        //敌人仇恨值
+    int32 time = 3;         //数据变化最新时间
+}
+
+//掠夺记录
+message db_pet_adventrue_rob_record {
+    int32 aid = 1;      //探险方id
+    string name = 2;    //探险方名字
+    int32 type = 3;     //探险类型
+    int32 lost = 4;     //格子损失 0 没有损失 1 有损失
+}
+
+//探险记录
+message db_pet_adventrue_record {
+    int32 type = 1;     //探险类型
+    int32 lost = 2;     //格子损失 0 没有损失 1 有损失
+    int32 aid = 3;      //掠夺者id
+    string name = 4;    //掠夺者名字
+    int32 lv = 5;       //掠夺者等级
+    int32 icon = 6;     //掠夺者头像
+    int32 icon_frame = 7;   //掠夺者头像框
+}
+
+//宠物探险db数据
+message db_pet_adventrue_data {
+    int32 recordidx = 1;            //记录idx
+    int32 robidx = 2;               //掠夺记录idx
+    int32 robCount = 3;             //掠夺次数
+    repeated db_pet_adventrue_item list = 4;       //探险数据
+    repeated db_pet_adventrue_rob_item robs = 5;      //掠夺数据
+    repeated db_pet_adventrue_enemy_item enemys = 6;       //敌人数据
+    repeated db_pet_adventrue_rob_record rob_records = 7;  //掠夺记录
+    repeated db_pet_adventrue_record records = 8;      //探险记录
+}
+
+
+//星火远征格子数据
+message db_spark_expedition_grid {
+    int32 idx = 1;      //格子索引
+    int32 owner = 2;    //拥有者阵容 为0表示没有拥有者 1表示阵营1拥有 2表示阵营2拥有
+    int32 type = 3;     //格子事件类型 0没有 1 任务 2建筑 3副本boss
+    int32 id = 4;       //分别对应 任务id，建筑id， bossidx
+    int32 param = 5;    // 12为玩家id 3为bossid
+    int32 param1 = 6;   // 1任务到期时间
+    int32 param2 = 7;   // 1奖励状态 0 不可领取 1可以领取
+}
+
+//星火远征服务器数据
+message db_spark_expedition_server {
+    int32 server = 1;           //服务器id
+    repeated int32 builds = 2;      //已生成的建筑数量
+    repeated int32 bosses = 3;      //已生成的boss数量
+}
+
+//星火远征boss数据
+message db_spark_expedition_boss {
+    int32 idx = 1;      //第几个boss场景
+    int32 id = 2;       //建筑id
+    int32 aid = 3;      //击杀boss的归属玩家
+    int32 server = 4;   //归属服务器id
+}
+
+//单个远征数据
+message db_spark_expedition_game {
+    int32 game = 1;     //第几场
+    repeated db_spark_expedition_boss bosses = 2;      //场景boss数据
+    repeated db_spark_expedition_server servers = 3;   //服务器数据
+    repeated db_spark_expedition_grid grids = 4;       //格子数据
+}
+
+//星火远征个人数据
+message db_spark_expedition_actor_data {
+    int32 aid = 1;      //玩家id
+    int32 energy = 2;       //今日已用体力
+    int32 srv = 3;          //服务器id
+    int32 eventCount = 4;   //探索次数
+    int32 protect = 5;      // 0未触发，第保护次需要保护，1 已触发，不用保护
+    repeated int32 taskFinish = 6;      //任务完成数据
+    repeated int32 taskProgress = 7;    //任务进度数据
+}
+
