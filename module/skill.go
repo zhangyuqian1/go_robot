@@ -1,6 +1,7 @@
 package module
 
 import (
+	"fmt"
 	"stressTest/gameproto/skill"
 	"stressTest/logger"
 
@@ -8,14 +9,16 @@ import (
 )
 
 const (
-	SkillSys   byte = 5   // 技能系统号
+	SkillSys    byte = 5   // 技能系统号
 	skill_draw  byte = 105 // c_skill_draw_105 技能抽卡
 	skill_data  byte = 100 // s_skill_data_100 下发技能信息
 	skill_fight byte = 101 // s_skill_on_fight_101 通知技能上阵
 	skill_del   byte = 104 // s_skill_delete_104 删除技能
 
-	drawRequestName       = "CSkillDraw"
-	drawRequestTimeout    int64 = 10
+	excludeSkillID int32 = 1012 // 需要排除的技能 id
+
+	drawRequestName          = "CSkillDraw"
+	drawRequestTimeout int64 = 10
 )
 
 // SkillState 缓存的技能运行态数据
@@ -74,10 +77,12 @@ func (r *Robot) handleSkillData(body []byte) {
 		if r.Client.Skills == nil {
 			r.Client.Skills = make(map[int32]*SkillState)
 		}
+		receivedIDs := make([]int32, 0, len(resp.GetSkills()))
 		for _, info := range resp.GetSkills() {
 			if info.GetId() == 0 {
 				continue
 			}
+			receivedIDs = append(receivedIDs, info.GetId())
 			r.Client.Skills[info.GetId()] = &SkillState{
 				ID:         info.GetId(),
 				Level:      info.GetLv(),
@@ -87,7 +92,12 @@ func (r *Robot) handleSkillData(body []byte) {
 				MaxQuality: info.GetMaxQuality(),
 				Flag:       info.GetFlag(),
 			}
+			// 记录穿戴武器后收到的技能中 id 非 1012 且最小的那个
+			if info.GetId() != excludeSkillID && (r.Client.MinSkillID == 0 || info.GetId() < r.Client.MinSkillID) {
+				r.Client.MinSkillID = info.GetId()
+			}
 		}
+		logger.Error(fmt.Sprintf("s_skill_data_100 本次回调收到技能 ids: %v", receivedIDs))
 	}
 	r.AsyncFire(drawRequestName, int64(len(body)), STEP_SUCC, 0)
 }

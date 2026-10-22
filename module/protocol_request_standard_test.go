@@ -41,6 +41,7 @@ func TestProtocolRequestsRemoveMarkOnSendFailure(t *testing.T) {
 		{name: "arena info", requestName: arenaInfoRequestName, send: func(r *Robot) { r.CArenaInfo() }},
 		{name: "arena list", requestName: arenaListRequestName, send: func(r *Robot) { r.CArenaPkList() }},
 		{name: "arena fight", requestName: arenaFightRequestName, send: func(r *Robot) { r.CArenaFight(1) }},
+		{name: "chaos battlefield enter", requestName: chaosBattleFieldEnterRequestName, send: func(r *Robot) { r.CChaosBattleFieldEnter() }},
 		{name: "gm chat", requestName: gmSendChatRequestName, send: func(r *Robot) { r.CSendChatMsg(1, "gm") }},
 	}
 

@@ -22,6 +22,1476 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type CTeamCreate_1_Proto int32
+
+const (
+	CTeamCreate_1_A   CTeamCreate_1_Proto = 0
+	CTeamCreate_1_MSG CTeamCreate_1_Proto = 20
+	CTeamCreate_1_ID  CTeamCreate_1_Proto = 10001
+)
+
+// Enum value maps for CTeamCreate_1_Proto.
+var (
+	CTeamCreate_1_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10001: "ID",
+	}
+	CTeamCreate_1_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10001,
+	}
+)
+
+func (x CTeamCreate_1_Proto) Enum() *CTeamCreate_1_Proto {
+	p := new(CTeamCreate_1_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamCreate_1_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamCreate_1_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[0].Descriptor()
+}
+
+func (CTeamCreate_1_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[0]
+}
+
+func (x CTeamCreate_1_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamCreate_1_Proto.Descriptor instead.
+func (CTeamCreate_1_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{4, 0}
+}
+
+type CTeamInvate_2_Proto int32
+
+const (
+	CTeamInvate_2_A   CTeamInvate_2_Proto = 0
+	CTeamInvate_2_MSG CTeamInvate_2_Proto = 20
+	CTeamInvate_2_ID  CTeamInvate_2_Proto = 10002
+)
+
+// Enum value maps for CTeamInvate_2_Proto.
+var (
+	CTeamInvate_2_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10002: "ID",
+	}
+	CTeamInvate_2_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10002,
+	}
+)
+
+func (x CTeamInvate_2_Proto) Enum() *CTeamInvate_2_Proto {
+	p := new(CTeamInvate_2_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamInvate_2_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamInvate_2_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[1].Descriptor()
+}
+
+func (CTeamInvate_2_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[1]
+}
+
+func (x CTeamInvate_2_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamInvate_2_Proto.Descriptor instead.
+func (CTeamInvate_2_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{5, 0}
+}
+
+type CTeamApply_3_Proto int32
+
+const (
+	CTeamApply_3_A   CTeamApply_3_Proto = 0
+	CTeamApply_3_MSG CTeamApply_3_Proto = 20
+	CTeamApply_3_ID  CTeamApply_3_Proto = 10003
+)
+
+// Enum value maps for CTeamApply_3_Proto.
+var (
+	CTeamApply_3_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10003: "ID",
+	}
+	CTeamApply_3_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10003,
+	}
+)
+
+func (x CTeamApply_3_Proto) Enum() *CTeamApply_3_Proto {
+	p := new(CTeamApply_3_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamApply_3_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamApply_3_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[2].Descriptor()
+}
+
+func (CTeamApply_3_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[2]
+}
+
+func (x CTeamApply_3_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamApply_3_Proto.Descriptor instead.
+func (CTeamApply_3_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{6, 0}
+}
+
+type CTeamRemove_4_Proto int32
+
+const (
+	CTeamRemove_4_A   CTeamRemove_4_Proto = 0
+	CTeamRemove_4_MSG CTeamRemove_4_Proto = 20
+	CTeamRemove_4_ID  CTeamRemove_4_Proto = 10004
+)
+
+// Enum value maps for CTeamRemove_4_Proto.
+var (
+	CTeamRemove_4_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10004: "ID",
+	}
+	CTeamRemove_4_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10004,
+	}
+)
+
+func (x CTeamRemove_4_Proto) Enum() *CTeamRemove_4_Proto {
+	p := new(CTeamRemove_4_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamRemove_4_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamRemove_4_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[3].Descriptor()
+}
+
+func (CTeamRemove_4_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[3]
+}
+
+func (x CTeamRemove_4_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamRemove_4_Proto.Descriptor instead.
+func (CTeamRemove_4_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{7, 0}
+}
+
+type CTeamLeft_5_Proto int32
+
+const (
+	CTeamLeft_5_A   CTeamLeft_5_Proto = 0
+	CTeamLeft_5_MSG CTeamLeft_5_Proto = 20
+	CTeamLeft_5_ID  CTeamLeft_5_Proto = 10005
+)
+
+// Enum value maps for CTeamLeft_5_Proto.
+var (
+	CTeamLeft_5_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10005: "ID",
+	}
+	CTeamLeft_5_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10005,
+	}
+)
+
+func (x CTeamLeft_5_Proto) Enum() *CTeamLeft_5_Proto {
+	p := new(CTeamLeft_5_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamLeft_5_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamLeft_5_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[4].Descriptor()
+}
+
+func (CTeamLeft_5_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[4]
+}
+
+func (x CTeamLeft_5_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamLeft_5_Proto.Descriptor instead.
+func (CTeamLeft_5_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{8, 0}
+}
+
+type CTeamRelease_6_Proto int32
+
+const (
+	CTeamRelease_6_A   CTeamRelease_6_Proto = 0
+	CTeamRelease_6_MSG CTeamRelease_6_Proto = 20
+	CTeamRelease_6_ID  CTeamRelease_6_Proto = 10006
+)
+
+// Enum value maps for CTeamRelease_6_Proto.
+var (
+	CTeamRelease_6_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10006: "ID",
+	}
+	CTeamRelease_6_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10006,
+	}
+)
+
+func (x CTeamRelease_6_Proto) Enum() *CTeamRelease_6_Proto {
+	p := new(CTeamRelease_6_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamRelease_6_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamRelease_6_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[5].Descriptor()
+}
+
+func (CTeamRelease_6_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[5]
+}
+
+func (x CTeamRelease_6_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamRelease_6_Proto.Descriptor instead.
+func (CTeamRelease_6_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{9, 0}
+}
+
+type CTeamLeaderChange_7_Proto int32
+
+const (
+	CTeamLeaderChange_7_A   CTeamLeaderChange_7_Proto = 0
+	CTeamLeaderChange_7_MSG CTeamLeaderChange_7_Proto = 20
+	CTeamLeaderChange_7_ID  CTeamLeaderChange_7_Proto = 10007
+)
+
+// Enum value maps for CTeamLeaderChange_7_Proto.
+var (
+	CTeamLeaderChange_7_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10007: "ID",
+	}
+	CTeamLeaderChange_7_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10007,
+	}
+)
+
+func (x CTeamLeaderChange_7_Proto) Enum() *CTeamLeaderChange_7_Proto {
+	p := new(CTeamLeaderChange_7_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamLeaderChange_7_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamLeaderChange_7_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[6].Descriptor()
+}
+
+func (CTeamLeaderChange_7_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[6]
+}
+
+func (x CTeamLeaderChange_7_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamLeaderChange_7_Proto.Descriptor instead.
+func (CTeamLeaderChange_7_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{10, 0}
+}
+
+type CTeamChatInvate_8_Proto int32
+
+const (
+	CTeamChatInvate_8_A   CTeamChatInvate_8_Proto = 0
+	CTeamChatInvate_8_MSG CTeamChatInvate_8_Proto = 20
+	CTeamChatInvate_8_ID  CTeamChatInvate_8_Proto = 10008
+)
+
+// Enum value maps for CTeamChatInvate_8_Proto.
+var (
+	CTeamChatInvate_8_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10008: "ID",
+	}
+	CTeamChatInvate_8_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10008,
+	}
+)
+
+func (x CTeamChatInvate_8_Proto) Enum() *CTeamChatInvate_8_Proto {
+	p := new(CTeamChatInvate_8_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamChatInvate_8_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamChatInvate_8_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[7].Descriptor()
+}
+
+func (CTeamChatInvate_8_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[7]
+}
+
+func (x CTeamChatInvate_8_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamChatInvate_8_Proto.Descriptor instead.
+func (CTeamChatInvate_8_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{11, 0}
+}
+
+type CTeamSetting_9_Proto int32
+
+const (
+	CTeamSetting_9_A   CTeamSetting_9_Proto = 0
+	CTeamSetting_9_MSG CTeamSetting_9_Proto = 20
+	CTeamSetting_9_ID  CTeamSetting_9_Proto = 10009
+)
+
+// Enum value maps for CTeamSetting_9_Proto.
+var (
+	CTeamSetting_9_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10009: "ID",
+	}
+	CTeamSetting_9_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10009,
+	}
+)
+
+func (x CTeamSetting_9_Proto) Enum() *CTeamSetting_9_Proto {
+	p := new(CTeamSetting_9_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamSetting_9_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamSetting_9_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[8].Descriptor()
+}
+
+func (CTeamSetting_9_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[8]
+}
+
+func (x CTeamSetting_9_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamSetting_9_Proto.Descriptor instead.
+func (CTeamSetting_9_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{12, 0}
+}
+
+type CTeamRefreshActor_10_Proto int32
+
+const (
+	CTeamRefreshActor_10_A   CTeamRefreshActor_10_Proto = 0
+	CTeamRefreshActor_10_MSG CTeamRefreshActor_10_Proto = 20
+	CTeamRefreshActor_10_ID  CTeamRefreshActor_10_Proto = 10010
+)
+
+// Enum value maps for CTeamRefreshActor_10_Proto.
+var (
+	CTeamRefreshActor_10_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10010: "ID",
+	}
+	CTeamRefreshActor_10_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10010,
+	}
+)
+
+func (x CTeamRefreshActor_10_Proto) Enum() *CTeamRefreshActor_10_Proto {
+	p := new(CTeamRefreshActor_10_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamRefreshActor_10_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamRefreshActor_10_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[9].Descriptor()
+}
+
+func (CTeamRefreshActor_10_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[9]
+}
+
+func (x CTeamRefreshActor_10_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamRefreshActor_10_Proto.Descriptor instead.
+func (CTeamRefreshActor_10_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{13, 0}
+}
+
+type CTeamUpdateHp_11_Proto int32
+
+const (
+	CTeamUpdateHp_11_A   CTeamUpdateHp_11_Proto = 0
+	CTeamUpdateHp_11_MSG CTeamUpdateHp_11_Proto = 20
+	CTeamUpdateHp_11_ID  CTeamUpdateHp_11_Proto = 10011
+)
+
+// Enum value maps for CTeamUpdateHp_11_Proto.
+var (
+	CTeamUpdateHp_11_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10011: "ID",
+	}
+	CTeamUpdateHp_11_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10011,
+	}
+)
+
+func (x CTeamUpdateHp_11_Proto) Enum() *CTeamUpdateHp_11_Proto {
+	p := new(CTeamUpdateHp_11_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamUpdateHp_11_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamUpdateHp_11_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[10].Descriptor()
+}
+
+func (CTeamUpdateHp_11_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[10]
+}
+
+func (x CTeamUpdateHp_11_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamUpdateHp_11_Proto.Descriptor instead.
+func (CTeamUpdateHp_11_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{14, 0}
+}
+
+type CTeamApplyResult_12_Proto int32
+
+const (
+	CTeamApplyResult_12_A   CTeamApplyResult_12_Proto = 0
+	CTeamApplyResult_12_MSG CTeamApplyResult_12_Proto = 20
+	CTeamApplyResult_12_ID  CTeamApplyResult_12_Proto = 10012
+)
+
+// Enum value maps for CTeamApplyResult_12_Proto.
+var (
+	CTeamApplyResult_12_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10012: "ID",
+	}
+	CTeamApplyResult_12_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10012,
+	}
+)
+
+func (x CTeamApplyResult_12_Proto) Enum() *CTeamApplyResult_12_Proto {
+	p := new(CTeamApplyResult_12_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamApplyResult_12_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamApplyResult_12_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[11].Descriptor()
+}
+
+func (CTeamApplyResult_12_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[11]
+}
+
+func (x CTeamApplyResult_12_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamApplyResult_12_Proto.Descriptor instead.
+func (CTeamApplyResult_12_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{15, 0}
+}
+
+type CTeamInvateResult_13_Proto int32
+
+const (
+	CTeamInvateResult_13_A   CTeamInvateResult_13_Proto = 0
+	CTeamInvateResult_13_MSG CTeamInvateResult_13_Proto = 20
+	CTeamInvateResult_13_ID  CTeamInvateResult_13_Proto = 10013
+)
+
+// Enum value maps for CTeamInvateResult_13_Proto.
+var (
+	CTeamInvateResult_13_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10013: "ID",
+	}
+	CTeamInvateResult_13_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10013,
+	}
+)
+
+func (x CTeamInvateResult_13_Proto) Enum() *CTeamInvateResult_13_Proto {
+	p := new(CTeamInvateResult_13_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamInvateResult_13_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamInvateResult_13_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[12].Descriptor()
+}
+
+func (CTeamInvateResult_13_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[12]
+}
+
+func (x CTeamInvateResult_13_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamInvateResult_13_Proto.Descriptor instead.
+func (CTeamInvateResult_13_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{16, 0}
+}
+
+type CTeamGetActorList_14_Proto int32
+
+const (
+	CTeamGetActorList_14_A   CTeamGetActorList_14_Proto = 0
+	CTeamGetActorList_14_MSG CTeamGetActorList_14_Proto = 20
+	CTeamGetActorList_14_ID  CTeamGetActorList_14_Proto = 10014
+)
+
+// Enum value maps for CTeamGetActorList_14_Proto.
+var (
+	CTeamGetActorList_14_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10014: "ID",
+	}
+	CTeamGetActorList_14_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10014,
+	}
+)
+
+func (x CTeamGetActorList_14_Proto) Enum() *CTeamGetActorList_14_Proto {
+	p := new(CTeamGetActorList_14_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamGetActorList_14_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamGetActorList_14_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[13].Descriptor()
+}
+
+func (CTeamGetActorList_14_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[13]
+}
+
+func (x CTeamGetActorList_14_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamGetActorList_14_Proto.Descriptor instead.
+func (CTeamGetActorList_14_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{17, 0}
+}
+
+type CTeamGetTeamList_15_Proto int32
+
+const (
+	CTeamGetTeamList_15_A   CTeamGetTeamList_15_Proto = 0
+	CTeamGetTeamList_15_MSG CTeamGetTeamList_15_Proto = 20
+	CTeamGetTeamList_15_ID  CTeamGetTeamList_15_Proto = 10015
+)
+
+// Enum value maps for CTeamGetTeamList_15_Proto.
+var (
+	CTeamGetTeamList_15_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10015: "ID",
+	}
+	CTeamGetTeamList_15_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10015,
+	}
+)
+
+func (x CTeamGetTeamList_15_Proto) Enum() *CTeamGetTeamList_15_Proto {
+	p := new(CTeamGetTeamList_15_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamGetTeamList_15_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamGetTeamList_15_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[14].Descriptor()
+}
+
+func (CTeamGetTeamList_15_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[14]
+}
+
+func (x CTeamGetTeamList_15_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamGetTeamList_15_Proto.Descriptor instead.
+func (CTeamGetTeamList_15_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{18, 0}
+}
+
+type CTeamDungeonMatch_16_Proto int32
+
+const (
+	CTeamDungeonMatch_16_A   CTeamDungeonMatch_16_Proto = 0
+	CTeamDungeonMatch_16_MSG CTeamDungeonMatch_16_Proto = 20
+	CTeamDungeonMatch_16_ID  CTeamDungeonMatch_16_Proto = 10016
+)
+
+// Enum value maps for CTeamDungeonMatch_16_Proto.
+var (
+	CTeamDungeonMatch_16_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10016: "ID",
+	}
+	CTeamDungeonMatch_16_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10016,
+	}
+)
+
+func (x CTeamDungeonMatch_16_Proto) Enum() *CTeamDungeonMatch_16_Proto {
+	p := new(CTeamDungeonMatch_16_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamDungeonMatch_16_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamDungeonMatch_16_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[15].Descriptor()
+}
+
+func (CTeamDungeonMatch_16_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[15]
+}
+
+func (x CTeamDungeonMatch_16_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamDungeonMatch_16_Proto.Descriptor instead.
+func (CTeamDungeonMatch_16_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{19, 0}
+}
+
+type CTeamDungeonReplay_19_Proto int32
+
+const (
+	CTeamDungeonReplay_19_A   CTeamDungeonReplay_19_Proto = 0
+	CTeamDungeonReplay_19_MSG CTeamDungeonReplay_19_Proto = 20
+	CTeamDungeonReplay_19_ID  CTeamDungeonReplay_19_Proto = 10019
+)
+
+// Enum value maps for CTeamDungeonReplay_19_Proto.
+var (
+	CTeamDungeonReplay_19_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10019: "ID",
+	}
+	CTeamDungeonReplay_19_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10019,
+	}
+)
+
+func (x CTeamDungeonReplay_19_Proto) Enum() *CTeamDungeonReplay_19_Proto {
+	p := new(CTeamDungeonReplay_19_Proto)
+	*p = x
+	return p
+}
+
+func (x CTeamDungeonReplay_19_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CTeamDungeonReplay_19_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[16].Descriptor()
+}
+
+func (CTeamDungeonReplay_19_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[16]
+}
+
+func (x CTeamDungeonReplay_19_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CTeamDungeonReplay_19_Proto.Descriptor instead.
+func (CTeamDungeonReplay_19_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{20, 0}
+}
+
+type STeamDungeonMatchSuccess_14_Proto int32
+
+const (
+	STeamDungeonMatchSuccess_14_A   STeamDungeonMatchSuccess_14_Proto = 0
+	STeamDungeonMatchSuccess_14_MSG STeamDungeonMatchSuccess_14_Proto = 20
+	STeamDungeonMatchSuccess_14_ID  STeamDungeonMatchSuccess_14_Proto = 10014
+)
+
+// Enum value maps for STeamDungeonMatchSuccess_14_Proto.
+var (
+	STeamDungeonMatchSuccess_14_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10014: "ID",
+	}
+	STeamDungeonMatchSuccess_14_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10014,
+	}
+)
+
+func (x STeamDungeonMatchSuccess_14_Proto) Enum() *STeamDungeonMatchSuccess_14_Proto {
+	p := new(STeamDungeonMatchSuccess_14_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamDungeonMatchSuccess_14_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamDungeonMatchSuccess_14_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[17].Descriptor()
+}
+
+func (STeamDungeonMatchSuccess_14_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[17]
+}
+
+func (x STeamDungeonMatchSuccess_14_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamDungeonMatchSuccess_14_Proto.Descriptor instead.
+func (STeamDungeonMatchSuccess_14_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{21, 0}
+}
+
+type STeamInfo_1_Proto int32
+
+const (
+	STeamInfo_1_A   STeamInfo_1_Proto = 0
+	STeamInfo_1_MSG STeamInfo_1_Proto = 20
+	STeamInfo_1_ID  STeamInfo_1_Proto = 10001
+)
+
+// Enum value maps for STeamInfo_1_Proto.
+var (
+	STeamInfo_1_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10001: "ID",
+	}
+	STeamInfo_1_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10001,
+	}
+)
+
+func (x STeamInfo_1_Proto) Enum() *STeamInfo_1_Proto {
+	p := new(STeamInfo_1_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamInfo_1_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamInfo_1_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[18].Descriptor()
+}
+
+func (STeamInfo_1_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[18]
+}
+
+func (x STeamInfo_1_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamInfo_1_Proto.Descriptor instead.
+func (STeamInfo_1_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{22, 0}
+}
+
+type STeamActorInfo_2_Proto int32
+
+const (
+	STeamActorInfo_2_A   STeamActorInfo_2_Proto = 0
+	STeamActorInfo_2_MSG STeamActorInfo_2_Proto = 20
+	STeamActorInfo_2_ID  STeamActorInfo_2_Proto = 10002
+)
+
+// Enum value maps for STeamActorInfo_2_Proto.
+var (
+	STeamActorInfo_2_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10002: "ID",
+	}
+	STeamActorInfo_2_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10002,
+	}
+)
+
+func (x STeamActorInfo_2_Proto) Enum() *STeamActorInfo_2_Proto {
+	p := new(STeamActorInfo_2_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamActorInfo_2_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamActorInfo_2_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[19].Descriptor()
+}
+
+func (STeamActorInfo_2_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[19]
+}
+
+func (x STeamActorInfo_2_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamActorInfo_2_Proto.Descriptor instead.
+func (STeamActorInfo_2_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{23, 0}
+}
+
+type STeamLeaveNotice_3_Proto int32
+
+const (
+	STeamLeaveNotice_3_A   STeamLeaveNotice_3_Proto = 0
+	STeamLeaveNotice_3_MSG STeamLeaveNotice_3_Proto = 20
+	STeamLeaveNotice_3_ID  STeamLeaveNotice_3_Proto = 10003
+)
+
+// Enum value maps for STeamLeaveNotice_3_Proto.
+var (
+	STeamLeaveNotice_3_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10003: "ID",
+	}
+	STeamLeaveNotice_3_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10003,
+	}
+)
+
+func (x STeamLeaveNotice_3_Proto) Enum() *STeamLeaveNotice_3_Proto {
+	p := new(STeamLeaveNotice_3_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamLeaveNotice_3_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamLeaveNotice_3_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[20].Descriptor()
+}
+
+func (STeamLeaveNotice_3_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[20]
+}
+
+func (x STeamLeaveNotice_3_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamLeaveNotice_3_Proto.Descriptor instead.
+func (STeamLeaveNotice_3_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{24, 0}
+}
+
+type STeamNoticeInvate_4_Proto int32
+
+const (
+	STeamNoticeInvate_4_A   STeamNoticeInvate_4_Proto = 0
+	STeamNoticeInvate_4_MSG STeamNoticeInvate_4_Proto = 20
+	STeamNoticeInvate_4_ID  STeamNoticeInvate_4_Proto = 10004
+)
+
+// Enum value maps for STeamNoticeInvate_4_Proto.
+var (
+	STeamNoticeInvate_4_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10004: "ID",
+	}
+	STeamNoticeInvate_4_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10004,
+	}
+)
+
+func (x STeamNoticeInvate_4_Proto) Enum() *STeamNoticeInvate_4_Proto {
+	p := new(STeamNoticeInvate_4_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamNoticeInvate_4_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamNoticeInvate_4_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[21].Descriptor()
+}
+
+func (STeamNoticeInvate_4_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[21]
+}
+
+func (x STeamNoticeInvate_4_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamNoticeInvate_4_Proto.Descriptor instead.
+func (STeamNoticeInvate_4_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{25, 0}
+}
+
+type STeamSetting_5_Proto int32
+
+const (
+	STeamSetting_5_A   STeamSetting_5_Proto = 0
+	STeamSetting_5_MSG STeamSetting_5_Proto = 20
+	STeamSetting_5_ID  STeamSetting_5_Proto = 10005
+)
+
+// Enum value maps for STeamSetting_5_Proto.
+var (
+	STeamSetting_5_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10005: "ID",
+	}
+	STeamSetting_5_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10005,
+	}
+)
+
+func (x STeamSetting_5_Proto) Enum() *STeamSetting_5_Proto {
+	p := new(STeamSetting_5_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamSetting_5_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamSetting_5_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[22].Descriptor()
+}
+
+func (STeamSetting_5_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[22]
+}
+
+func (x STeamSetting_5_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamSetting_5_Proto.Descriptor instead.
+func (STeamSetting_5_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{26, 0}
+}
+
+type STeamBasicInfoList_6_Proto int32
+
+const (
+	STeamBasicInfoList_6_A   STeamBasicInfoList_6_Proto = 0
+	STeamBasicInfoList_6_MSG STeamBasicInfoList_6_Proto = 20
+	STeamBasicInfoList_6_ID  STeamBasicInfoList_6_Proto = 10006
+)
+
+// Enum value maps for STeamBasicInfoList_6_Proto.
+var (
+	STeamBasicInfoList_6_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10006: "ID",
+	}
+	STeamBasicInfoList_6_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10006,
+	}
+)
+
+func (x STeamBasicInfoList_6_Proto) Enum() *STeamBasicInfoList_6_Proto {
+	p := new(STeamBasicInfoList_6_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamBasicInfoList_6_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamBasicInfoList_6_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[23].Descriptor()
+}
+
+func (STeamBasicInfoList_6_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[23]
+}
+
+func (x STeamBasicInfoList_6_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamBasicInfoList_6_Proto.Descriptor instead.
+func (STeamBasicInfoList_6_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{27, 0}
+}
+
+type STeamMemHpUpdate_7_Proto int32
+
+const (
+	STeamMemHpUpdate_7_A   STeamMemHpUpdate_7_Proto = 0
+	STeamMemHpUpdate_7_MSG STeamMemHpUpdate_7_Proto = 20
+	STeamMemHpUpdate_7_ID  STeamMemHpUpdate_7_Proto = 10007
+)
+
+// Enum value maps for STeamMemHpUpdate_7_Proto.
+var (
+	STeamMemHpUpdate_7_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10007: "ID",
+	}
+	STeamMemHpUpdate_7_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10007,
+	}
+)
+
+func (x STeamMemHpUpdate_7_Proto) Enum() *STeamMemHpUpdate_7_Proto {
+	p := new(STeamMemHpUpdate_7_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamMemHpUpdate_7_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamMemHpUpdate_7_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[24].Descriptor()
+}
+
+func (STeamMemHpUpdate_7_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[24]
+}
+
+func (x STeamMemHpUpdate_7_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamMemHpUpdate_7_Proto.Descriptor instead.
+func (STeamMemHpUpdate_7_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{28, 0}
+}
+
+type STeamActorList_8_Proto int32
+
+const (
+	STeamActorList_8_A   STeamActorList_8_Proto = 0
+	STeamActorList_8_MSG STeamActorList_8_Proto = 20
+	STeamActorList_8_ID  STeamActorList_8_Proto = 10008
+)
+
+// Enum value maps for STeamActorList_8_Proto.
+var (
+	STeamActorList_8_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10008: "ID",
+	}
+	STeamActorList_8_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10008,
+	}
+)
+
+func (x STeamActorList_8_Proto) Enum() *STeamActorList_8_Proto {
+	p := new(STeamActorList_8_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamActorList_8_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamActorList_8_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[25].Descriptor()
+}
+
+func (STeamActorList_8_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[25]
+}
+
+func (x STeamActorList_8_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamActorList_8_Proto.Descriptor instead.
+func (STeamActorList_8_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{29, 0}
+}
+
+type STeamApplyList_9_Proto int32
+
+const (
+	STeamApplyList_9_A   STeamApplyList_9_Proto = 0
+	STeamApplyList_9_MSG STeamApplyList_9_Proto = 20
+	STeamApplyList_9_ID  STeamApplyList_9_Proto = 10009
+)
+
+// Enum value maps for STeamApplyList_9_Proto.
+var (
+	STeamApplyList_9_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10009: "ID",
+	}
+	STeamApplyList_9_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10009,
+	}
+)
+
+func (x STeamApplyList_9_Proto) Enum() *STeamApplyList_9_Proto {
+	p := new(STeamApplyList_9_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamApplyList_9_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamApplyList_9_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[26].Descriptor()
+}
+
+func (STeamApplyList_9_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[26]
+}
+
+func (x STeamApplyList_9_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamApplyList_9_Proto.Descriptor instead.
+func (STeamApplyList_9_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{30, 0}
+}
+
+type STeamCaptainChange_10_Proto int32
+
+const (
+	STeamCaptainChange_10_A   STeamCaptainChange_10_Proto = 0
+	STeamCaptainChange_10_MSG STeamCaptainChange_10_Proto = 20
+	STeamCaptainChange_10_ID  STeamCaptainChange_10_Proto = 10010
+)
+
+// Enum value maps for STeamCaptainChange_10_Proto.
+var (
+	STeamCaptainChange_10_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10010: "ID",
+	}
+	STeamCaptainChange_10_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10010,
+	}
+)
+
+func (x STeamCaptainChange_10_Proto) Enum() *STeamCaptainChange_10_Proto {
+	p := new(STeamCaptainChange_10_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamCaptainChange_10_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamCaptainChange_10_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[27].Descriptor()
+}
+
+func (STeamCaptainChange_10_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[27]
+}
+
+func (x STeamCaptainChange_10_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamCaptainChange_10_Proto.Descriptor instead.
+func (STeamCaptainChange_10_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{31, 0}
+}
+
+type STeamUpdateCallCd_11_Proto int32
+
+const (
+	STeamUpdateCallCd_11_A   STeamUpdateCallCd_11_Proto = 0
+	STeamUpdateCallCd_11_MSG STeamUpdateCallCd_11_Proto = 20
+	STeamUpdateCallCd_11_ID  STeamUpdateCallCd_11_Proto = 10011
+)
+
+// Enum value maps for STeamUpdateCallCd_11_Proto.
+var (
+	STeamUpdateCallCd_11_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10011: "ID",
+	}
+	STeamUpdateCallCd_11_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10011,
+	}
+)
+
+func (x STeamUpdateCallCd_11_Proto) Enum() *STeamUpdateCallCd_11_Proto {
+	p := new(STeamUpdateCallCd_11_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamUpdateCallCd_11_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamUpdateCallCd_11_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[28].Descriptor()
+}
+
+func (STeamUpdateCallCd_11_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[28]
+}
+
+func (x STeamUpdateCallCd_11_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamUpdateCallCd_11_Proto.Descriptor instead.
+func (STeamUpdateCallCd_11_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{32, 0}
+}
+
+type STeamApplyList_12_Proto int32
+
+const (
+	STeamApplyList_12_A   STeamApplyList_12_Proto = 0
+	STeamApplyList_12_MSG STeamApplyList_12_Proto = 20
+	STeamApplyList_12_ID  STeamApplyList_12_Proto = 10012
+)
+
+// Enum value maps for STeamApplyList_12_Proto.
+var (
+	STeamApplyList_12_Proto_name = map[int32]string{
+		0:     "A",
+		20:    "MSG",
+		10012: "ID",
+	}
+	STeamApplyList_12_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 20,
+		"ID":  10012,
+	}
+)
+
+func (x STeamApplyList_12_Proto) Enum() *STeamApplyList_12_Proto {
+	p := new(STeamApplyList_12_Proto)
+	*p = x
+	return p
+}
+
+func (x STeamApplyList_12_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (STeamApplyList_12_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__20_team_proto_enumTypes[29].Descriptor()
+}
+
+func (STeamApplyList_12_Proto) Type() protoreflect.EnumType {
+	return &file__20_team_proto_enumTypes[29]
+}
+
+func (x STeamApplyList_12_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use STeamApplyList_12_Proto.Descriptor instead.
+func (STeamApplyList_12_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{33, 0}
+}
+
 // 成员数据
 type TeamActorData struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -693,10 +2163,11 @@ func (x *CTeamChatInvate_8) GetMsg() string {
 // 队伍设置
 type CTeamSetting_9 struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Target        int32                  `protobuf:"varint,1,opt,name=target,proto3" json:"target,omitempty"`                     //队伍目标 0 全部
-	LevelMin      int32                  `protobuf:"varint,2,opt,name=level_min,json=levelMin,proto3" json:"level_min,omitempty"` //等级限制 0 不限
-	LevelMax      int32                  `protobuf:"varint,3,opt,name=level_max,json=levelMax,proto3" json:"level_max,omitempty"` //等级限制 0 不限
-	Limit         int32                  `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`                       //审核限制 0关闭 1开启 2仅限好友和公会成员
+	Target        int32                  `protobuf:"varint,1,opt,name=target,proto3" json:"target,omitempty"`                        //队伍目标 0 全部
+	LevelMin      int32                  `protobuf:"varint,2,opt,name=level_min,json=levelMin,proto3" json:"level_min,omitempty"`    //等级限制 0 不限
+	LevelMax      int32                  `protobuf:"varint,3,opt,name=level_max,json=levelMax,proto3" json:"level_max,omitempty"`    //等级限制 0 不限
+	Limit         int32                  `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`                          //审核限制 0关闭 1开启 2仅限好友和公会成员
+	SubTarget     int32                  `protobuf:"varint,5,opt,name=sub_target,json=subTarget,proto3" json:"sub_target,omitempty"` //队伍子目标
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -755,6 +2226,13 @@ func (x *CTeamSetting_9) GetLevelMax() int32 {
 func (x *CTeamSetting_9) GetLimit() int32 {
 	if x != nil {
 		return x.Limit
+	}
+	return 0
+}
+
+func (x *CTeamSetting_9) GetSubTarget() int32 {
+	if x != nil {
+		return x.SubTarget
 	}
 	return 0
 }
@@ -1029,24 +2507,165 @@ func (*CTeamGetTeamList_15) Descriptor() ([]byte, []int) {
 	return file__20_team_proto_rawDescGZIP(), []int{18}
 }
 
+type CTeamDungeonMatch_16 struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Lv            int32                  `protobuf:"varint,1,opt,name=lv,proto3" json:"lv,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CTeamDungeonMatch_16) Reset() {
+	*x = CTeamDungeonMatch_16{}
+	mi := &file__20_team_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CTeamDungeonMatch_16) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CTeamDungeonMatch_16) ProtoMessage() {}
+
+func (x *CTeamDungeonMatch_16) ProtoReflect() protoreflect.Message {
+	mi := &file__20_team_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CTeamDungeonMatch_16.ProtoReflect.Descriptor instead.
+func (*CTeamDungeonMatch_16) Descriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *CTeamDungeonMatch_16) GetLv() int32 {
+	if x != nil {
+		return x.Lv
+	}
+	return 0
+}
+
+type CTeamDungeonReplay_19 struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Replay        int32                  `protobuf:"varint,2,opt,name=replay,proto3" json:"replay,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CTeamDungeonReplay_19) Reset() {
+	*x = CTeamDungeonReplay_19{}
+	mi := &file__20_team_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CTeamDungeonReplay_19) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CTeamDungeonReplay_19) ProtoMessage() {}
+
+func (x *CTeamDungeonReplay_19) ProtoReflect() protoreflect.Message {
+	mi := &file__20_team_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CTeamDungeonReplay_19.ProtoReflect.Descriptor instead.
+func (*CTeamDungeonReplay_19) Descriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *CTeamDungeonReplay_19) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *CTeamDungeonReplay_19) GetReplay() int32 {
+	if x != nil {
+		return x.Replay
+	}
+	return 0
+}
+
+type STeamDungeonMatchSuccess_14 struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *STeamDungeonMatchSuccess_14) Reset() {
+	*x = STeamDungeonMatchSuccess_14{}
+	mi := &file__20_team_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *STeamDungeonMatchSuccess_14) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*STeamDungeonMatchSuccess_14) ProtoMessage() {}
+
+func (x *STeamDungeonMatchSuccess_14) ProtoReflect() protoreflect.Message {
+	mi := &file__20_team_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use STeamDungeonMatchSuccess_14.ProtoReflect.Descriptor instead.
+func (*STeamDungeonMatchSuccess_14) Descriptor() ([]byte, []int) {
+	return file__20_team_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *STeamDungeonMatchSuccess_14) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
 // 下发队伍信息
 type STeamInfo_1 struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                             //队伍id
-	Target        int32                  `protobuf:"varint,2,opt,name=target,proto3" json:"target,omitempty"`                     //队伍目标 0 全部
-	LevelMin      int32                  `protobuf:"varint,3,opt,name=level_min,json=levelMin,proto3" json:"level_min,omitempty"` //等级限制 0 不限
-	LevelMax      int32                  `protobuf:"varint,4,opt,name=level_max,json=levelMax,proto3" json:"level_max,omitempty"` //等级限制 0 不限
-	Limit         int32                  `protobuf:"varint,5,opt,name=limit,proto3" json:"limit,omitempty"`                       //审核限制 0关闭 1开启 2仅限好友和公会成员
-	List          []*TeamActorData       `protobuf:"bytes,6,rep,name=list,proto3" json:"list,omitempty"`                          //队伍成员
-	CallCd        int32                  `protobuf:"varint,7,opt,name=call_cd,json=callCd,proto3" json:"call_cd,omitempty"`       //队伍招募cd到期时间（服务器短时间戳）
-	DataType      int32                  `protobuf:"varint,8,opt,name=data_type,json=dataType,proto3" json:"data_type,omitempty"` // 1初始化 2加入队伍 3前段请求更新
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                //队伍id
+	Target        int32                  `protobuf:"varint,2,opt,name=target,proto3" json:"target,omitempty"`                        //队伍目标 0 全部
+	LevelMin      int32                  `protobuf:"varint,3,opt,name=level_min,json=levelMin,proto3" json:"level_min,omitempty"`    //等级限制 0 不限
+	LevelMax      int32                  `protobuf:"varint,4,opt,name=level_max,json=levelMax,proto3" json:"level_max,omitempty"`    //等级限制 0 不限
+	Limit         int32                  `protobuf:"varint,5,opt,name=limit,proto3" json:"limit,omitempty"`                          //审核限制 0关闭 1开启 2仅限好友和公会成员
+	List          []*TeamActorData       `protobuf:"bytes,6,rep,name=list,proto3" json:"list,omitempty"`                             //队伍成员
+	CallCd        int32                  `protobuf:"varint,7,opt,name=call_cd,json=callCd,proto3" json:"call_cd,omitempty"`          //队伍招募cd到期时间（服务器短时间戳）
+	DataType      int32                  `protobuf:"varint,8,opt,name=data_type,json=dataType,proto3" json:"data_type,omitempty"`    // 1初始化 2加入队伍 3前段请求更新
+	SubTarget     int32                  `protobuf:"varint,9,opt,name=sub_target,json=subTarget,proto3" json:"sub_target,omitempty"` //队伍子目标
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *STeamInfo_1) Reset() {
 	*x = STeamInfo_1{}
-	mi := &file__20_team_proto_msgTypes[19]
+	mi := &file__20_team_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1058,7 +2677,7 @@ func (x *STeamInfo_1) String() string {
 func (*STeamInfo_1) ProtoMessage() {}
 
 func (x *STeamInfo_1) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[19]
+	mi := &file__20_team_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1071,7 +2690,7 @@ func (x *STeamInfo_1) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamInfo_1.ProtoReflect.Descriptor instead.
 func (*STeamInfo_1) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{19}
+	return file__20_team_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *STeamInfo_1) GetId() int32 {
@@ -1130,6 +2749,13 @@ func (x *STeamInfo_1) GetDataType() int32 {
 	return 0
 }
 
+func (x *STeamInfo_1) GetSubTarget() int32 {
+	if x != nil {
+		return x.SubTarget
+	}
+	return 0
+}
+
 // 单个成员信息，包括数据更新，新人加入等
 type STeamActorInfo_2 struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1140,7 +2766,7 @@ type STeamActorInfo_2 struct {
 
 func (x *STeamActorInfo_2) Reset() {
 	*x = STeamActorInfo_2{}
-	mi := &file__20_team_proto_msgTypes[20]
+	mi := &file__20_team_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1152,7 +2778,7 @@ func (x *STeamActorInfo_2) String() string {
 func (*STeamActorInfo_2) ProtoMessage() {}
 
 func (x *STeamActorInfo_2) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[20]
+	mi := &file__20_team_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1165,7 +2791,7 @@ func (x *STeamActorInfo_2) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamActorInfo_2.ProtoReflect.Descriptor instead.
 func (*STeamActorInfo_2) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{20}
+	return file__20_team_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *STeamActorInfo_2) GetInfo() *TeamActorData {
@@ -1186,7 +2812,7 @@ type STeamLeaveNotice_3 struct {
 
 func (x *STeamLeaveNotice_3) Reset() {
 	*x = STeamLeaveNotice_3{}
-	mi := &file__20_team_proto_msgTypes[21]
+	mi := &file__20_team_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1198,7 +2824,7 @@ func (x *STeamLeaveNotice_3) String() string {
 func (*STeamLeaveNotice_3) ProtoMessage() {}
 
 func (x *STeamLeaveNotice_3) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[21]
+	mi := &file__20_team_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1211,7 +2837,7 @@ func (x *STeamLeaveNotice_3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamLeaveNotice_3.ProtoReflect.Descriptor instead.
 func (*STeamLeaveNotice_3) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{21}
+	return file__20_team_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *STeamLeaveNotice_3) GetAid() int32 {
@@ -1241,7 +2867,7 @@ type STeamNoticeInvate_4 struct {
 
 func (x *STeamNoticeInvate_4) Reset() {
 	*x = STeamNoticeInvate_4{}
-	mi := &file__20_team_proto_msgTypes[22]
+	mi := &file__20_team_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1253,7 +2879,7 @@ func (x *STeamNoticeInvate_4) String() string {
 func (*STeamNoticeInvate_4) ProtoMessage() {}
 
 func (x *STeamNoticeInvate_4) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[22]
+	mi := &file__20_team_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1266,7 +2892,7 @@ func (x *STeamNoticeInvate_4) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamNoticeInvate_4.ProtoReflect.Descriptor instead.
 func (*STeamNoticeInvate_4) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{22}
+	return file__20_team_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *STeamNoticeInvate_4) GetId() int32 {
@@ -1300,17 +2926,18 @@ func (x *STeamNoticeInvate_4) GetTarget() int32 {
 // 设置修改返回
 type STeamSetting_5 struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Target        int32                  `protobuf:"varint,1,opt,name=target,proto3" json:"target,omitempty"`                     //队伍目标 0 全部
-	LevelMin      int32                  `protobuf:"varint,2,opt,name=level_min,json=levelMin,proto3" json:"level_min,omitempty"` //等级限制 0 不限
-	LevelMax      int32                  `protobuf:"varint,3,opt,name=level_max,json=levelMax,proto3" json:"level_max,omitempty"` //等级限制 0 不限
-	Limit         int32                  `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`                       //审核限制 0关闭 1开启 2仅限好友和公会成员
+	Target        int32                  `protobuf:"varint,1,opt,name=target,proto3" json:"target,omitempty"`                        //队伍目标 0 全部
+	LevelMin      int32                  `protobuf:"varint,2,opt,name=level_min,json=levelMin,proto3" json:"level_min,omitempty"`    //等级限制 0 不限
+	LevelMax      int32                  `protobuf:"varint,3,opt,name=level_max,json=levelMax,proto3" json:"level_max,omitempty"`    //等级限制 0 不限
+	Limit         int32                  `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`                          //审核限制 0关闭 1开启 2仅限好友和公会成员
+	SubTarget     int32                  `protobuf:"varint,5,opt,name=sub_target,json=subTarget,proto3" json:"sub_target,omitempty"` //队伍子目标
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *STeamSetting_5) Reset() {
 	*x = STeamSetting_5{}
-	mi := &file__20_team_proto_msgTypes[23]
+	mi := &file__20_team_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1322,7 +2949,7 @@ func (x *STeamSetting_5) String() string {
 func (*STeamSetting_5) ProtoMessage() {}
 
 func (x *STeamSetting_5) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[23]
+	mi := &file__20_team_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1335,7 +2962,7 @@ func (x *STeamSetting_5) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamSetting_5.ProtoReflect.Descriptor instead.
 func (*STeamSetting_5) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{23}
+	return file__20_team_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *STeamSetting_5) GetTarget() int32 {
@@ -1366,6 +2993,13 @@ func (x *STeamSetting_5) GetLimit() int32 {
 	return 0
 }
 
+func (x *STeamSetting_5) GetSubTarget() int32 {
+	if x != nil {
+		return x.SubTarget
+	}
+	return 0
+}
+
 // 获取可加入的队伍信息
 type STeamBasicInfoList_6 struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1376,7 +3010,7 @@ type STeamBasicInfoList_6 struct {
 
 func (x *STeamBasicInfoList_6) Reset() {
 	*x = STeamBasicInfoList_6{}
-	mi := &file__20_team_proto_msgTypes[24]
+	mi := &file__20_team_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1388,7 +3022,7 @@ func (x *STeamBasicInfoList_6) String() string {
 func (*STeamBasicInfoList_6) ProtoMessage() {}
 
 func (x *STeamBasicInfoList_6) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[24]
+	mi := &file__20_team_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1401,7 +3035,7 @@ func (x *STeamBasicInfoList_6) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamBasicInfoList_6.ProtoReflect.Descriptor instead.
 func (*STeamBasicInfoList_6) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{24}
+	return file__20_team_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *STeamBasicInfoList_6) GetList() []*TeamBasicData {
@@ -1421,7 +3055,7 @@ type STeamMemHpUpdate_7 struct {
 
 func (x *STeamMemHpUpdate_7) Reset() {
 	*x = STeamMemHpUpdate_7{}
-	mi := &file__20_team_proto_msgTypes[25]
+	mi := &file__20_team_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1433,7 +3067,7 @@ func (x *STeamMemHpUpdate_7) String() string {
 func (*STeamMemHpUpdate_7) ProtoMessage() {}
 
 func (x *STeamMemHpUpdate_7) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[25]
+	mi := &file__20_team_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1446,7 +3080,7 @@ func (x *STeamMemHpUpdate_7) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamMemHpUpdate_7.ProtoReflect.Descriptor instead.
 func (*STeamMemHpUpdate_7) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{25}
+	return file__20_team_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *STeamMemHpUpdate_7) GetList() []*TeamActorHpData {
@@ -1467,7 +3101,7 @@ type STeamActorList_8 struct {
 
 func (x *STeamActorList_8) Reset() {
 	*x = STeamActorList_8{}
-	mi := &file__20_team_proto_msgTypes[26]
+	mi := &file__20_team_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1479,7 +3113,7 @@ func (x *STeamActorList_8) String() string {
 func (*STeamActorList_8) ProtoMessage() {}
 
 func (x *STeamActorList_8) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[26]
+	mi := &file__20_team_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1492,7 +3126,7 @@ func (x *STeamActorList_8) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamActorList_8.ProtoReflect.Descriptor instead.
 func (*STeamActorList_8) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{26}
+	return file__20_team_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *STeamActorList_8) GetType() int32 {
@@ -1519,7 +3153,7 @@ type STeamApplyList_9 struct {
 
 func (x *STeamApplyList_9) Reset() {
 	*x = STeamApplyList_9{}
-	mi := &file__20_team_proto_msgTypes[27]
+	mi := &file__20_team_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1531,7 +3165,7 @@ func (x *STeamApplyList_9) String() string {
 func (*STeamApplyList_9) ProtoMessage() {}
 
 func (x *STeamApplyList_9) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[27]
+	mi := &file__20_team_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1544,7 +3178,7 @@ func (x *STeamApplyList_9) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamApplyList_9.ProtoReflect.Descriptor instead.
 func (*STeamApplyList_9) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{27}
+	return file__20_team_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *STeamApplyList_9) GetList() []*TeamApplyBasicData {
@@ -1564,7 +3198,7 @@ type STeamCaptainChange_10 struct {
 
 func (x *STeamCaptainChange_10) Reset() {
 	*x = STeamCaptainChange_10{}
-	mi := &file__20_team_proto_msgTypes[28]
+	mi := &file__20_team_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1576,7 +3210,7 @@ func (x *STeamCaptainChange_10) String() string {
 func (*STeamCaptainChange_10) ProtoMessage() {}
 
 func (x *STeamCaptainChange_10) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[28]
+	mi := &file__20_team_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1589,7 +3223,7 @@ func (x *STeamCaptainChange_10) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamCaptainChange_10.ProtoReflect.Descriptor instead.
 func (*STeamCaptainChange_10) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{28}
+	return file__20_team_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *STeamCaptainChange_10) GetAid() int32 {
@@ -1609,7 +3243,7 @@ type STeamUpdateCallCd_11 struct {
 
 func (x *STeamUpdateCallCd_11) Reset() {
 	*x = STeamUpdateCallCd_11{}
-	mi := &file__20_team_proto_msgTypes[29]
+	mi := &file__20_team_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1621,7 +3255,7 @@ func (x *STeamUpdateCallCd_11) String() string {
 func (*STeamUpdateCallCd_11) ProtoMessage() {}
 
 func (x *STeamUpdateCallCd_11) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[29]
+	mi := &file__20_team_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1634,7 +3268,7 @@ func (x *STeamUpdateCallCd_11) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamUpdateCallCd_11.ProtoReflect.Descriptor instead.
 func (*STeamUpdateCallCd_11) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{29}
+	return file__20_team_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *STeamUpdateCallCd_11) GetCallCd() int32 {
@@ -1654,7 +3288,7 @@ type STeamApplyList_12 struct {
 
 func (x *STeamApplyList_12) Reset() {
 	*x = STeamApplyList_12{}
-	mi := &file__20_team_proto_msgTypes[30]
+	mi := &file__20_team_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1666,7 +3300,7 @@ func (x *STeamApplyList_12) String() string {
 func (*STeamApplyList_12) ProtoMessage() {}
 
 func (x *STeamApplyList_12) ProtoReflect() protoreflect.Message {
-	mi := &file__20_team_proto_msgTypes[30]
+	mi := &file__20_team_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1679,7 +3313,7 @@ func (x *STeamApplyList_12) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use STeamApplyList_12.ProtoReflect.Descriptor instead.
 func (*STeamApplyList_12) Descriptor() ([]byte, []int) {
-	return file__20_team_proto_rawDescGZIP(), []int{30}
+	return file__20_team_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *STeamApplyList_12) GetList() []int32 {
@@ -1721,37 +3355,118 @@ const file__20_team_proto_rawDesc = "" +
 	"\x05apply\x18\a \x01(\x05R\x05apply\"Z\n" +
 	"\x15team_apply_basic_data\x12-\n" +
 	"\x04info\x18\x01 \x01(\v2\x19.proto_common.actor_basicR\x04info\x12\x12\n" +
-	"\x04time\x18\x02 \x01(\x05R\x04time\"\x11\n" +
-	"\x0fc_team_create_1\"#\n" +
+	"\x04time\x18\x02 \x01(\x05R\x04time\"3\n" +
+	"\x0fc_team_create_1\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x91N\"E\n" +
 	"\x0fc_team_invate_2\x12\x10\n" +
 	"\x03aid\x18\x01 \x01(\x05R\x03aid\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x92N\"B\n" +
 	"\x0ec_team_apply_3\x12\x0e\n" +
-	"\x02id\x18\x01 \x03(\x05R\x02id\"#\n" +
+	"\x02id\x18\x01 \x03(\x05R\x02id\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x93N\"E\n" +
 	"\x0fc_team_remove_4\x12\x10\n" +
-	"\x03aid\x18\x01 \x01(\x05R\x03aid\"\x0f\n" +
-	"\rc_team_left_5\"\x12\n" +
-	"\x10c_team_release_6\"*\n" +
+	"\x03aid\x18\x01 \x01(\x05R\x03aid\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x94N\"1\n" +
+	"\rc_team_left_5\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x95N\"4\n" +
+	"\x10c_team_release_6\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x96N\"L\n" +
 	"\x16c_team_leader_change_7\x12\x10\n" +
-	"\x03aid\x18\x01 \x01(\x05R\x03aid\"(\n" +
+	"\x03aid\x18\x01 \x01(\x05R\x03aid\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x97N\"J\n" +
 	"\x14c_team_chat_invate_8\x12\x10\n" +
-	"\x03msg\x18\x01 \x01(\tR\x03msg\"z\n" +
+	"\x03msg\x18\x01 \x01(\tR\x03msg\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x98N\"\xbb\x01\n" +
 	"\x10c_team_setting_9\x12\x16\n" +
 	"\x06target\x18\x01 \x01(\x05R\x06target\x12\x1b\n" +
 	"\tlevel_min\x18\x02 \x01(\x05R\blevelMin\x12\x1b\n" +
 	"\tlevel_max\x18\x03 \x01(\x05R\blevelMax\x12\x14\n" +
-	"\x05limit\x18\x04 \x01(\x05R\x05limit\"\x19\n" +
-	"\x17c_team_refresh_actor_10\"\x15\n" +
-	"\x13c_team_update_hp_11\"@\n" +
+	"\x05limit\x18\x04 \x01(\x05R\x05limit\x12\x1d\n" +
+	"\n" +
+	"sub_target\x18\x05 \x01(\x05R\tsubTarget\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x99N\";\n" +
+	"\x17c_team_refresh_actor_10\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x9aN\"7\n" +
+	"\x13c_team_update_hp_11\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x9bN\"b\n" +
 	"\x16c_team_apply_result_12\x12\x10\n" +
 	"\x03aid\x18\x01 \x03(\x05R\x03aid\x12\x14\n" +
-	"\x05agree\x18\x02 \x01(\x05R\x05agree\"Q\n" +
+	"\x05agree\x18\x02 \x01(\x05R\x05agree\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x9cN\"s\n" +
 	"\x17c_team_invate_result_13\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x10\n" +
 	"\x03aid\x18\x02 \x01(\x05R\x03aid\x12\x14\n" +
-	"\x05agree\x18\x03 \x01(\x05R\x05agree\".\n" +
+	"\x05agree\x18\x03 \x01(\x05R\x05agree\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x9dN\"P\n" +
 	"\x18c_team_get_actor_list_14\x12\x12\n" +
-	"\x04type\x18\x01 \x01(\x05R\x04type\"\x19\n" +
-	"\x17c_team_get_team_list_15\"\xe3\x01\n" +
+	"\x04type\x18\x01 \x01(\x05R\x04type\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x9eN\";\n" +
+	"\x17c_team_get_team_list_15\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x9fN\"K\n" +
+	"\x17c_team_dungeon_match_16\x12\x0e\n" +
+	"\x02lv\x18\x01 \x01(\x05R\x02lv\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\xa0N\"d\n" +
+	"\x18c_team_dungeon_replay_19\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x16\n" +
+	"\x06replay\x18\x02 \x01(\x05R\x06replay\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\xa3N\"S\n" +
+	"\x1fs_team_dungeon_match_success_14\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x9eN\"\xa4\x02\n" +
 	"\rs_team_info_1\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x16\n" +
 	"\x06target\x18\x02 \x01(\x05R\x06target\x12\x1b\n" +
@@ -1760,37 +3475,89 @@ const file__20_team_proto_rawDesc = "" +
 	"\x05limit\x18\x05 \x01(\x05R\x05limit\x12$\n" +
 	"\x04list\x18\x06 \x03(\v2\x10.team_actor_dataR\x04list\x12\x17\n" +
 	"\acall_cd\x18\a \x01(\x05R\x06callCd\x12\x1b\n" +
-	"\tdata_type\x18\b \x01(\x05R\bdataType\";\n" +
+	"\tdata_type\x18\b \x01(\x05R\bdataType\x12\x1d\n" +
+	"\n" +
+	"sub_target\x18\t \x01(\x05R\tsubTarget\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x91N\"]\n" +
 	"\x13s_team_actor_info_2\x12$\n" +
-	"\x04info\x18\x01 \x01(\v2\x10.team_actor_dataR\x04info\"A\n" +
+	"\x04info\x18\x01 \x01(\v2\x10.team_actor_dataR\x04info\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x92N\"c\n" +
 	"\x15s_team_leave_notice_3\x12\x10\n" +
 	"\x03aid\x18\x01 \x01(\x05R\x03aid\x12\x16\n" +
-	"\x06reason\x18\x02 \x01(\x05R\x06reason\"f\n" +
+	"\x06reason\x18\x02 \x01(\x05R\x06reason\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x93N\"\x88\x01\n" +
 	"\x16s_team_notice_invate_4\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x10\n" +
 	"\x03aid\x18\x02 \x01(\x05R\x03aid\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x16\n" +
-	"\x06target\x18\x04 \x01(\x05R\x06target\"z\n" +
+	"\x06target\x18\x04 \x01(\x05R\x06target\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x94N\"\xbb\x01\n" +
 	"\x10s_team_setting_5\x12\x16\n" +
 	"\x06target\x18\x01 \x01(\x05R\x06target\x12\x1b\n" +
 	"\tlevel_min\x18\x02 \x01(\x05R\blevelMin\x12\x1b\n" +
 	"\tlevel_max\x18\x03 \x01(\x05R\blevelMax\x12\x14\n" +
-	"\x05limit\x18\x04 \x01(\x05R\x05limit\"@\n" +
+	"\x05limit\x18\x04 \x01(\x05R\x05limit\x12\x1d\n" +
+	"\n" +
+	"sub_target\x18\x05 \x01(\x05R\tsubTarget\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x95N\"b\n" +
 	"\x18s_team_basic_info_list_6\x12$\n" +
-	"\x04list\x18\x01 \x03(\v2\x10.team_basic_dataR\x04list\"A\n" +
+	"\x04list\x18\x01 \x03(\v2\x10.team_basic_dataR\x04list\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x96N\"c\n" +
 	"\x16s_team_mem_hp_update_7\x12'\n" +
-	"\x04list\x18\x01 \x03(\v2\x13.team_actor_hp_dataR\x04list\"X\n" +
+	"\x04list\x18\x01 \x03(\v2\x13.team_actor_hp_dataR\x04list\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x97N\"z\n" +
 	"\x13s_team_actor_list_8\x12\x12\n" +
 	"\x04type\x18\x01 \x01(\x05R\x04type\x12-\n" +
-	"\x04list\x18\x02 \x03(\v2\x19.proto_common.actor_basicR\x04list\"A\n" +
+	"\x04list\x18\x02 \x03(\v2\x19.proto_common.actor_basicR\x04list\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x98N\"c\n" +
 	"\x13s_team_apply_list_9\x12*\n" +
-	"\x04list\x18\x01 \x03(\v2\x16.team_apply_basic_dataR\x04list\",\n" +
+	"\x04list\x18\x01 \x03(\v2\x16.team_apply_basic_dataR\x04list\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x99N\"N\n" +
 	"\x18s_team_captain_change_10\x12\x10\n" +
-	"\x03aid\x18\x01 \x01(\x05R\x03aid\"3\n" +
+	"\x03aid\x18\x01 \x01(\x05R\x03aid\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x9aN\"U\n" +
 	"\x18s_team_update_call_cd_11\x12\x17\n" +
-	"\acall_cd\x18\x01 \x01(\x05R\x06callCd\"*\n" +
+	"\acall_cd\x18\x01 \x01(\x05R\x06callCd\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x9bN\"L\n" +
 	"\x14s_team_apply_list_12\x12\x12\n" +
-	"\x04list\x18\x01 \x03(\x05R\x04listb\x06proto3"
+	"\x04list\x18\x01 \x03(\x05R\x04list\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10\x14\x12\a\n" +
+	"\x02ID\x10\x9cNb\x06proto3"
 
 var (
 	file__20_team_proto_rawDescOnce sync.Once
@@ -1804,53 +3571,87 @@ func file__20_team_proto_rawDescGZIP() []byte {
 	return file__20_team_proto_rawDescData
 }
 
-var file__20_team_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
+var file__20_team_proto_enumTypes = make([]protoimpl.EnumInfo, 30)
+var file__20_team_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file__20_team_proto_goTypes = []any{
-	(*TeamActorData)(nil),         // 0: team_actor_data
-	(*TeamActorHpData)(nil),       // 1: team_actor_hp_data
-	(*TeamBasicData)(nil),         // 2: team_basic_data
-	(*TeamApplyBasicData)(nil),    // 3: team_apply_basic_data
-	(*CTeamCreate_1)(nil),         // 4: c_team_create_1
-	(*CTeamInvate_2)(nil),         // 5: c_team_invate_2
-	(*CTeamApply_3)(nil),          // 6: c_team_apply_3
-	(*CTeamRemove_4)(nil),         // 7: c_team_remove_4
-	(*CTeamLeft_5)(nil),           // 8: c_team_left_5
-	(*CTeamRelease_6)(nil),        // 9: c_team_release_6
-	(*CTeamLeaderChange_7)(nil),   // 10: c_team_leader_change_7
-	(*CTeamChatInvate_8)(nil),     // 11: c_team_chat_invate_8
-	(*CTeamSetting_9)(nil),        // 12: c_team_setting_9
-	(*CTeamRefreshActor_10)(nil),  // 13: c_team_refresh_actor_10
-	(*CTeamUpdateHp_11)(nil),      // 14: c_team_update_hp_11
-	(*CTeamApplyResult_12)(nil),   // 15: c_team_apply_result_12
-	(*CTeamInvateResult_13)(nil),  // 16: c_team_invate_result_13
-	(*CTeamGetActorList_14)(nil),  // 17: c_team_get_actor_list_14
-	(*CTeamGetTeamList_15)(nil),   // 18: c_team_get_team_list_15
-	(*STeamInfo_1)(nil),           // 19: s_team_info_1
-	(*STeamActorInfo_2)(nil),      // 20: s_team_actor_info_2
-	(*STeamLeaveNotice_3)(nil),    // 21: s_team_leave_notice_3
-	(*STeamNoticeInvate_4)(nil),   // 22: s_team_notice_invate_4
-	(*STeamSetting_5)(nil),        // 23: s_team_setting_5
-	(*STeamBasicInfoList_6)(nil),  // 24: s_team_basic_info_list_6
-	(*STeamMemHpUpdate_7)(nil),    // 25: s_team_mem_hp_update_7
-	(*STeamActorList_8)(nil),      // 26: s_team_actor_list_8
-	(*STeamApplyList_9)(nil),      // 27: s_team_apply_list_9
-	(*STeamCaptainChange_10)(nil), // 28: s_team_captain_change_10
-	(*STeamUpdateCallCd_11)(nil),  // 29: s_team_update_call_cd_11
-	(*STeamApplyList_12)(nil),     // 30: s_team_apply_list_12
-	(*common.ActorBasic)(nil),     // 31: proto_common.actor_basic
-	(*common.ActorAppear)(nil),    // 32: proto_common.actor_appear
+	(CTeamCreate_1_Proto)(0),               // 0: c_team_create_1.Proto
+	(CTeamInvate_2_Proto)(0),               // 1: c_team_invate_2.Proto
+	(CTeamApply_3_Proto)(0),                // 2: c_team_apply_3.Proto
+	(CTeamRemove_4_Proto)(0),               // 3: c_team_remove_4.Proto
+	(CTeamLeft_5_Proto)(0),                 // 4: c_team_left_5.Proto
+	(CTeamRelease_6_Proto)(0),              // 5: c_team_release_6.Proto
+	(CTeamLeaderChange_7_Proto)(0),         // 6: c_team_leader_change_7.Proto
+	(CTeamChatInvate_8_Proto)(0),           // 7: c_team_chat_invate_8.Proto
+	(CTeamSetting_9_Proto)(0),              // 8: c_team_setting_9.Proto
+	(CTeamRefreshActor_10_Proto)(0),        // 9: c_team_refresh_actor_10.Proto
+	(CTeamUpdateHp_11_Proto)(0),            // 10: c_team_update_hp_11.Proto
+	(CTeamApplyResult_12_Proto)(0),         // 11: c_team_apply_result_12.Proto
+	(CTeamInvateResult_13_Proto)(0),        // 12: c_team_invate_result_13.Proto
+	(CTeamGetActorList_14_Proto)(0),        // 13: c_team_get_actor_list_14.Proto
+	(CTeamGetTeamList_15_Proto)(0),         // 14: c_team_get_team_list_15.Proto
+	(CTeamDungeonMatch_16_Proto)(0),        // 15: c_team_dungeon_match_16.Proto
+	(CTeamDungeonReplay_19_Proto)(0),       // 16: c_team_dungeon_replay_19.Proto
+	(STeamDungeonMatchSuccess_14_Proto)(0), // 17: s_team_dungeon_match_success_14.Proto
+	(STeamInfo_1_Proto)(0),                 // 18: s_team_info_1.Proto
+	(STeamActorInfo_2_Proto)(0),            // 19: s_team_actor_info_2.Proto
+	(STeamLeaveNotice_3_Proto)(0),          // 20: s_team_leave_notice_3.Proto
+	(STeamNoticeInvate_4_Proto)(0),         // 21: s_team_notice_invate_4.Proto
+	(STeamSetting_5_Proto)(0),              // 22: s_team_setting_5.Proto
+	(STeamBasicInfoList_6_Proto)(0),        // 23: s_team_basic_info_list_6.Proto
+	(STeamMemHpUpdate_7_Proto)(0),          // 24: s_team_mem_hp_update_7.Proto
+	(STeamActorList_8_Proto)(0),            // 25: s_team_actor_list_8.Proto
+	(STeamApplyList_9_Proto)(0),            // 26: s_team_apply_list_9.Proto
+	(STeamCaptainChange_10_Proto)(0),       // 27: s_team_captain_change_10.Proto
+	(STeamUpdateCallCd_11_Proto)(0),        // 28: s_team_update_call_cd_11.Proto
+	(STeamApplyList_12_Proto)(0),           // 29: s_team_apply_list_12.Proto
+	(*TeamActorData)(nil),                  // 30: team_actor_data
+	(*TeamActorHpData)(nil),                // 31: team_actor_hp_data
+	(*TeamBasicData)(nil),                  // 32: team_basic_data
+	(*TeamApplyBasicData)(nil),             // 33: team_apply_basic_data
+	(*CTeamCreate_1)(nil),                  // 34: c_team_create_1
+	(*CTeamInvate_2)(nil),                  // 35: c_team_invate_2
+	(*CTeamApply_3)(nil),                   // 36: c_team_apply_3
+	(*CTeamRemove_4)(nil),                  // 37: c_team_remove_4
+	(*CTeamLeft_5)(nil),                    // 38: c_team_left_5
+	(*CTeamRelease_6)(nil),                 // 39: c_team_release_6
+	(*CTeamLeaderChange_7)(nil),            // 40: c_team_leader_change_7
+	(*CTeamChatInvate_8)(nil),              // 41: c_team_chat_invate_8
+	(*CTeamSetting_9)(nil),                 // 42: c_team_setting_9
+	(*CTeamRefreshActor_10)(nil),           // 43: c_team_refresh_actor_10
+	(*CTeamUpdateHp_11)(nil),               // 44: c_team_update_hp_11
+	(*CTeamApplyResult_12)(nil),            // 45: c_team_apply_result_12
+	(*CTeamInvateResult_13)(nil),           // 46: c_team_invate_result_13
+	(*CTeamGetActorList_14)(nil),           // 47: c_team_get_actor_list_14
+	(*CTeamGetTeamList_15)(nil),            // 48: c_team_get_team_list_15
+	(*CTeamDungeonMatch_16)(nil),           // 49: c_team_dungeon_match_16
+	(*CTeamDungeonReplay_19)(nil),          // 50: c_team_dungeon_replay_19
+	(*STeamDungeonMatchSuccess_14)(nil),    // 51: s_team_dungeon_match_success_14
+	(*STeamInfo_1)(nil),                    // 52: s_team_info_1
+	(*STeamActorInfo_2)(nil),               // 53: s_team_actor_info_2
+	(*STeamLeaveNotice_3)(nil),             // 54: s_team_leave_notice_3
+	(*STeamNoticeInvate_4)(nil),            // 55: s_team_notice_invate_4
+	(*STeamSetting_5)(nil),                 // 56: s_team_setting_5
+	(*STeamBasicInfoList_6)(nil),           // 57: s_team_basic_info_list_6
+	(*STeamMemHpUpdate_7)(nil),             // 58: s_team_mem_hp_update_7
+	(*STeamActorList_8)(nil),               // 59: s_team_actor_list_8
+	(*STeamApplyList_9)(nil),               // 60: s_team_apply_list_9
+	(*STeamCaptainChange_10)(nil),          // 61: s_team_captain_change_10
+	(*STeamUpdateCallCd_11)(nil),           // 62: s_team_update_call_cd_11
+	(*STeamApplyList_12)(nil),              // 63: s_team_apply_list_12
+	(*common.ActorBasic)(nil),              // 64: proto_common.actor_basic
+	(*common.ActorAppear)(nil),             // 65: proto_common.actor_appear
 }
 var file__20_team_proto_depIdxs = []int32{
-	31, // 0: team_actor_data.info:type_name -> proto_common.actor_basic
-	32, // 1: team_actor_data.appear:type_name -> proto_common.actor_appear
-	31, // 2: team_basic_data.list:type_name -> proto_common.actor_basic
-	31, // 3: team_apply_basic_data.info:type_name -> proto_common.actor_basic
-	0,  // 4: s_team_info_1.list:type_name -> team_actor_data
-	0,  // 5: s_team_actor_info_2.info:type_name -> team_actor_data
-	2,  // 6: s_team_basic_info_list_6.list:type_name -> team_basic_data
-	1,  // 7: s_team_mem_hp_update_7.list:type_name -> team_actor_hp_data
-	31, // 8: s_team_actor_list_8.list:type_name -> proto_common.actor_basic
-	3,  // 9: s_team_apply_list_9.list:type_name -> team_apply_basic_data
+	64, // 0: team_actor_data.info:type_name -> proto_common.actor_basic
+	65, // 1: team_actor_data.appear:type_name -> proto_common.actor_appear
+	64, // 2: team_basic_data.list:type_name -> proto_common.actor_basic
+	64, // 3: team_apply_basic_data.info:type_name -> proto_common.actor_basic
+	30, // 4: s_team_info_1.list:type_name -> team_actor_data
+	30, // 5: s_team_actor_info_2.info:type_name -> team_actor_data
+	32, // 6: s_team_basic_info_list_6.list:type_name -> team_basic_data
+	31, // 7: s_team_mem_hp_update_7.list:type_name -> team_actor_hp_data
+	64, // 8: s_team_actor_list_8.list:type_name -> proto_common.actor_basic
+	33, // 9: s_team_apply_list_9.list:type_name -> team_apply_basic_data
 	10, // [10:10] is the sub-list for method output_type
 	10, // [10:10] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
@@ -1868,13 +3669,14 @@ func file__20_team_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file__20_team_proto_rawDesc), len(file__20_team_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   31,
+			NumEnums:      30,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file__20_team_proto_goTypes,
 		DependencyIndexes: file__20_team_proto_depIdxs,
+		EnumInfos:         file__20_team_proto_enumTypes,
 		MessageInfos:      file__20_team_proto_msgTypes,
 	}.Build()
 	File__20_team_proto = out.File

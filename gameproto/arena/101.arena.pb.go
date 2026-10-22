@@ -22,6 +22,839 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type CArenaInfo_1_Proto int32
+
+const (
+	CArenaInfo_1_A   CArenaInfo_1_Proto = 0
+	CArenaInfo_1_MSG CArenaInfo_1_Proto = 101
+	CArenaInfo_1_ID  CArenaInfo_1_Proto = 10001
+)
+
+// Enum value maps for CArenaInfo_1_Proto.
+var (
+	CArenaInfo_1_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10001: "ID",
+	}
+	CArenaInfo_1_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10001,
+	}
+)
+
+func (x CArenaInfo_1_Proto) Enum() *CArenaInfo_1_Proto {
+	p := new(CArenaInfo_1_Proto)
+	*p = x
+	return p
+}
+
+func (x CArenaInfo_1_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CArenaInfo_1_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[0].Descriptor()
+}
+
+func (CArenaInfo_1_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[0]
+}
+
+func (x CArenaInfo_1_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CArenaInfo_1_Proto.Descriptor instead.
+func (CArenaInfo_1_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{3, 0}
+}
+
+type CArenaPkList_2_Proto int32
+
+const (
+	CArenaPkList_2_A   CArenaPkList_2_Proto = 0
+	CArenaPkList_2_MSG CArenaPkList_2_Proto = 101
+	CArenaPkList_2_ID  CArenaPkList_2_Proto = 10002
+)
+
+// Enum value maps for CArenaPkList_2_Proto.
+var (
+	CArenaPkList_2_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10002: "ID",
+	}
+	CArenaPkList_2_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10002,
+	}
+)
+
+func (x CArenaPkList_2_Proto) Enum() *CArenaPkList_2_Proto {
+	p := new(CArenaPkList_2_Proto)
+	*p = x
+	return p
+}
+
+func (x CArenaPkList_2_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CArenaPkList_2_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[1].Descriptor()
+}
+
+func (CArenaPkList_2_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[1]
+}
+
+func (x CArenaPkList_2_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CArenaPkList_2_Proto.Descriptor instead.
+func (CArenaPkList_2_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{4, 0}
+}
+
+type CArenaRefresh_3_Proto int32
+
+const (
+	CArenaRefresh_3_A   CArenaRefresh_3_Proto = 0
+	CArenaRefresh_3_MSG CArenaRefresh_3_Proto = 101
+	CArenaRefresh_3_ID  CArenaRefresh_3_Proto = 10003
+)
+
+// Enum value maps for CArenaRefresh_3_Proto.
+var (
+	CArenaRefresh_3_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10003: "ID",
+	}
+	CArenaRefresh_3_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10003,
+	}
+)
+
+func (x CArenaRefresh_3_Proto) Enum() *CArenaRefresh_3_Proto {
+	p := new(CArenaRefresh_3_Proto)
+	*p = x
+	return p
+}
+
+func (x CArenaRefresh_3_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CArenaRefresh_3_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[2].Descriptor()
+}
+
+func (CArenaRefresh_3_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[2]
+}
+
+func (x CArenaRefresh_3_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CArenaRefresh_3_Proto.Descriptor instead.
+func (CArenaRefresh_3_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{5, 0}
+}
+
+type CArenaFight_4_Proto int32
+
+const (
+	CArenaFight_4_A   CArenaFight_4_Proto = 0
+	CArenaFight_4_MSG CArenaFight_4_Proto = 101
+	CArenaFight_4_ID  CArenaFight_4_Proto = 10004
+)
+
+// Enum value maps for CArenaFight_4_Proto.
+var (
+	CArenaFight_4_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10004: "ID",
+	}
+	CArenaFight_4_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10004,
+	}
+)
+
+func (x CArenaFight_4_Proto) Enum() *CArenaFight_4_Proto {
+	p := new(CArenaFight_4_Proto)
+	*p = x
+	return p
+}
+
+func (x CArenaFight_4_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CArenaFight_4_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[3].Descriptor()
+}
+
+func (CArenaFight_4_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[3]
+}
+
+func (x CArenaFight_4_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CArenaFight_4_Proto.Descriptor instead.
+func (CArenaFight_4_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{6, 0}
+}
+
+type CArenaLogs_5_Proto int32
+
+const (
+	CArenaLogs_5_A   CArenaLogs_5_Proto = 0
+	CArenaLogs_5_MSG CArenaLogs_5_Proto = 101
+	CArenaLogs_5_ID  CArenaLogs_5_Proto = 10005
+)
+
+// Enum value maps for CArenaLogs_5_Proto.
+var (
+	CArenaLogs_5_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10005: "ID",
+	}
+	CArenaLogs_5_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10005,
+	}
+)
+
+func (x CArenaLogs_5_Proto) Enum() *CArenaLogs_5_Proto {
+	p := new(CArenaLogs_5_Proto)
+	*p = x
+	return p
+}
+
+func (x CArenaLogs_5_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CArenaLogs_5_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[4].Descriptor()
+}
+
+func (CArenaLogs_5_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[4]
+}
+
+func (x CArenaLogs_5_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CArenaLogs_5_Proto.Descriptor instead.
+func (CArenaLogs_5_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{7, 0}
+}
+
+type CArenaAward_6_Proto int32
+
+const (
+	CArenaAward_6_A   CArenaAward_6_Proto = 0
+	CArenaAward_6_MSG CArenaAward_6_Proto = 101
+	CArenaAward_6_ID  CArenaAward_6_Proto = 10006
+)
+
+// Enum value maps for CArenaAward_6_Proto.
+var (
+	CArenaAward_6_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10006: "ID",
+	}
+	CArenaAward_6_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10006,
+	}
+)
+
+func (x CArenaAward_6_Proto) Enum() *CArenaAward_6_Proto {
+	p := new(CArenaAward_6_Proto)
+	*p = x
+	return p
+}
+
+func (x CArenaAward_6_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CArenaAward_6_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[5].Descriptor()
+}
+
+func (CArenaAward_6_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[5]
+}
+
+func (x CArenaAward_6_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CArenaAward_6_Proto.Descriptor instead.
+func (CArenaAward_6_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{8, 0}
+}
+
+type CArenaRank_7_Proto int32
+
+const (
+	CArenaRank_7_A   CArenaRank_7_Proto = 0
+	CArenaRank_7_MSG CArenaRank_7_Proto = 101
+	CArenaRank_7_ID  CArenaRank_7_Proto = 10007
+)
+
+// Enum value maps for CArenaRank_7_Proto.
+var (
+	CArenaRank_7_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10007: "ID",
+	}
+	CArenaRank_7_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10007,
+	}
+)
+
+func (x CArenaRank_7_Proto) Enum() *CArenaRank_7_Proto {
+	p := new(CArenaRank_7_Proto)
+	*p = x
+	return p
+}
+
+func (x CArenaRank_7_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CArenaRank_7_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[6].Descriptor()
+}
+
+func (CArenaRank_7_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[6]
+}
+
+func (x CArenaRank_7_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CArenaRank_7_Proto.Descriptor instead.
+func (CArenaRank_7_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{9, 0}
+}
+
+type CArenaBuyCount_8_Proto int32
+
+const (
+	CArenaBuyCount_8_A   CArenaBuyCount_8_Proto = 0
+	CArenaBuyCount_8_MSG CArenaBuyCount_8_Proto = 101
+	CArenaBuyCount_8_ID  CArenaBuyCount_8_Proto = 10008
+)
+
+// Enum value maps for CArenaBuyCount_8_Proto.
+var (
+	CArenaBuyCount_8_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10008: "ID",
+	}
+	CArenaBuyCount_8_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10008,
+	}
+)
+
+func (x CArenaBuyCount_8_Proto) Enum() *CArenaBuyCount_8_Proto {
+	p := new(CArenaBuyCount_8_Proto)
+	*p = x
+	return p
+}
+
+func (x CArenaBuyCount_8_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CArenaBuyCount_8_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[7].Descriptor()
+}
+
+func (CArenaBuyCount_8_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[7]
+}
+
+func (x CArenaBuyCount_8_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CArenaBuyCount_8_Proto.Descriptor instead.
+func (CArenaBuyCount_8_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{10, 0}
+}
+
+type CArenaGiveUp_9_Proto int32
+
+const (
+	CArenaGiveUp_9_A   CArenaGiveUp_9_Proto = 0
+	CArenaGiveUp_9_MSG CArenaGiveUp_9_Proto = 101
+	CArenaGiveUp_9_ID  CArenaGiveUp_9_Proto = 10009
+)
+
+// Enum value maps for CArenaGiveUp_9_Proto.
+var (
+	CArenaGiveUp_9_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10009: "ID",
+	}
+	CArenaGiveUp_9_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10009,
+	}
+)
+
+func (x CArenaGiveUp_9_Proto) Enum() *CArenaGiveUp_9_Proto {
+	p := new(CArenaGiveUp_9_Proto)
+	*p = x
+	return p
+}
+
+func (x CArenaGiveUp_9_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CArenaGiveUp_9_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[8].Descriptor()
+}
+
+func (CArenaGiveUp_9_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[8]
+}
+
+func (x CArenaGiveUp_9_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CArenaGiveUp_9_Proto.Descriptor instead.
+func (CArenaGiveUp_9_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{11, 0}
+}
+
+type CArenaLeave_10_Proto int32
+
+const (
+	CArenaLeave_10_A   CArenaLeave_10_Proto = 0
+	CArenaLeave_10_MSG CArenaLeave_10_Proto = 101
+	CArenaLeave_10_ID  CArenaLeave_10_Proto = 10010
+)
+
+// Enum value maps for CArenaLeave_10_Proto.
+var (
+	CArenaLeave_10_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10010: "ID",
+	}
+	CArenaLeave_10_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10010,
+	}
+)
+
+func (x CArenaLeave_10_Proto) Enum() *CArenaLeave_10_Proto {
+	p := new(CArenaLeave_10_Proto)
+	*p = x
+	return p
+}
+
+func (x CArenaLeave_10_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CArenaLeave_10_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[9].Descriptor()
+}
+
+func (CArenaLeave_10_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[9]
+}
+
+func (x CArenaLeave_10_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CArenaLeave_10_Proto.Descriptor instead.
+func (CArenaLeave_10_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{12, 0}
+}
+
+type SArenaInit_1_Proto int32
+
+const (
+	SArenaInit_1_A   SArenaInit_1_Proto = 0
+	SArenaInit_1_MSG SArenaInit_1_Proto = 101
+	SArenaInit_1_ID  SArenaInit_1_Proto = 10001
+)
+
+// Enum value maps for SArenaInit_1_Proto.
+var (
+	SArenaInit_1_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10001: "ID",
+	}
+	SArenaInit_1_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10001,
+	}
+)
+
+func (x SArenaInit_1_Proto) Enum() *SArenaInit_1_Proto {
+	p := new(SArenaInit_1_Proto)
+	*p = x
+	return p
+}
+
+func (x SArenaInit_1_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SArenaInit_1_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[10].Descriptor()
+}
+
+func (SArenaInit_1_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[10]
+}
+
+func (x SArenaInit_1_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SArenaInit_1_Proto.Descriptor instead.
+func (SArenaInit_1_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{13, 0}
+}
+
+type SArenaSelectList_2_Proto int32
+
+const (
+	SArenaSelectList_2_A   SArenaSelectList_2_Proto = 0
+	SArenaSelectList_2_MSG SArenaSelectList_2_Proto = 101
+	SArenaSelectList_2_ID  SArenaSelectList_2_Proto = 10002
+)
+
+// Enum value maps for SArenaSelectList_2_Proto.
+var (
+	SArenaSelectList_2_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10002: "ID",
+	}
+	SArenaSelectList_2_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10002,
+	}
+)
+
+func (x SArenaSelectList_2_Proto) Enum() *SArenaSelectList_2_Proto {
+	p := new(SArenaSelectList_2_Proto)
+	*p = x
+	return p
+}
+
+func (x SArenaSelectList_2_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SArenaSelectList_2_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[11].Descriptor()
+}
+
+func (SArenaSelectList_2_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[11]
+}
+
+func (x SArenaSelectList_2_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SArenaSelectList_2_Proto.Descriptor instead.
+func (SArenaSelectList_2_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{14, 0}
+}
+
+type SArenaLogs_3_Proto int32
+
+const (
+	SArenaLogs_3_A   SArenaLogs_3_Proto = 0
+	SArenaLogs_3_MSG SArenaLogs_3_Proto = 101
+	SArenaLogs_3_ID  SArenaLogs_3_Proto = 10003
+)
+
+// Enum value maps for SArenaLogs_3_Proto.
+var (
+	SArenaLogs_3_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10003: "ID",
+	}
+	SArenaLogs_3_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10003,
+	}
+)
+
+func (x SArenaLogs_3_Proto) Enum() *SArenaLogs_3_Proto {
+	p := new(SArenaLogs_3_Proto)
+	*p = x
+	return p
+}
+
+func (x SArenaLogs_3_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SArenaLogs_3_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[12].Descriptor()
+}
+
+func (SArenaLogs_3_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[12]
+}
+
+func (x SArenaLogs_3_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SArenaLogs_3_Proto.Descriptor instead.
+func (SArenaLogs_3_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{15, 0}
+}
+
+type SArenaRank_4_Proto int32
+
+const (
+	SArenaRank_4_A   SArenaRank_4_Proto = 0
+	SArenaRank_4_MSG SArenaRank_4_Proto = 101
+	SArenaRank_4_ID  SArenaRank_4_Proto = 10004
+)
+
+// Enum value maps for SArenaRank_4_Proto.
+var (
+	SArenaRank_4_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10004: "ID",
+	}
+	SArenaRank_4_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10004,
+	}
+)
+
+func (x SArenaRank_4_Proto) Enum() *SArenaRank_4_Proto {
+	p := new(SArenaRank_4_Proto)
+	*p = x
+	return p
+}
+
+func (x SArenaRank_4_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SArenaRank_4_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[13].Descriptor()
+}
+
+func (SArenaRank_4_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[13]
+}
+
+func (x SArenaRank_4_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SArenaRank_4_Proto.Descriptor instead.
+func (SArenaRank_4_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{16, 0}
+}
+
+type SArenaBattleResult_5_Proto int32
+
+const (
+	SArenaBattleResult_5_A   SArenaBattleResult_5_Proto = 0
+	SArenaBattleResult_5_MSG SArenaBattleResult_5_Proto = 101
+	SArenaBattleResult_5_ID  SArenaBattleResult_5_Proto = 10005
+)
+
+// Enum value maps for SArenaBattleResult_5_Proto.
+var (
+	SArenaBattleResult_5_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10005: "ID",
+	}
+	SArenaBattleResult_5_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10005,
+	}
+)
+
+func (x SArenaBattleResult_5_Proto) Enum() *SArenaBattleResult_5_Proto {
+	p := new(SArenaBattleResult_5_Proto)
+	*p = x
+	return p
+}
+
+func (x SArenaBattleResult_5_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SArenaBattleResult_5_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[14].Descriptor()
+}
+
+func (SArenaBattleResult_5_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[14]
+}
+
+func (x SArenaBattleResult_5_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SArenaBattleResult_5_Proto.Descriptor instead.
+func (SArenaBattleResult_5_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{17, 0}
+}
+
+type SArenaEnterFuben_6_Proto int32
+
+const (
+	SArenaEnterFuben_6_A   SArenaEnterFuben_6_Proto = 0
+	SArenaEnterFuben_6_MSG SArenaEnterFuben_6_Proto = 101
+	SArenaEnterFuben_6_ID  SArenaEnterFuben_6_Proto = 10006
+)
+
+// Enum value maps for SArenaEnterFuben_6_Proto.
+var (
+	SArenaEnterFuben_6_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10006: "ID",
+	}
+	SArenaEnterFuben_6_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10006,
+	}
+)
+
+func (x SArenaEnterFuben_6_Proto) Enum() *SArenaEnterFuben_6_Proto {
+	p := new(SArenaEnterFuben_6_Proto)
+	*p = x
+	return p
+}
+
+func (x SArenaEnterFuben_6_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SArenaEnterFuben_6_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[15].Descriptor()
+}
+
+func (SArenaEnterFuben_6_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[15]
+}
+
+func (x SArenaEnterFuben_6_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SArenaEnterFuben_6_Proto.Descriptor instead.
+func (SArenaEnterFuben_6_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{18, 0}
+}
+
+type CChaosBattleFieldEnter_21_Proto int32
+
+const (
+	CChaosBattleFieldEnter_21_A   CChaosBattleFieldEnter_21_Proto = 0
+	CChaosBattleFieldEnter_21_MSG CChaosBattleFieldEnter_21_Proto = 101
+	CChaosBattleFieldEnter_21_ID  CChaosBattleFieldEnter_21_Proto = 10021
+)
+
+// Enum value maps for CChaosBattleFieldEnter_21_Proto.
+var (
+	CChaosBattleFieldEnter_21_Proto_name = map[int32]string{
+		0:     "A",
+		101:   "MSG",
+		10021: "ID",
+	}
+	CChaosBattleFieldEnter_21_Proto_value = map[string]int32{
+		"A":   0,
+		"MSG": 101,
+		"ID":  10021,
+	}
+)
+
+func (x CChaosBattleFieldEnter_21_Proto) Enum() *CChaosBattleFieldEnter_21_Proto {
+	p := new(CChaosBattleFieldEnter_21_Proto)
+	*p = x
+	return p
+}
+
+func (x CChaosBattleFieldEnter_21_Proto) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CChaosBattleFieldEnter_21_Proto) Descriptor() protoreflect.EnumDescriptor {
+	return file__101_arena_proto_enumTypes[16].Descriptor()
+}
+
+func (CChaosBattleFieldEnter_21_Proto) Type() protoreflect.EnumType {
+	return &file__101_arena_proto_enumTypes[16]
+}
+
+func (x CChaosBattleFieldEnter_21_Proto) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CChaosBattleFieldEnter_21_Proto.Descriptor instead.
+func (CChaosBattleFieldEnter_21_Proto) EnumDescriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{19, 0}
+}
+
 // 竞技场敌人信息
 type ArenaEnemyInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -973,6 +1806,42 @@ func (x *SArenaEnterFuben_6) GetLastTime() int32 {
 	return 0
 }
 
+type CChaosBattleFieldEnter_21 struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CChaosBattleFieldEnter_21) Reset() {
+	*x = CChaosBattleFieldEnter_21{}
+	mi := &file__101_arena_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CChaosBattleFieldEnter_21) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CChaosBattleFieldEnter_21) ProtoMessage() {}
+
+func (x *CChaosBattleFieldEnter_21) ProtoReflect() protoreflect.Message {
+	mi := &file__101_arena_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CChaosBattleFieldEnter_21.ProtoReflect.Descriptor instead.
+func (*CChaosBattleFieldEnter_21) Descriptor() ([]byte, []int) {
+	return file__101_arena_proto_rawDescGZIP(), []int{19}
+}
+
 var File__101_arena_proto protoreflect.FileDescriptor
 
 const file__101_arena_proto_rawDesc = "" +
@@ -994,40 +1863,109 @@ const file__101_arena_proto_rawDesc = "" +
 	"\x04flag\x18\x02 \x01(\x05R\x04flag\x12\x14\n" +
 	"\x05score\x18\x03 \x01(\x05R\x05score\x12\x16\n" +
 	"\x06attack\x18\x04 \x01(\tR\x06attack\x12\x12\n" +
-	"\x04time\x18\x05 \x01(\x05R\x04time\"\x10\n" +
-	"\x0ec_arena_info_1\"\x13\n" +
-	"\x11c_arena_pk_list_2\"\x13\n" +
-	"\x11c_arena_refresh_3\"#\n" +
+	"\x04time\x18\x05 \x01(\x05R\x04time\"2\n" +
+	"\x0ec_arena_info_1\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x91N\"5\n" +
+	"\x11c_arena_pk_list_2\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x92N\"5\n" +
+	"\x11c_arena_refresh_3\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x93N\"E\n" +
 	"\x0fc_arena_fight_4\x12\x10\n" +
-	"\x03idx\x18\x01 \x01(\x05R\x03idx\"\x10\n" +
-	"\x0ec_arena_logs_5\"\x11\n" +
-	"\x0fc_arena_award_6\"\x10\n" +
-	"\x0ec_arena_rank_7\"\x15\n" +
-	"\x13c_arena_buy_count_8\"\x13\n" +
-	"\x11c_arena_give_up_9\"\x12\n" +
-	"\x10c_arena_leave_10\":\n" +
+	"\x03idx\x18\x01 \x01(\x05R\x03idx\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x94N\"2\n" +
+	"\x0ec_arena_logs_5\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x95N\"3\n" +
+	"\x0fc_arena_award_6\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x96N\"2\n" +
+	"\x0ec_arena_rank_7\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x97N\"7\n" +
+	"\x13c_arena_buy_count_8\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x98N\"5\n" +
+	"\x11c_arena_give_up_9\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x99N\"4\n" +
+	"\x10c_arena_leave_10\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x9aN\"\\\n" +
 	"\x0es_arena_init_1\x12\x12\n" +
 	"\x04rank\x18\x01 \x01(\x05R\x04rank\x12\x14\n" +
-	"\x05score\x18\x02 \x01(\x05R\x05score\">\n" +
+	"\x05score\x18\x02 \x01(\x05R\x05score\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x91N\"`\n" +
 	"\x15s_arena_select_list_2\x12%\n" +
-	"\x04item\x18\x01 \x03(\v2\x11.arena_enemy_infoR\x04item\"K\n" +
+	"\x04item\x18\x01 \x03(\v2\x11.arena_enemy_infoR\x04item\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x92N\"m\n" +
 	"\x0es_arena_logs_3\x12\x16\n" +
 	"\x06isInit\x18\x01 \x01(\x05R\x06isInit\x12!\n" +
-	"\x04list\x18\x02 \x03(\v2\r.arena_reportR\x04list\"`\n" +
+	"\x04list\x18\x02 \x03(\v2\r.arena_reportR\x04list\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x93N\"\x82\x01\n" +
 	"\x0es_arena_rank_4\x12$\n" +
 	"\x04list\x18\x01 \x03(\v2\x10.arena_rank_infoR\x04list\x12\x12\n" +
 	"\x04rank\x18\x02 \x01(\x05R\x04rank\x12\x14\n" +
-	"\x05score\x18\x03 \x01(\x05R\x05score\"\xba\x01\n" +
+	"\x05score\x18\x03 \x01(\x05R\x05score\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x94N\"\xdc\x01\n" +
 	"\x17s_arena_battle_result_5\x12\x10\n" +
 	"\x03win\x18\x01 \x01(\x05R\x03win\x12\x14\n" +
 	"\x05score\x18\x02 \x01(\x05R\x05score\x12\x12\n" +
 	"\x04rank\x18\x03 \x01(\x05R\x04rank\x12\x1a\n" +
 	"\bscoreAdd\x18\x04 \x01(\x05R\bscoreAdd\x12\x18\n" +
 	"\arankAdd\x18\x05 \x01(\x05R\arankAdd\x12-\n" +
-	"\x05items\x18\x06 \x03(\v2\x17.proto_common.AwardInfoR\x05items\"K\n" +
+	"\x05items\x18\x06 \x03(\v2\x17.proto_common.AwardInfoR\x05items\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x95N\"m\n" +
 	"\x15s_arena_enter_fuben_6\x12\x16\n" +
 	"\x06attack\x18\x01 \x01(\tR\x06attack\x12\x1a\n" +
-	"\blastTime\x18\x02 \x01(\x05R\blastTimeb\x06proto3"
+	"\blastTime\x18\x02 \x01(\x05R\blastTime\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\x96N\"A\n" +
+	"\x1dc_chaos_battle_field_enter_21\" \n" +
+	"\x05Proto\x12\x05\n" +
+	"\x01A\x10\x00\x12\a\n" +
+	"\x03MSG\x10e\x12\a\n" +
+	"\x02ID\x10\xa5Nb\x06proto3"
 
 var (
 	file__101_arena_proto_rawDescOnce sync.Once
@@ -1041,40 +1979,59 @@ func file__101_arena_proto_rawDescGZIP() []byte {
 	return file__101_arena_proto_rawDescData
 }
 
-var file__101_arena_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file__101_arena_proto_enumTypes = make([]protoimpl.EnumInfo, 17)
+var file__101_arena_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file__101_arena_proto_goTypes = []any{
-	(*ArenaEnemyInfo)(nil),       // 0: arena_enemy_info
-	(*ArenaRankInfo)(nil),        // 1: arena_rank_info
-	(*ArenaReport)(nil),          // 2: arena_report
-	(*CArenaInfo_1)(nil),         // 3: c_arena_info_1
-	(*CArenaPkList_2)(nil),       // 4: c_arena_pk_list_2
-	(*CArenaRefresh_3)(nil),      // 5: c_arena_refresh_3
-	(*CArenaFight_4)(nil),        // 6: c_arena_fight_4
-	(*CArenaLogs_5)(nil),         // 7: c_arena_logs_5
-	(*CArenaAward_6)(nil),        // 8: c_arena_award_6
-	(*CArenaRank_7)(nil),         // 9: c_arena_rank_7
-	(*CArenaBuyCount_8)(nil),     // 10: c_arena_buy_count_8
-	(*CArenaGiveUp_9)(nil),       // 11: c_arena_give_up_9
-	(*CArenaLeave_10)(nil),       // 12: c_arena_leave_10
-	(*SArenaInit_1)(nil),         // 13: s_arena_init_1
-	(*SArenaSelectList_2)(nil),   // 14: s_arena_select_list_2
-	(*SArenaLogs_3)(nil),         // 15: s_arena_logs_3
-	(*SArenaRank_4)(nil),         // 16: s_arena_rank_4
-	(*SArenaBattleResult_5)(nil), // 17: s_arena_battle_result_5
-	(*SArenaEnterFuben_6)(nil),   // 18: s_arena_enter_fuben_6
-	(*common.ActorAppear)(nil),   // 19: proto_common.actor_appear
-	(*common.ActorBasic)(nil),    // 20: proto_common.actor_basic
-	(*common.AwardInfo)(nil),     // 21: proto_common.AwardInfo
+	(CArenaInfo_1_Proto)(0),              // 0: c_arena_info_1.Proto
+	(CArenaPkList_2_Proto)(0),            // 1: c_arena_pk_list_2.Proto
+	(CArenaRefresh_3_Proto)(0),           // 2: c_arena_refresh_3.Proto
+	(CArenaFight_4_Proto)(0),             // 3: c_arena_fight_4.Proto
+	(CArenaLogs_5_Proto)(0),              // 4: c_arena_logs_5.Proto
+	(CArenaAward_6_Proto)(0),             // 5: c_arena_award_6.Proto
+	(CArenaRank_7_Proto)(0),              // 6: c_arena_rank_7.Proto
+	(CArenaBuyCount_8_Proto)(0),          // 7: c_arena_buy_count_8.Proto
+	(CArenaGiveUp_9_Proto)(0),            // 8: c_arena_give_up_9.Proto
+	(CArenaLeave_10_Proto)(0),            // 9: c_arena_leave_10.Proto
+	(SArenaInit_1_Proto)(0),              // 10: s_arena_init_1.Proto
+	(SArenaSelectList_2_Proto)(0),        // 11: s_arena_select_list_2.Proto
+	(SArenaLogs_3_Proto)(0),              // 12: s_arena_logs_3.Proto
+	(SArenaRank_4_Proto)(0),              // 13: s_arena_rank_4.Proto
+	(SArenaBattleResult_5_Proto)(0),      // 14: s_arena_battle_result_5.Proto
+	(SArenaEnterFuben_6_Proto)(0),        // 15: s_arena_enter_fuben_6.Proto
+	(CChaosBattleFieldEnter_21_Proto)(0), // 16: c_chaos_battle_field_enter_21.Proto
+	(*ArenaEnemyInfo)(nil),               // 17: arena_enemy_info
+	(*ArenaRankInfo)(nil),                // 18: arena_rank_info
+	(*ArenaReport)(nil),                  // 19: arena_report
+	(*CArenaInfo_1)(nil),                 // 20: c_arena_info_1
+	(*CArenaPkList_2)(nil),               // 21: c_arena_pk_list_2
+	(*CArenaRefresh_3)(nil),              // 22: c_arena_refresh_3
+	(*CArenaFight_4)(nil),                // 23: c_arena_fight_4
+	(*CArenaLogs_5)(nil),                 // 24: c_arena_logs_5
+	(*CArenaAward_6)(nil),                // 25: c_arena_award_6
+	(*CArenaRank_7)(nil),                 // 26: c_arena_rank_7
+	(*CArenaBuyCount_8)(nil),             // 27: c_arena_buy_count_8
+	(*CArenaGiveUp_9)(nil),               // 28: c_arena_give_up_9
+	(*CArenaLeave_10)(nil),               // 29: c_arena_leave_10
+	(*SArenaInit_1)(nil),                 // 30: s_arena_init_1
+	(*SArenaSelectList_2)(nil),           // 31: s_arena_select_list_2
+	(*SArenaLogs_3)(nil),                 // 32: s_arena_logs_3
+	(*SArenaRank_4)(nil),                 // 33: s_arena_rank_4
+	(*SArenaBattleResult_5)(nil),         // 34: s_arena_battle_result_5
+	(*SArenaEnterFuben_6)(nil),           // 35: s_arena_enter_fuben_6
+	(*CChaosBattleFieldEnter_21)(nil),    // 36: c_chaos_battle_field_enter_21
+	(*common.ActorAppear)(nil),           // 37: proto_common.actor_appear
+	(*common.ActorBasic)(nil),            // 38: proto_common.actor_basic
+	(*common.AwardInfo)(nil),             // 39: proto_common.AwardInfo
 }
 var file__101_arena_proto_depIdxs = []int32{
-	19, // 0: arena_enemy_info.info:type_name -> proto_common.actor_appear
-	20, // 1: arena_rank_info.info:type_name -> proto_common.actor_basic
-	19, // 2: arena_rank_info.appear:type_name -> proto_common.actor_appear
-	20, // 3: arena_report.info:type_name -> proto_common.actor_basic
-	0,  // 4: s_arena_select_list_2.item:type_name -> arena_enemy_info
-	2,  // 5: s_arena_logs_3.list:type_name -> arena_report
-	1,  // 6: s_arena_rank_4.list:type_name -> arena_rank_info
-	21, // 7: s_arena_battle_result_5.items:type_name -> proto_common.AwardInfo
+	37, // 0: arena_enemy_info.info:type_name -> proto_common.actor_appear
+	38, // 1: arena_rank_info.info:type_name -> proto_common.actor_basic
+	37, // 2: arena_rank_info.appear:type_name -> proto_common.actor_appear
+	38, // 3: arena_report.info:type_name -> proto_common.actor_basic
+	17, // 4: s_arena_select_list_2.item:type_name -> arena_enemy_info
+	19, // 5: s_arena_logs_3.list:type_name -> arena_report
+	18, // 6: s_arena_rank_4.list:type_name -> arena_rank_info
+	39, // 7: s_arena_battle_result_5.items:type_name -> proto_common.AwardInfo
 	8,  // [8:8] is the sub-list for method output_type
 	8,  // [8:8] is the sub-list for method input_type
 	8,  // [8:8] is the sub-list for extension type_name
@@ -1092,13 +2049,14 @@ func file__101_arena_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file__101_arena_proto_rawDesc), len(file__101_arena_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   19,
+			NumEnums:      17,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file__101_arena_proto_goTypes,
 		DependencyIndexes: file__101_arena_proto_depIdxs,
+		EnumInfos:         file__101_arena_proto_enumTypes,
 		MessageInfos:      file__101_arena_proto_msgTypes,
 	}.Build()
 	File__101_arena_proto = out.File

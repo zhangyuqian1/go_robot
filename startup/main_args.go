@@ -1,35 +1,41 @@
 package startup
 
 import (
+	"fmt"
 	"strconv"
+	"strings"
 	"time"
 
 	"stressTest/global"
 	"stressTest/jasmine"
+	"stressTest/logger"
 )
 
 const (
-	defaultWebSocketSvr        = "ws://127.0.0.1:21000"
-	defaultHeartbeatInterval   = 10 * time.Second
-	defaultLoginRate           = 1
-	defaultMoveRate            = 5
-	defaultMoveStepPixels      = 12
-	defaultBattleRate          = 2
-	defaultBattleNormalSkillID = 4209
-	defaultPetRate             = 1
-	defaultPetBattleIndex      = 1
-	defaultPetCooldown         = 10 * time.Second
-	defaultEquipRate           = 1
-	defaultArenaRate           = 1
-	defaultArenaListInterval   = 10 * time.Second
-	defaultArenaFightDelay     = 3 * time.Second
-	defaultArenaCooldown       = 10 * time.Second
-	defaultArenaGMCommand      = ""
-	defaultArenaChallengeIndex = 1
-	defaultDrawRate           = 1
-	defaultFriendRate         = 1
-	defaultFriendAid    int32 = 16783880
-	defaultPrayRate           = 1
+	defaultWebSocketSvr              = "ws://127.0.0.1:21000"
+	defaultHeartbeatInterval         = 10 * time.Second
+	defaultLoginRate                 = 1
+	defaultMoveRate                  = 30
+	defaultDragonCityMoveRate        = 2 * defaultMoveRate
+	defaultDragonCityBossIndex       = 1
+	defaultMoveStepPixels            = 12
+	defaultMoveSpeedPixels           = 300
+	defaultBattleRate                = 2
+	defaultBattleNormalSkillID       = 4209
+	defaultPetRate                   = 1
+	defaultPetBattleIndex            = 1
+	defaultPetCooldown               = 10 * time.Second
+	defaultEquipRate                 = 1
+	defaultArenaRate                 = 1
+	defaultArenaListInterval         = 10 * time.Second
+	defaultArenaFightDelay           = 3 * time.Second
+	defaultArenaCooldown             = 10 * time.Second
+	defaultArenaGMCommand            = ""
+	defaultArenaChallengeIndex       = 1
+	defaultDrawRate                  = 1
+	defaultFriendRate                = 1
+	defaultFriendAid           int32 = 16783880
+	defaultPrayRate                  = 1
 )
 
 func ApplyCustomCaseParams(config *jasmine.YokaConfig, testCase *jasmine.TestCase) {
@@ -37,6 +43,10 @@ func ApplyCustomCaseParams(config *jasmine.YokaConfig, testCase *jasmine.TestCas
 	if config == nil || testCase == nil {
 		buildLoginRateLimiter(config)
 		return
+	}
+
+	if global.CaseName == "DragonCity" {
+		global.MoveThreshold = defaultDragonCityMoveRate
 	}
 
 	for _, custom := range testCase.CustomParams {
@@ -60,6 +70,20 @@ func ApplyCustomCaseParams(config *jasmine.YokaConfig, testCase *jasmine.TestCas
 		case "--move-step":
 			if value, err := strconv.ParseInt(custom.ParamValue, 10, 32); err == nil && value > 0 {
 				global.MoveStepPixels = int32(value)
+			}
+		case "--move-speed":
+			if value, err := strconv.ParseInt(custom.ParamValue, 10, 32); err == nil && value > 0 {
+				global.MoveSpeedPixels = int32(value)
+			}
+		case "--dragon-city-boss-index":
+			if value, err := strconv.Atoi(custom.ParamValue); err == nil && value >= 1 && value <= 4 {
+				global.DragonCityBossIndex = value
+			}
+		case "--dragon-city-waypoints":
+			if points, err := parseDragonCityWaypoints(custom.ParamValue); err == nil {
+				global.DragonCityWaypoints = points
+			} else {
+				logger.Errorf("invalid --dragon-city-waypoints: %v", err)
 			}
 		case "--battle-rate":
 			if value, err := strconv.ParseInt(custom.ParamValue, 10, 64); err == nil {
@@ -139,6 +163,9 @@ func resetMrRobotDefaults() {
 	global.LoginThreshold = defaultLoginRate
 	global.MoveThreshold = defaultMoveRate
 	global.MoveStepPixels = defaultMoveStepPixels
+	global.MoveSpeedPixels = defaultMoveSpeedPixels
+	global.DragonCityBossIndex = defaultDragonCityBossIndex
+	global.DragonCityWaypoints = nil
 	global.BattleThreshold = defaultBattleRate
 	global.BattleNormalSkillID = defaultBattleNormalSkillID
 	global.PetThreshold = defaultPetRate
@@ -165,6 +192,30 @@ func resetMrRobotDefaults() {
 	global.FriendRate = nil
 	global.PrayRate = nil
 	global.RateLimiters = nil
+}
+
+func parseDragonCityWaypoints(value string) ([][2]int32, error) {
+	entries := strings.Split(value, ";")
+	if len(entries) > 4 {
+		return nil, fmt.Errorf("expected 1-4 points in x,y;x,y format")
+	}
+	points := make([][2]int32, 0, len(entries))
+	for _, entry := range entries {
+		coordinates := strings.Split(strings.TrimSpace(entry), ",")
+		if len(coordinates) != 2 {
+			return nil, fmt.Errorf("invalid point %q, expected x,y", entry)
+		}
+		var point [2]int32
+		for axis, coordinate := range coordinates {
+			parsed, err := strconv.ParseInt(strings.TrimSpace(coordinate), 10, 32)
+			if err != nil || parsed < 0 || parsed > 21474836 {
+				return nil, fmt.Errorf("invalid coordinate %q, expected integer in [0,21474836]", coordinate)
+			}
+			point[axis] = int32(parsed)
+		}
+		points = append(points, point)
+	}
+	return points, nil
 }
 
 func buildLoginRateLimiter(config *jasmine.YokaConfig) {

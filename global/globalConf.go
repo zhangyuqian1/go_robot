@@ -48,7 +48,10 @@ var (
 	PrayRate            *jasmine.Limiter
 	HeartbeatInterval         = 10 * time.Second
 	MoveStepPixels      int32 = 12
-	BattleNormalSkillID int32 = 4209
+	MoveSpeedPixels     int32 = 300
+	DragonCityBossIndex int   = 1
+	DragonCityWaypoints [][2]int32
+	BattleNormalSkillID int32 = 1101
 	PetBattleIndex      int32 = 1
 	PetCooldown               = 10 * time.Second
 	ArenaListInterval         = 10 * time.Second

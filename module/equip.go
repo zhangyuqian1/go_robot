@@ -1,6 +1,7 @@
 package module
 
 import (
+	"fmt"
 	"stressTest/gameproto/bag"
 	"stressTest/gameproto/common"
 	"stressTest/gameproto/equip"
@@ -47,8 +48,13 @@ func (r *Robot) CGetBagItems(bagType int32) {
 
 func (r *Robot) CTakeOnEquip(pos int32, series *common.Series) {
 	if series == nil {
+		logger.Error(fmt.Sprintf("序列号3: %v", series))
 		return
 	}
+	// if pos <= 0 {
+	// 	pos = 1 // ← 把文档规定的 pos=0 强制改成 1！
+	// }
+	logger.Error(fmt.Sprintf("序列号2: %v", series))
 	req := &equip.CTakeOnEquip_1{Pos: pos, Series: series}
 	r.AsyncBegin(equipTakeOnRequestName, equipRequestTimeout, false)
 	if err := r.sendGatewayRequest(equipTakeOnRequestName, equipSys, equipTakeOn, req, false); err != nil {

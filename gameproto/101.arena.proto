@@ -123,3 +123,7 @@ message s_arena_enter_fuben_6 {
     string attack = 1;          //对手攻击力
     int32 lastTime = 2;         //副本剩余时间
 }
+
+message c_chaos_battle_field_enter_21 {
+	enum Proto {A = 0; MSG = 101; ID = 10021;}
+}

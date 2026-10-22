@@ -10,18 +10,30 @@ import (
 )
 
 const (
-	arenaSys          byte = 101
-	arenaInfo         byte = 1
-	arenaSelectList   byte = 2
-	arenaFight        byte = 4
-	arenaBattleResult byte = 5
-	arenaEnterFuben   byte = 6
+	arenaSys                   byte = 101
+	arenaInfo                  byte = 1
+	arenaSelectList            byte = 2
+	arenaFight                 byte = 4
+	arenaBattleResult          byte = 5
+	arenaEnterFuben            byte = 6
+	arenaChaosBattleFieldEnter byte = 21
 
-	arenaInfoRequestName        = "CArenaInfo"
-	arenaListRequestName        = "CArenaPkList"
-	arenaFightRequestName       = "CArenaFight"
-	arenaRequestTimeout   int64 = 10
+	arenaInfoRequestName                   = "CArenaInfo"
+	arenaListRequestName                   = "CArenaPkList"
+	arenaFightRequestName                  = "CArenaFight"
+	chaosBattleFieldEnterRequestName       = "CChaosBattleFieldEnter"
+	arenaRequestTimeout              int64 = 10
 )
+
+func (r *Robot) CChaosBattleFieldEnter() {
+	r.AsyncBegin(chaosBattleFieldEnterRequestName, 30, false)
+	if err := r.sendGatewayRequest(chaosBattleFieldEnterRequestName, arenaSys, arenaChaosBattleFieldEnter, &arena.CChaosBattleFieldEnter_21{}, false); err != nil {
+		r.Mark.Remove(chaosBattleFieldEnterRequestName)
+		logger.Error(err.Error())
+		return
+	}
+	r.AsyncWait(chaosBattleFieldEnterRequestName)
+}
 
 func (r *Robot) CArenaInfo() {
 	r.AsyncBegin(arenaInfoRequestName, arenaRequestTimeout, false)

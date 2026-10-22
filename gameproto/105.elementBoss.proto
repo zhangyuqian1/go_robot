@@ -1,0 +1,69 @@
+﻿syntax = "proto3";
+
+//元素领域-小地图boss信息
+message element_boss_smallmap_unit {
+    int32 mid = 1;          //怪物id
+    int32 rsf_time = 2;     //下次刷新时间戳, 0表示已刷新
+}
+
+//跨服组服务器信息
+message group_server {
+    int32 srv_id = 1;
+    string srv_name = 2;    //服务器名
+    int32 open_time = 3;    //开服时间戳
+    int32 open_day = 4;     //开服天数
+}
+
+//请求元素boss活动面板信息
+message c_element_boss_panel_1 {
+	enum Proto {A = 0; MSG = 105; ID = 10001;}
+    int32 map_type = 1; //1:大地图 2:小地图
+    int32 layer = 2;    //小地图层数, 大地图传0
+}
+
+//进入活动场景 map_type:1大地图 2小地图
+message c_element_boss_enter_2 {
+	enum Proto {A = 0; MSG = 105; ID = 10002;}
+    int32 map_type = 1;     //1:大地图 2:小地图
+    int32 layer = 2;        //小地图层数, 大地图传0
+}
+
+//离开场景
+message c_element_boss_leave_3 {
+	enum Proto {A = 0; MSG = 105; ID = 10003;}
+}
+
+//下发大地图面板信息
+message s_element_boss_bigmap_info_1{
+	enum Proto {A = 0; MSG = 105; ID = 10001;}
+    int32 sp_boss_cnt = 1;    //主宰boss剩余个数
+    int32 normal_boss_cnt = 2;    //普通boss剩余个数
+}
+
+//下发小地图面板信息
+message s_element_boss_smallmap_info_2{
+	enum Proto {A = 0; MSG = 105; ID = 10002;}
+    int32 layer = 1;
+    repeated element_boss_smallmap_unit bosses = 2;
+}
+
+//大地图boss击杀结算弹框
+message s_element_boss_kill_settle_3 {
+	enum Proto {A = 0; MSG = 105; ID = 10003;}
+    int32 mid = 1;          //怪物id
+    string owner_name = 2;      //归属者 S1.玩家名
+    string owner_srv_name = 3;  //归属区服 S1.服务器名
+    int32 awards = 4;       //奖励份数
+}
+
+//下发当前跨服组全部服务器信息
+message s_cross_group_info_4 {
+	enum Proto {A = 0; MSG = 105; ID = 10004;}
+    repeated group_server servers = 1;
+}
+
+//下发元素BOSS当前主题id
+message s_send_element_boss_theme_5 {
+	enum Proto {A = 0; MSG = 105; ID = 10005;}
+    int32 theme_id = 1;
+}

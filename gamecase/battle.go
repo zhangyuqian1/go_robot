@@ -19,6 +19,7 @@ const (
 	battleDefaultSkillID int32 = 4209
 	battleTargetBossID   int32 = 64
 	battleTargetBossName       = "骸骨巨龙"
+	skillid              int32 = 1101
 )
 
 func Battle(ctx context.Context) {
@@ -29,8 +30,17 @@ func Battle(ctx context.Context) {
 	defer r.Close()
 	RobotInit(r)
 	time.Sleep(1 * time.Second)
-	initBattle(r)
+	// r.CSendChatMsg(0, "@additem 950 1")
+	// time.Sleep(1 * time.Second)
+	// waitGiftSeries(r)
+	// logger.Error(fmt.Sprintf("序列号1: %v", r.Client.GiftSeries))
+	// r.CUseBagGift(3, r.Client.GiftSeries, 1)
+	// // 随机选择 2~25 的英雄 id，传给后续两个协议
+	// heroID := rand.New(rand.NewSource(time.Now().UnixNano())).Intn(24) + 2
+	// r.CActivityHero(int32(heroID))
+	// r.CSwitchHero(int32(heroID))
 
+	initBattle(r)
 	global.LoginRendezvous.Done(-1)
 	global.LoginRendezvous.Wait()
 
@@ -43,7 +53,7 @@ func Battle(ctx context.Context) {
 			if global.BattleRate == nil || global.BattleRate.Allow() {
 				battleOnce(r)
 			}
-			time.Sleep(10 * time.Millisecond)
+			time.Sleep(20 * time.Millisecond)
 		}
 	}
 }
@@ -56,6 +66,21 @@ func initBattle(r *module.Robot) {
 	y := battleMoveCenterY + int32(rand.Intn(int(battleMoveScatter*2+1))) - battleMoveScatter
 	r.CSendChatMsg(0, "@superman")
 	r.CSendChatMsg(0, fmt.Sprintf("@MoveTo %d %d %d", battleSceneID, x, y))
+	// weaponID := rand.New(rand.NewSource(time.Now().UnixNano())).Intn(120) + 1001
+	// r.CSendChatMsg(0, fmt.Sprintf("@additem %d 1", weaponID))
+	// time.Sleep(1 * time.Second)
+	// waitWeaponSeries(r)
+	// r.CTakeOnEquip(0, r.Client.WeaponSeries)
+	// time.Sleep(5 * time.Second)
+	// waitMinSkillID(r)
+	// // logger.Error(fmt.Sprintf("穿戴后最小技能id: %v", r.Client.MinSkillID))
+	// if r.Client.Skills != nil {
+	// 	ids := make([]int32, 0, len(r.Client.Skills))
+	// 	for id := range r.Client.Skills {
+	// 		ids = append(ids, id)
+	// 	}
+	// 	logger.Error(fmt.Sprintf("穿戴后缓存全部技能ids: %v", ids))
+	// }
 	r.CMinimapBossInfo(battleSceneID)
 }
 
@@ -72,12 +97,13 @@ func battleOnce(r *module.Robot) {
 	if target == nil {
 		return
 	}
-	skillID := battleSkillID()
+	skillID := r.Client.MinSkillID
+	// skillID := skillid
 	dir := battleDirection(r, target)
 	r.CStartUseSkill(r.Client.Handle, skillID, dir, 0)
 	r.CSkillFrameProxy(buildBattleSkillFrameRequest(r, target, skillID, dir))
 	r.CDamageEntity(target.Handle, skillID, battleRangeIndex(skillID), 0)
-	time.Sleep(100 * time.Millisecond)
+	time.Sleep(1000 * time.Millisecond)
 }
 
 func selectBattleTarget(r *module.Robot) *module.MonsterState {

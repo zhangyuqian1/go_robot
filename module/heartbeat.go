@@ -70,8 +70,8 @@ func (r *Robot) StopHeartBeat() {
 	if r.TickStopSignal != nil {
 		if r.Ticking {
 			r.signalHeartbeatStop()
-			r.TickSyncGroup.Wait()
 		}
+		r.TickSyncGroup.Wait()
 		logger.Info(fmt.Sprintf("Client %s Stop HeartBeat", r.PTName))
 	} else {
 		logger.Error(fmt.Sprintf("Client %s TickStopSignal is nil, can't stop HeartBeat", r.PTName))

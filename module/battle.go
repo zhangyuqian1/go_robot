@@ -290,6 +290,12 @@ func (r *Robot) handleEntityDeath(body []byte) {
 	if r.Client != nil && resp.GetHandle() == r.Client.Handle {
 		r.Client.SelfDead = true
 		r.Client.BattleTargetHandle = 0
+		if r.Client.SceneEntries != nil {
+			r.Client.Entities = nil
+			r.Client.Monsters = nil
+			r.AsyncFire(movementRequestName, int64(len(body)), STEP_FAIL, "SEntityDeath_8")
+			r.AsyncFire(movementSetDirRequestName, int64(len(body)), STEP_FAIL, "SEntityDeath_8")
+		}
 		return
 	}
 	r.removeEntity(resp.GetHandle())

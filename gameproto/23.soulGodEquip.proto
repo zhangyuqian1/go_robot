@@ -1,0 +1,7 @@
+﻿syntax = "proto3";
+
+//激活/升星
+message c_soul_god_equip_star_up_1 {
+	enum Proto {A = 0; MSG = 23; ID = 10001;}
+    int32 id = 1;
+}

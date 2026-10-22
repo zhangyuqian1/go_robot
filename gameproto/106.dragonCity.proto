@@ -1,0 +1,153 @@
+﻿syntax = "proto3";
+import "common.proto";
+
+//阵营分组
+message camp_server{
+    int32 srv = 1;
+    int32 camp = 2;
+    string servername = 3;
+}
+
+//资源点
+message dragon_city_point {
+    int32 id = 1;
+    int32 camp = 2;          //0中立 1蓝 2红
+    int32 monster_id = 3;
+    int32 under_attack = 4;  //1正在被攻击
+}
+
+//前三名，面板和定时推送用
+message dragon_city_top {
+    string name = 1;
+	int32 camp = 2;		//阵营id 
+    int32 score = 3;	//积分
+}
+
+//完整榜单
+message dragon_city_rank_row {
+    int32 camp = 1;   //阵营id
+    int32 score = 2;  //积分
+	int32 kill = 3;  //击杀次数
+	int32 assist = 4;  //助攻次数
+	int32 death = 5;   //死亡次数
+    proto_common.actor_basic info = 6; //玩家基础信息
+	proto_common.actor_appear appear = 7; //玩家形象
+}
+
+//排行
+message dragon_city_rank_item {
+    int32 rank = 1;
+    int32 score = 2;
+    int32 camp = 3;
+    proto_common.actor_basic info = 4;
+}
+
+//请求入口状态
+message c_dragon_city_panel_1 {
+	enum Proto {A = 0; MSG = 106; ID = 10001;}
+}
+
+//请求进入场景
+message c_dragon_city_enter_2 {
+	enum Proto {A = 0; MSG = 106; ID = 10002;}
+}
+
+//请求离开场景
+message c_dragon_city_leave_3 {
+	enum Proto {A = 0; MSG = 106; ID = 10003;}
+}
+
+//领取积分达标奖励
+message c_dragon_city_score_award_4 {
+	enum Proto {A = 0; MSG = 106; ID = 10004;}
+    int32 id = 1;  //索引
+}
+
+//请求积分排行榜
+message c_dragon_city_rank_5 {
+	enum Proto {A = 0; MSG = 106; ID = 10005;}
+}
+
+//确认复活
+message c_dragon_city_relive_6 {
+	enum Proto {A = 0; MSG = 106; ID = 10006;}
+}
+
+//入口状态
+message s_dragon_city_state_1 {
+	enum Proto {A = 0; MSG = 106; ID = 10001;}
+    int32 step = 1;              //0未开启 1已分组 2准备 3进行中 4已结算
+    int32 camp = 2;              //本服阵营
+    int32 win_camp = 3;          //获胜阵营
+    repeated camp_server srvlist = 4;  //服务器列表
+}
+
+//场景内定时推送
+message s_dragon_city_scene_2 {
+	enum Proto {A = 0; MSG = 106; ID = 10002;}
+    int32 step = 1;
+    int32 camp = 2;
+    int32 res1 = 3;
+    int32 res2 = 4;
+    int32 my_score = 5;
+    repeated dragon_city_point points = 6;
+    repeated dragon_city_top top = 7; //前三名名字和积分
+}
+
+//单个资源点归属变化
+message s_dragon_city_point_3 {
+	enum Proto {A = 0; MSG = 106; ID = 10003;}
+    dragon_city_point point = 1;
+}
+
+//个人积分变化
+message s_dragon_city_score_4 {
+	enum Proto {A = 0; MSG = 106; ID = 10004;}
+    int32 score = 1;
+    int32 rank = 2;
+}
+
+//排行
+message s_dragon_city_rank_5 {
+	enum Proto {A = 0; MSG = 106; ID = 10005;}
+    repeated dragon_city_rank_row list = 1;
+    dragon_city_rank_row my_item = 2;
+    int32 rank = 3;
+}
+
+//结算
+message s_dragon_city_settle_6 {
+	enum Proto {A = 0; MSG = 106; ID = 10006;}
+    int32 win_camp = 1;
+    int32 res1 = 2;
+    int32 res2 = 3;
+}
+
+//下发玩家积分和达标奖励标志
+message s_dragon_city_award_7 {
+	enum Proto {A = 0; MSG = 106; ID = 10007;}
+    int32 score = 1;            //玩家活动积分
+    int32 got_awards = 2;       //领奖标志位(0-n位表示是否领取1-n+1档位奖励)
+}
+
+//死亡后复活倒计时
+message s_dragon_city_relive_8 {
+	enum Proto {A = 0; MSG = 106; ID = 10008;}
+    int32 left_sec = 1;
+}
+
+//己方资源点被攻击
+message s_dragon_city_point_attack_9 {
+	enum Proto {A = 0; MSG = 106; ID = 10009;}
+    int32 point_id = 1;
+    int32 camp = 2;
+}
+
+//战场喇叭,type=1阵营击杀资源怪，type=2阵营资源达到节点。
+message s_dragon_city_res_broadcast_10 {
+	enum Proto {A = 0; MSG = 106; ID = 10010;}
+    int32 type = 1;
+    int32 camp = 2;
+    int32 point_id = 3;
+    int32 res = 4;
+}

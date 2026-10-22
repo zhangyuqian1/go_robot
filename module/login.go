@@ -25,6 +25,7 @@ const (
 	loginRequestGetActorList  = "CReqGetActorList"
 	loginRequestReadyLogin    = "CClientReadyLogin"
 	loginRequestActorLogin    = "CActorLogin"
+	loginRequestKickSelf      = "CClientKickSelf"
 	loginRequestEnterScene    = "SActorEnterScene"
 )
 
@@ -87,6 +88,13 @@ func (r *Robot) CReqClientReadyLogin(actorID int32) {
 		return
 	}
 	r.AsyncWait(loginRequestReadyLogin)
+}
+
+func (r *Robot) CReqClientKickSelf() {
+	req := &defaultmsg.CClientKickSelf_5{}
+	if err := r.sendGatewayRequest(loginRequestKickSelf, defaultSys, defaultClientKickSelf, req, false); err != nil {
+		logger.Error(err.Error())
+	}
 }
 
 func (r *Robot) CReqActorLogin(accountID int32, aid int32) {

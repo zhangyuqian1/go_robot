@@ -27,6 +27,13 @@ type webSocketConn struct {
 	Conn *websocket.Conn
 }
 
+type SceneEntry struct {
+	SceneID int32
+	FubenID int32
+	X       float32
+	Y       float32
+}
+
 type GameClient struct {
 	WebSocketSvr  string
 	WebSocketConn *webSocketConn
@@ -65,13 +72,20 @@ type GameClient struct {
 	LastActorLoginResult  int32
 	LastHeartbeatTick     int32
 	LoginStarted          bool
+	LoginSceneReady       chan struct{}
+	SceneEntries          chan SceneEntry
+	TransmitTarget        chan TransmitTarget
+	TeamDungeonMatchReady chan int32
 
 	Entities            map[int64]*EntityState
 	Monsters            map[int64]*MonsterState
 	MoveAngle           int32
 	MoveBlocked         bool
 	LastMoveTick        int32
+	MoveReadyAt         time.Time
 	BattleTargetHandle  int64
+	SyncedTargetHandle  int64
+	SyncedTargetAt      time.Time
 	BattleBosses        map[int32]*BossState
 	BattleSkillRandVal  int32
 	SelfDead            bool
@@ -91,6 +105,7 @@ type GameClient struct {
 	ArenaLastWin        int32
 	ArenaCooldownUntil  time.Time
 	Skills              map[int32]*SkillState
+	MinSkillID          int32
 
 	IsWebConnected bool
 }
@@ -321,7 +336,11 @@ func (r *Robot) AsyncMonit() {
 					r.RecordSuccess(item.Key, 0, nowTime, STEP_TIMEOUT)
 				}
 			}
-			time.Sleep(sleepDuration) // 休眠协议的默认超时时间即可
+			select {
+			case <-r.AsyncMonitSignal:
+				return
+			case <-time.After(sleepDuration):
+			}
 		}
 	}
 }

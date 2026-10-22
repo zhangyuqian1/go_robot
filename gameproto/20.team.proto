@@ -131,6 +131,22 @@ message c_team_get_team_list_15 {
 	enum Proto {A = 0; MSG = 20; ID = 10015;}
 }
 
+message c_team_dungeon_match_16 {
+    enum Proto {A = 0; MSG = 20; ID = 10016;}
+    int32 lv = 1;
+}
+
+message c_team_dungeon_replay_19 {
+    enum Proto {A = 0; MSG = 20; ID = 10019;}
+    int32 id = 1;
+    int32 replay = 2;
+}
+
+message s_team_dungeon_match_success_14 {
+    enum Proto {A = 0; MSG = 20; ID = 10014;}
+    int32 id = 1;
+}
+
 
 
 //下发队伍信息
